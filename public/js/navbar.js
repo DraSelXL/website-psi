@@ -10,20 +10,8 @@ $(function () {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-  $("#hamburger-btn").on("click", function () {
-    theNavbar.toggleClass("-translate-x-52");
-  });
-  $(".navbar-btn").on("click", function () {
-    theNavbar.toggleClass("-translate-x-52");
-  });
-  $("#shop-btn").on("click", function () {
-    $.ajax({
-      url: "/shop",
-      method: "get"
-    }).done(function (response) {
-      $("#content").html(response);
-    });
-  });
+  $("#hamburger-btn").on("click", toggleNavbar);
+  $("#shop-btn").on("click", loadMaterials);
   $("#inven-btn").on("click", function () {
     $.ajax({
       url: "/inventory",
@@ -48,6 +36,22 @@ $(function () {
       $("#content").html(response);
     });
   });
+  loadMaterials();
 });
+
+function toggleNavbar() {
+  $("#the-navbar").toggleClass("-translate-x-52");
+  $("#psi2021").toggleClass("hidden");
+  $("#navbar-items").toggleClass("hidden");
+}
+
+function loadMaterials() {
+  $.ajax({
+    url: "/shop",
+    method: "get"
+  }).done(function (response) {
+    $("#content").html(response);
+  });
+}
 /******/ })()
 ;
