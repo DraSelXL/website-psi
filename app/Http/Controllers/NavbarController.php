@@ -14,7 +14,9 @@ class NavbarController extends Controller
     }
 
     public function showInventory(){
-        return view('inventory');
+        return view('inventory',[
+            'materials' => Material::all()
+        ]);
     }
 
     public function showHistory(){

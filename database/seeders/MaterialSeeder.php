@@ -31,7 +31,7 @@ class MaterialSeeder extends Seeder
         ];
 
         $records[] = [
-            'name'=>'Leather Boot',
+            'name'=>'Leather Boots',
             'description'=>'A common pair of boots used for any occasions.',
             'price'=>'100',
             'rarity'=>'1'
@@ -48,13 +48,6 @@ class MaterialSeeder extends Seeder
             'name'=>'Platemail',
             'description'=>'An armor made of Iron. A large number of soldiers in the army use this type of armor.',
             'price'=>'250',
-            'rarity'=>'1'
-        ];
-
-        $records[] = [
-            'name'=>'Gilded Boots',
-            'description'=>'Higher tier of leather boots. More expensive.',
-            'price'=>'200',
             'rarity'=>'1'
         ];
 
