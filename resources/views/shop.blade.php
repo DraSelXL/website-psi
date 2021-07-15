@@ -5,8 +5,8 @@
     <div class="h-14 w-96 bg-darkblue rounded-xl my-5 text-white font-bold p-2">
         <div class="flex flex-row">
             @auth
-                <div class="flex-grow">{{ auth()->user()->gold }}</div>
-                <div class="flex-grow">{{ auth()->user()->points }}</div>
+                <div class="flex-grow text-xl my-1 text-center">{{ auth()->user()->gold }} G</div>
+                <div class="flex-grow text-xl my-1 text-center">{{ auth()->user()->points }} pts</div>
             @endauth
         </div>
     </div>
