@@ -9,5 +9,5 @@ class Material extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
-    protected $keyType = 'bigint';
+    //protected $keyType = 'bigint';
 }
