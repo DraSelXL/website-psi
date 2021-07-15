@@ -1,4 +1,4 @@
-<div class="absolute">
+<div class="fixed">
     <div class="w-4 absolute inset-y-5 left-3 h-5 z-50">
         <button id="hamburger-btn">
                 <span class="text-2xl">

@@ -17,3 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
     ]);
 mix.js('resources/js/navbar.js', 'public/js')
 mix.js('node_modules/@fortawesome/fontawesome-free/js/all.js', 'public/js')
+
+mix.copyDirectory('resources/images', 'public/images');

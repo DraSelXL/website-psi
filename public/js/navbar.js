@@ -11,6 +11,7 @@ $(function () {
     }
   });
   $("#hamburger-btn").on("click", toggleNavbar);
+  $(".navbar-btn").on("click", toggleNavbar);
   $("#shop-btn").on("click", loadMaterials);
   $("#inven-btn").on("click", function () {
     $.ajax({

@@ -6,8 +6,9 @@ $(()=>{
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $("#hamburger-btn").on("click", toggleNavbar);
-    $("#shop-btn").on("click",loadMaterials);
+    $("#hamburger-btn").on("click", toggleNavbar)
+    $(".navbar-btn").on("click", toggleNavbar)
+    $("#shop-btn").on("click",loadMaterials)
     $("#inven-btn").on("click",function(){
         $.ajax({
             url: "/inventory",
