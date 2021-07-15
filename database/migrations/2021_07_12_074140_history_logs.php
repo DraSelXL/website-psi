@@ -18,6 +18,7 @@ class HistoryLogs extends Migration
             $table->integer('type');
             $table->string('message');
             $table->integer('user_id');
+            $table->dateTime('date_in');
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistoryLog;
 use App\Models\Material;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,9 @@ class NavbarController extends Controller
     }
 
     public function showHistory(){
-        return view('history');
+        return view('history',[
+            'histories' => HistoryLog::all()
+        ]);
     }
 
     public function showAchievement(){
