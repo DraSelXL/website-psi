@@ -33,7 +33,9 @@
                     <center>Achievement</center>
             </span>
             <div class="flex-1 flex flex-wrap justify-evenly w-full overflow-y-scroll content-center">
-
+               @foreach($achievements as $achievement)
+                    <!--<x-achievement-inventory :achievement="$achievement"/>-->
+                @endforeach
             </div>
         </div>
     </div>
