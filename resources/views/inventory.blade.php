@@ -15,8 +15,8 @@
     <div class="flex flex-row content-between">
 
         <!--Material-->
-        <div class="flex flex-col w-7/12 h-50 bg-green-300 rounded-xl content-center">
-            <span class="flex-1 font-bold text-black text-4xl p-1 w-full">
+        <div class="flex flex-col w-7/12 h-full bg-green-300 rounded-xl content-center">
+            <span class="font-bold text-black text-4xl p-1 w-full">
                     <center>Materials</center>
             </span>
             <div class="flex-1 flex flex-wrap justify-evenly w-full overflow-y-scroll content-center">
@@ -28,13 +28,13 @@
 
 
         <!-- Achievement-->
-        <div class="flex flex-col w-5/12 h-50 bg-green-300 rounded-xl content-center ml-20">
-            <span class="font-bold text-black text-4xl p-1 w-full">
+        <div class="flex flex-col w-5/12 h-full bg-green-300 rounded-xl content-center overflow-y ml-20">
+            <span class="mb-2 font-bold text-black text-4xl p-1 w-full">
                     <center>Achievement</center>
             </span>
-            <div class="flex-1 flex flex-wrap justify-evenly w-full overflow-y-scroll content-center">
-               @foreach($achievements as $achievement)
-                    <!--<x-achievement-inventory :achievement="$achievement"/>-->
+            <div class="flex-1 flex flex-col flex-wrap justify-evenly w-full content-center">
+                @foreach($achievements as $achievement)
+                    <x-achievement-inventory :achievement="$achievement"/>
                 @endforeach
             </div>
         </div>

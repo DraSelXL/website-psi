@@ -19,7 +19,8 @@ class NavbarController extends Controller
 
     public function showInventory(){
         return view('inventory',[
-            'materials' => Material::all()
+            'materials' => Material::all(),
+            'achievements'=> Achievement::all()
         ]);
     }
 
