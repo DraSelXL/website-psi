@@ -59,13 +59,6 @@ class MaterialSeeder extends Seeder
         ];
 
         $records[] = [
-            'name'=>'Gilded Boots',
-            'description'=>'Higher tier of leather boots. More expensive.',
-            'price'=>'200',
-            'rarity'=>'1'
-        ];
-
-        $records[] = [
             'name'=>'Mithril Sword',
             'description'=>'A sword made of mithril. Highest grade metal.',
             'price'=>'400',

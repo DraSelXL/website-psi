@@ -13,7 +13,7 @@ class AchievementsInventory extends Migration
      */
     public function up()
     {
-        Schema::create('achievements_inventory', function (Blueprint $table) {
+        Schema::create('achievements_inventories', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('achievement_id');

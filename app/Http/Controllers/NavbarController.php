@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Achievement;
+use App\Models\AchievementMtl;
 use App\Models\HistoryLog;
 use App\Models\Material;
+use App\Models\MaterialsInventory;
 use Illuminate\Http\Request;
 
 class NavbarController extends Controller
@@ -25,6 +28,11 @@ class NavbarController extends Controller
     }
 
     public function showAchievement(){
-        return view('achievement');
+        return view('achievement',[
+            'materials' => Material::all(),
+            'achievements' => Achievement::all(),
+            'achievementMtls' => AchievementMtl::all(),
+            'materialsInventories' => MaterialsInventory::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 }
