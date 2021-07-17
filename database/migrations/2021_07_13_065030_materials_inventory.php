@@ -13,7 +13,7 @@ class MaterialsInventory extends Migration
      */
     public function up()
     {
-        Schema::create('materials_inventory', function (Blueprint $table) {
+        Schema::create('materials_inventories', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('material_id');

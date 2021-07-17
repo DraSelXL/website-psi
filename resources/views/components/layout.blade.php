@@ -11,6 +11,10 @@
             crossorigin="anonymous"></script>
     <script src="{{ asset('js/navbar.js') }}"></script>
     <script src="https://kit.fontawesome.com/2e073f637d.js" crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+        defer
+    ></script>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 {{--    <link href="../../../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">--}}
 
