@@ -25,7 +25,7 @@ class NavbarController extends Controller
 
     public function showHistory(){
         return view('history',[
-            'histories' => HistoryLog::all()
+            'histories' => HistoryLog::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
@@ -34,7 +34,7 @@ class NavbarController extends Controller
             'materials' => Material::all(),
             'achievements' => Achievement::all(),
             'achievementMtls' => AchievementMtl::all(),
-            'materialsInventories' => MaterialsInventory::where('user_id', auth()->user()->id)->get()
+            'materialsInventories' => MaterialsInventory::where('user_id', auth()->user()->id)->get(),
         ]);
     }
 }

@@ -3,7 +3,7 @@
         Crafting
     </span>
     <div class="flex flex-row mt-10">
-        <div class="w-8/12 h-screen bg-yellow-300 p-10 overflow-auto">
+        <div class="w-8/12 h-screen p-10 overflow-auto">
             @foreach($materials as $material)
                 <x-material-for-crafting :material="$material"
                                          :materialsInventory="$materialsInventories"
@@ -12,7 +12,8 @@
         </div>
         <div class="w-full h-screen overflow-auto">
             @foreach($achievements as $achievement)
-                <x-achievement-for-crafting></x-achievement-for-crafting>
+                <x-achievement-for-crafting :achievement="$achievement"
+                                            :achievementMtls="$achievementMtls"></x-achievement-for-crafting>
             @endforeach
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Material;
 use Illuminate\View\Component;
 
 class AchievementForCrafting extends Component
@@ -11,9 +12,14 @@ class AchievementForCrafting extends Component
      *
      * @return void
      */
-    public function __construct()
+
+    public $achievement;
+    public $achievementMtls;
+
+    public function __construct($achievement, $achievementMtls)
     {
-        //
+        $this->achievement = $achievement;
+        $this->achievementMtls = $achievementMtls;
     }
 
     /**
@@ -24,5 +30,13 @@ class AchievementForCrafting extends Component
     public function render()
     {
         return view('components.achievement-for-crafting');
+    }
+
+    public function achievementRecipe($achievement){
+        return collect($this->achievementMtls)->where('achievement_id', $achievement->id)->all();
+    }
+
+    public function getMaterial($mtlId){
+        return Material::find($mtlId);
     }
 }
