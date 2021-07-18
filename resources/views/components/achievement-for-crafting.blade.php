@@ -18,7 +18,8 @@
                             </div>
                         </div>
                     </button>
-                    <button class="absolute bg-darkblue rounded w-24 h-10 text-white right-5 top-8 font-bold text-lg focus:ring-2 focus:ring-themeyellow hover:bg-blue-500 hover:border-themered transform hover:scale-110 duration-300">
+                    <button id="{{ $achievement->id }}" class="absolute bg-darkblue rounded w-24 h-10 text-white right-5 top-8 font-bold text-lg focus:ring-2 focus:ring-themeyellow hover:bg-blue-500 hover:border-themered transform hover:scale-110 duration-300 craft-btn"
+                    >
                         Craft
                     </button>
 

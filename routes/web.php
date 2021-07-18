@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NavbarController;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,5 @@ Route::get('shop', [NavbarController::class, 'showShop'])->name("user.shop");
 Route::get('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
 Route::get('history', [NavbarController::class, 'showHistory'])->name("user.history");
 Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
+
+Route::post('achievement-crafting', [AchievementController::class, 'craftAchievement']);

@@ -18,3 +18,5 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/achievement-crafting.js') }}"></script>
