@@ -8,6 +8,7 @@ use App\Models\HistoryLog;
 use App\Models\Material;
 use App\Models\MaterialsInventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NavbarController extends Controller
 {
@@ -26,7 +27,7 @@ class NavbarController extends Controller
 
     public function showHistory(){
         return view('history',[
-            'histories' => HistoryLog::where('user_id', auth()->user()->id)->get()
+            'histories' => DB::table('history_logs')->where('user_id', auth()->user()->id)->orderBy('date_in','desc')->get()
         ]);
     }
 

@@ -46,7 +46,7 @@ function aNotif(){
                                     <div class="text-xl text-center font-bold">
                                         Crafting Failed!
                                     </div>
-                                    <div class="text-lg">
+                                    <div class="text-lg text-center">
                                         You don't have enough materials to craft this achievement!
                                     </div>`
                             })
@@ -63,7 +63,7 @@ function aNotif(){
                                     <div class="text-xl text-center font-bold">
                                         Crafting Succeed!
                                     </div>
-                                    <div class="text-lg">
+                                    <div class="text-lg text-center">
                                         Thanks for crafting here mate :)
                                     </div>`
                             })

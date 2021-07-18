@@ -33,7 +33,7 @@ function aNotif() {
                 type: 'red',
                 boxWidth: '400px',
                 useBootstrap: false,
-                content: "\n                                    <div class=\"text-6xl text-center text-red-500 my-4\">\n                                        <i class=\"fas fa-times-circle\"></i>\n                                    </div>\n                                    <div class=\"text-xl text-center font-bold\">\n                                        Crafting Failed!\n                                    </div>\n                                    <div class=\"text-lg\">\n                                        You don't have enough materials to craft this achievement!\n                                    </div>"
+                content: "\n                                    <div class=\"text-6xl text-center text-red-500 my-4\">\n                                        <i class=\"fas fa-times-circle\"></i>\n                                    </div>\n                                    <div class=\"text-xl text-center font-bold\">\n                                        Crafting Failed!\n                                    </div>\n                                    <div class=\"text-lg text-center\">\n                                        You don't have enough materials to craft this achievement!\n                                    </div>"
               });
             } else {
               $.alert({
@@ -41,7 +41,7 @@ function aNotif() {
                 type: 'green',
                 boxWidth: '400px',
                 useBootstrap: false,
-                content: "\n                                    <div class=\"text-6xl text-center text-green-500 my-4\">\n                                        <i class=\"fas fa-check\"></i>\n                                    </div>\n                                    <div class=\"text-xl text-center font-bold\">\n                                        Crafting Succeed!\n                                    </div>\n                                    <div class=\"text-lg\">\n                                        Thanks for crafting here mate :)\n                                    </div>"
+                content: "\n                                    <div class=\"text-6xl text-center text-green-500 my-4\">\n                                        <i class=\"fas fa-check\"></i>\n                                    </div>\n                                    <div class=\"text-xl text-center font-bold\">\n                                        Crafting Succeed!\n                                    </div>\n                                    <div class=\"text-lg text-center\">\n                                        Thanks for crafting here mate :)\n                                    </div>"
               });
               $.ajax({
                 url: "/achievement",

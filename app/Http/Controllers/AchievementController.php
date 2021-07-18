@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Achievement;
+use App\Models\Material;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +16,6 @@ class AchievementController extends Controller
         $achievementMtls = DB::table('achievement_mtls')->where('achievement_id', $id)->get();
         $userInventories = DB::table('materials_inventories')->where('user_id', $uid)->get();
         $hasRequired = true;
-
-
 
         $achievementMtlsCollection = collect($achievementMtls)->where('achievement_id', $achievement->id)->all();
         foreach($achievementMtlsCollection as $recipe){
@@ -33,6 +32,13 @@ class AchievementController extends Controller
 
         foreach($achievementMtlsCollection as $recipe){
             $affectedUserInventories = DB::table('materials_inventories')->where('user_id', $uid)->where('material_id', $recipe->id)->decrement('material_qty', $recipe->material_qty);
+            $theMaterial = Material::find($recipe->id);
+            $writeHistoryItem = DB::table('history_logs')->insert([
+                'type' => 0,
+                'user_id' => $uid,
+                'message' => 'You have used ' . $recipe->material_qty . ' ' . $theMaterial->name . '(s) for crafting.',
+                'date_in' => date("Y-m-d H:i:s")
+            ]);
         }
 
         $updateUserPoints = DB::table('users')->where('id', $uid)->increment('points', $achievement->points);
@@ -48,6 +54,12 @@ class AchievementController extends Controller
             $updateUserAchievement = DB::table('achievements_inventories')->where('user_id', $uid)->where('achievement_id', $id)->increment('achievement_qty');
         };
 
+        $writeHistory = DB::table('history_logs')->insert([
+            'type' => 1,
+            'user_id' => $uid,
+            'message' => 'You have crafted the achievement \'' . $achievement->name .'\' and gained ' . $achievement->points . ' points!',
+            'date_in' => date("Y-m-d H:i:s")
+        ]);
         return 1;
 //        $addUserAchievement =
     }

@@ -69,12 +69,6 @@ class AchievementMtlSeeder extends Seeder
         ];
 
         $records[] = [
-            'achievement_id'=> 3,
-            'material_id'=> 7,
-            'material_qty'=> 1
-        ];
-
-        $records[] = [
             'achievement_id'=> 4,
             'material_id'=> 1,
             'material_qty'=> 1
