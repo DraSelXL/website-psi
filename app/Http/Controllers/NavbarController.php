@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Achievement;
 use App\Models\AchievementMtl;
 use App\Models\HistoryLog;
+use App\Models\Item;
 use App\Models\Material;
 use App\Models\MaterialsInventory;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class NavbarController extends Controller
 {
     public function showShop(){
         return view('shop',[
-            'materials' => Material::all()
+            'materials' => Material::all(),
+            'items' => Item::all()
         ]);
     }
 

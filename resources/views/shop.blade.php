@@ -10,9 +10,20 @@
             @endauth
         </div>
     </div>
+    <div class="font-bold text-black text-3xl">
+        Materials
+    </div>
     <div class="flex flex-wrap justify-evenly">
         @foreach($materials as $material)
             <x-material-card :material="$material" />
+        @endforeach
+    </div>
+    <div class="font-bold text-black text-3xl">
+        Items
+    </div>
+    <div class="flex flex-row overflow-x-auto bg-gray-300">
+        @foreach($items as $item)
+            <x-item-card :item="$item"></x-item-card>
         @endforeach
     </div>
 </div>

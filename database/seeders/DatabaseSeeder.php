@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([AchievementSeeder::class]);
         $this->call([AchievementMtlSeeder::class]);
         $this->call([MaterialsInventorySeeder::class]);
+        $this->call([ItemSeeder::class]);
+        $this->call([ItemsInventorySeeder::class]);
     }
 }
