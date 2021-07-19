@@ -3,12 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Achievement;
+use App\Models\AchievementMtl;
 use App\Models\Material;
+use App\Models\MaterialsInventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AchievementController extends Controller
 {
+    public function search(Request $request){
+        $keyword = $request->search;
+        $searchedMaterials = DB::table('materials')
+            ->where('name', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%')
+        ->get();
+
+        return view('crafting-material-list', [
+            'materials' => $searchedMaterials,
+            'materialsInventories' => MaterialsInventory::where('user_id', auth()->user()->id)->get()
+        ]);
+    }
+
     public function craftAchievement(Request $request){
         $id = $request->achievement_id;
         $uid = auth()->user()->id;
@@ -31,8 +46,8 @@ class AchievementController extends Controller
         }
 
         foreach($achievementMtlsCollection as $recipe){
-            $affectedUserInventories = DB::table('materials_inventories')->where('user_id', $uid)->where('material_id', $recipe->id)->decrement('material_qty', $recipe->material_qty);
-            $theMaterial = Material::find($recipe->id);
+            $affectedUserInventories = DB::table('materials_inventories')->where('user_id', $uid)->where('material_id', $recipe->material_id)->decrement('material_qty', $recipe->material_qty);
+            $theMaterial = Material::find($recipe->material_id);
             $writeHistoryItem = DB::table('history_logs')->insert([
                 'type' => 0,
                 'user_id' => $uid,

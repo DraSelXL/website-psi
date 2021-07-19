@@ -11,6 +11,7 @@ class Material extends Model
     protected $primaryKey = 'id';
     //protected $keyType = 'bigint';
 
+
     public function quantity(){
         return $this->hasMany(MaterialsInventory::class);
     }

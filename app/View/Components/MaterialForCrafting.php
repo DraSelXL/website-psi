@@ -15,11 +15,10 @@ class MaterialForCrafting extends Component
     public $material;
     public $idx;
 
-    public function __construct($material, $materialsInventory, $idx)
+    public function __construct($material, $materialsInventory)
     {
         $this->material = $material;
         $this->materialsInventory = $materialsInventory;
-        $this->idx = $idx->iteration-1;
     }
 
     /**

@@ -1,7 +1,12 @@
 $(()=>{
     $(".craft-btn").click(aNotif)
-
-
+    $("#searchBtn").click(searchMaterial)
+    $("#keyword").on("keyup", function(event){
+        if(event.keyCode === 13){
+            event.preventDefault()
+            $("#searchBtn").click()
+        }
+    })
 })
 
 function aNotif(){
@@ -84,6 +89,19 @@ function aNotif(){
             }
         }
     });
+}
+
+function searchMaterial(){
+    let theKeyword = $("#keyword").val();
+    $.ajax({
+        url: '/achievement-crafting/search',
+        method: 'post',
+        data:{
+            search: theKeyword
+        }
+    }).done(function(response){
+        $("#materials").html(response);
+    })
 }
 
 

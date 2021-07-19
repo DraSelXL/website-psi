@@ -1,5 +1,5 @@
  <div class="mb-5">
-        <div class="bg-themegreen max-w-2xl mx-auto border border-gray-200 static rounded" x-data="{selected:null}">
+        <div class="bg-themegreen max-w-2xl mx-auto border border-gray-200 static rounded hover:bg-green-300 focus:bg-green-300 transition duration-300" x-data="{selected:null}">
             <ul class="shadow-box">
                 <li class="relative border-b border-gray-200">
 

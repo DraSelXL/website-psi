@@ -24,3 +24,4 @@ Route::get('history', [NavbarController::class, 'showHistory'])->name("user.hist
 Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
 
 Route::post('achievement-crafting', [AchievementController::class, 'craftAchievement']);
+Route::post('achievement-crafting/search', [AchievementController::class, 'search']);
