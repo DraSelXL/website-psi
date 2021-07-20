@@ -20,8 +20,8 @@
                     <center>Materials</center>
             </span>
             <div class="flex-1 flex flex-wrap justify-evenly w-full overflow-y-scroll content-center">
-                @foreach($materials as $material)
-                    <x-material-inventory :material="$material" />
+                @foreach($materialsInventories as $materialinvent)
+                    <x-material-inventory :materialinvent="$materialinvent"/>
                 @endforeach
             </div>
         </div>
@@ -34,7 +34,7 @@
             </span>
             <div class="flex-1 flex flex-col flex-wrap justify-evenly w-full content-center">
                 @foreach($achievements as $achievement)
-                    <x-achievement-inventory :achievement="$achievement"/>
+                    <x-achievements-inventory :achievement="$achievement" :achievementInvent="$achievementInvent"/>
                 @endforeach
             </div>
         </div>

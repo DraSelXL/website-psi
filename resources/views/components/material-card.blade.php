@@ -13,7 +13,7 @@
     <div class="flex flex-row">
         <div class="flex-grow text-center pt-1">{{ $material->price }} G</div>
         <div class="flex-grow flex justify-center">
-            <button class="bg-themegreen font-bold h-10 w-32 rounded-xl hover:bg-green-500 transform hover:scale-110 transition duration-300">
+            <button class="bg-themegreen font-bold h-10 w-32 rounded-xl hover:bg-green-500 transform hover:scale-110 transition duration-300" onclick="buyItem({{$material->price}}, {{$material->id}}, '{{$material->name}}')">
                 BUY
             </button>
         </div>
