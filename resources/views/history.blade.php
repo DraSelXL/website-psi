@@ -9,8 +9,8 @@
             </div>
         @endforeach
     @else
-        <div class="text-center w-full text-lg font-bold">
-            <p>Wow no histories. Such empty. </p>
+        <div class="text-center w-full text-lg font-bold center h-screen">
+            <p class="text-2xl">Wow no histories. Such empty. </p>
         </div>
     @endif
 </div>

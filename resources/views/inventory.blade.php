@@ -1,25 +1,13 @@
-<div class="bg-lightblue p-10">
-    <span class="font-bold text-black text-4xl">
-        Inventory
-    </span>
-    <div class="h-14 w-1/2 bg-darkblue rounded-xl my-5 text-white font-bold p-2">
-        <div class="flex flex-row content-start">
-            @auth
-                <div class="flex-grow">{{ auth()->user()->gold }}</div>
-                <div class="flex-grow">{{ auth()->user()->points }}</div>
-            @endauth
-        </div>
+<div class="bg-lightblue pt-5 pb-10 px-20 flex flex-col h-screen">
+    <x-navbar name="Test" point="{{auth()->user()->gold }}" coin="{{auth()->user()->points}}"
+              pageTitle="Inventory"/>
 
-    </div>
-
-    <div class="flex flex-row content-between">
+    <div class="flex flex-row justify-between w-full mt-5 h-5/6">
 
         <!--Material-->
-        <div class="flex flex-col w-7/12 h-full bg-green-300 rounded-xl content-center">
-            <span class="font-bold text-black text-4xl p-1 w-full">
-                    <center>Materials</center>
-            </span>
-            <div class="flex-1 flex flex-wrap justify-evenly w-full overflow-y-scroll content-center">
+        <div class="flex flex-col w-7/12">
+            <h2>Materials</h2>
+            <div class="flex flex-wrap min-h-0 mt-1 w-full">
                 @foreach($materialsInventories as $materialinvent)
                     <x-material-inventory :materialinvent="$materialinvent"/>
                 @endforeach
@@ -28,11 +16,9 @@
 
 
         <!-- Achievement-->
-        <div class="flex flex-col w-5/12 h-full bg-green-300 rounded-xl content-center overflow-y ml-20">
-            <span class="mb-2 font-bold text-black text-4xl p-1 w-full">
-                    <center>Achievement</center>
-            </span>
-            <div class="flex-1 flex flex-col flex-wrap justify-evenly w-full content-center">
+        <div class="flex flex-col w-5/12 h-full rounded-xl pl-5">
+            <h2>Achievement</h2>
+            <div class="flex-1 flex flex-col w-full content-center overflow-y-auto">
                 @foreach($achievements as $achievement)
                     <x-achievements-inventory :achievement="$achievement" :achievementInvent="$achievementInvent"/>
                 @endforeach
