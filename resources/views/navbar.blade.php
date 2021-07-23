@@ -10,7 +10,7 @@
             transform -translate-x-52 transition duration-300 ease-in-out overflow-hidden" id="the-navbar">
         <div class="p-5">
             <a href="/" id="psi2021" class="hidden">
-                <div class="font-bold text-3xl text-darkblue mb-6 ml-14">PSI 2021</div>
+                <div class="font-bold text-3xl text-themered mb-6 ml-14">PSI 2021</div>
             </a>
         </div>
         <nav id="navbar-items" class="hidden text-white">
