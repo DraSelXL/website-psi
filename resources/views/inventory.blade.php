@@ -16,9 +16,9 @@
 
 
         <!-- Achievement-->
-        <div class="flex flex-col w-5/12 h-full rounded-xl pl-5">
-            <h2>Achievement</h2>
-            <div class="flex-1 flex flex-col w-full content-center overflow-y-auto">
+        <div class="flex flex-col w-5/12 h-full rounded-xl">
+            <h2 class="pl-4">Achievement</h2>
+            <div class="flex-1 flex flex-col w-full px-4 overflow-y-auto scrollbar-custom">
                 @foreach($achievements as $achievement)
                     <x-achievements-inventory :achievement="$achievement" :achievementInvent="$achievementInvent"/>
                 @endforeach

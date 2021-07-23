@@ -11,14 +11,14 @@
 
 @endphp
 
-<div class="{{ $ringColor }}flex flex-row h-24 p-3 my-5 font-bold text-lg rounded">
-    <div class="w-16 h-10 py-2 ml-2">
-        <img src="{{ asset('images/image0.jpg') }}" alt="">
-    </div>
-    <div class="w-10/12 py-5 pl-5">
+<div class="{{ $ringColor }}flex flex-row h-20 p-2 mb-5 font-bold text-lg rounded items-center justify-between">
+
+    <img src="{{ asset('images/image0.jpg') }}" class="w-16 h-full rounded-md" alt="">
+
+    <div class="flex-1 px-5">
         {{ $material->name }}
     </div>
-    <div class="py-5">
+    <div>
         x
         @foreach($materialQty($material) as $qty)
             {{ $qty->material_qty }}

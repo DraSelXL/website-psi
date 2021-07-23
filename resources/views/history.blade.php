@@ -1,4 +1,4 @@
-<div class="bg-lightblue p-5 flex justify-center flex-col py-1 0 mx-80">
+<div class="bg-lightblue p-5 flex justify-center flex-col py-1 0 mx-80 h-screen">
     @if($histories->count())
         @foreach($histories as $history)
             <div class="text-xl text-white w-full h-24
@@ -9,7 +9,7 @@
             </div>
         @endforeach
     @else
-        <div class="text-center w-full text-lg font-bold center h-screen">
+        <div class="text-center w-full text-lg font-bold center h-full">
             <p class="text-2xl">Wow no histories. Such empty. </p>
         </div>
     @endif

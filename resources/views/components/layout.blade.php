@@ -20,11 +20,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 
-{{--    <link href="../../../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">--}}
+    {{--    <link href="../../../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">--}}
 
     <title>Document</title>
 </head>
-<body class="bg-lightblue">
-    {{ $slot }}
+<body
+    class="bg-lightblue scrollbar-custom">
+{{ $slot }}
 </body>
 </html>
