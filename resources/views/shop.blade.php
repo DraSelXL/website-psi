@@ -17,8 +17,44 @@
 
 </div>
 
-
+{{--<script src="{{ asset('js/shop.js') }}"></script>--}}
 <script>
+    $(()=>{
+        $(".mtl-detail").hover(imageHover);
+        $(".detail-btn").click(openDetail);
+        $("#content").click(closeDetail);
+    })
+
+    function openDetail(){
+        let curID = $(this).attr("id");
+        let itemID = curID.substring(7);
+
+        $.ajax({
+           url:'shop/materialDetail',
+           method:'post',
+           data:{
+               id: itemID
+           }
+        }).done(function(response){
+            $("#modal").append(response);
+            $("#content").toggleClass("opacity-50");
+        });
+    }
+
+    function closeDetail(){
+        let content = $("#content");
+        let modal = $("#modal");
+        console.log();
+        if(modal.children().length > 0){
+            modal.html("");
+            content.toggleClass("opacity-50");
+        }
+    }
+
+    function imageHover(){
+        let curID = $(this).attr("id");
+        $("#image-"+curID).toggleClass("opacity-50");
+    }
 
     function buyItem(price, id, name) {
         $.confirm({
@@ -40,15 +76,14 @@
                 }
             }
         });
-        {{--if(price>{{ auth()->user()->gold }}){--}}
-        {{--    alert('Not enough gold!');--}}
-        {{--}--}}
-        {{--else{--}}
-        {{--    alert('Are you sure you want to '+id+' '+name+' this item for '+price+' G?');--}}
-        {{--}--}}
+        // if(price>{{ auth()->user()->gold }}){
+        //     alert('Not enough gold!');
+        // }
+        // else{
+        //     alert('Are you sure you want to '+id+' '+name+' this item for '+price+' G?');
+        // }
 
     }
-
 </script>
 
 

@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call([MaterialsInventorySeeder::class]);
         $this->call([ItemSeeder::class]);
         $this->call([ItemsInventorySeeder::class]);
+        $this->call([ActiveItemSeeder::class]);
     }
 }

@@ -24,8 +24,7 @@
 
     <title>Document</title>
 </head>
-<body
-    class="bg-lightblue scrollbar-custom">
+<body class="bg-lightblue scrollbar-custom">
 {{ $slot }}
 </body>
 </html>
