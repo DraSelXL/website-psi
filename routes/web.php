@@ -23,8 +23,11 @@ Route::get('shop', [NavbarController::class, 'showShop'])->name("user.shop");
 Route::get('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
 Route::get('history', [NavbarController::class, 'showHistory'])->name("user.history");
 Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
+Route::get('stats', [NavbarController::class, 'showStats'])->name("user.stats");
+Route::post('updateGoldAndPoints', [NavbarController::class, 'updateGAP']);
 
 Route::post('shop/materialDetail', [ShopController::class, 'showDetailModal']);
+Route::post('shop/buyMaterial', [ShopController::class, 'purchaseMaterial']);
 
 Route::post('achievement-crafting', [AchievementController::class, 'craftAchievement']);
 Route::post('achievement-crafting/search', [AchievementController::class, 'search']);

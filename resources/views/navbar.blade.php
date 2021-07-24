@@ -46,6 +46,14 @@
                     Get Achievement
                 </x-slot>
             </x-sidebar-item>
+            <x-sidebar-item>
+                <x-slot name="btnname">
+                    stats-btn
+                </x-slot>
+                <x-slot name="navname">
+                    Stats
+                </x-slot>
+            </x-sidebar-item>
         </nav>
     </div>
 </div>
