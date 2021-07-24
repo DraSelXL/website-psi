@@ -45,4 +45,13 @@ class NavbarController extends Controller
             'materialsInventories' => MaterialsInventory::where('user_id', auth()->user()->id)->get(),
         ]);
     }
+
+    public function showStats(){
+        return view('stats');
+    }
+
+    public function updateGAP(){
+        $user = Auth()->user();
+        return $user->gold . 'G, ' . $user->points . 'pts';
+    }
 }

@@ -33,7 +33,14 @@ $(()=>{
             $("#content").html(response);
         })
     })
-
+    $("#stats-btn").on("click",function(){
+        $.ajax({
+            url: '/stats',
+            method: 'get',
+        }).done(function(response){
+            $("#content").html(response);
+        })
+    })
     loadMaterials();
 })
 
@@ -50,6 +57,15 @@ function loadMaterials(){
     }).done(function(response){
         $("#content").html(response);
     })
+}
+
+function updateGoldAndPoints(){
+    $.ajax({
+        url:'updateGoldAndPoints',
+        method:'post'
+    }).done(function(response){
+        $("#gap").html(JSON.parse(response));
+    });
 }
 
 

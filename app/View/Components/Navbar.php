@@ -13,17 +13,17 @@ class Navbar extends Component
      */
 
     public $name;
-    public $coin;
+    public $gold;
     public $pageTitle;
     public $point;
 
-    public function __construct($name, $coin, $pageTitle, $point)
+    public function __construct($name, $gold, $pageTitle, $point)
     {
         //
         $this->name = $name;
         $this->pageTitle = $pageTitle;
         $this->point = $point;
-        $this->coin = $coin;
+        $this->gold = $gold;
     }
 
     /**
