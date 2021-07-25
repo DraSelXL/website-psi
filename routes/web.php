@@ -26,8 +26,9 @@ Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("u
 Route::get('stats', [NavbarController::class, 'showStats'])->name("user.stats");
 Route::post('updateGoldAndPoints', [NavbarController::class, 'updateGAP']);
 
-Route::post('shop/materialDetail', [ShopController::class, 'showDetailModal']);
-Route::post('shop/buyMaterial', [ShopController::class, 'purchaseMaterial']);
+Route::post('shop/materialDetail', [ShopController::class, 'showMaterialDetailModal']);
+Route::post('shop/itemDetail', [ShopController::class, 'showItemDetailModal']);
+Route::post('shop/buyGoods', [ShopController::class, 'purchaseGoods']);
 
 Route::post('achievement-crafting', [AchievementController::class, 'craftAchievement']);
 Route::post('achievement-crafting/search', [AchievementController::class, 'search']);

@@ -75,6 +75,15 @@ class AchievementController extends Controller
             'message' => 'You have crafted the achievement \'' . $achievement->name .'\' and gained ' . $achievement->points . ' points!',
             'date_in' => date("Y-m-d H:i:s")
         ]);
+
+        DB::table('stats')
+            ->where('user_id', $uid)
+            ->where('stat_item', 'Achievements claimed')
+            ->increment('qty');
+        DB::table('stats')
+            ->where('user_id', $uid)
+            ->where('stat_item', 'Points gained from claiming achievements')
+            ->increment('qty', $achievement->points);
         return 1;
 //        $addUserAchievement =
     }

@@ -9,6 +9,8 @@ use App\Models\HistoryLog;
 use App\Models\Item;
 use App\Models\Material;
 use App\Models\MaterialsInventory;
+use App\Models\Stat;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,7 +49,10 @@ class NavbarController extends Controller
     }
 
     public function showStats(){
-        return view('stats');
+        return view('stats',[
+            'stats' => Stat::where('user_id', auth()->user()->id)->get(),
+            'user' => User::where('id', auth()->user()->id)->get()
+        ]);
     }
 
     public function updateGAP(){

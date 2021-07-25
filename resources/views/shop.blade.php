@@ -21,20 +21,32 @@
 <script>
     $(()=>{
         $(".mtl-detail").hover(imageHover);
-        $(".detail-btn").click(openDetail);
+        $(".item-detail").hover(itemImageHover);
+        $(".detail-btn").click(openMaterialDetail);
+        $(".item-detail-btn").click(openItemDetail);
         $("#content").click(closeDetail);
 
     })
-
-    function openDetail(){
+    function openMaterialDetail(){
         let curID = $(this).attr("id");
-        let itemID = curID.substring(7);
+        let mtlID = curID.substring(7);
 
+        openDetail('shop/materialDetail', mtlID);
+    }
+
+    function openItemDetail(){
+        let curID = $(this).attr("id");
+        let itemID = curID.substring(12);
+
+        openDetail('shop/itemDetail', itemID);
+    }
+
+    function openDetail(theURL, theID){
         $.ajax({
-           url:'shop/materialDetail',
+           url:theURL,
            method:'post',
            data:{
-               id: itemID
+               id: theID
            }
         }).done(function(response){
             $("#modal").append(response);
@@ -56,7 +68,13 @@
         $("#image-"+curID).toggleClass("opacity-50");
     }
 
-    function buyItemFromShopCard(theBuyBtn){
+    function itemImageHover(){
+        let curID = $(this).attr("id");
+        curID = curID.substr(5);
+        $("#item-image-"+curID).toggleClass("opacity-50");
+    }
+
+    function buyMaterialFromShopCard(theBuyBtn){
         let mtlID = $(theBuyBtn).attr('id').substr(4);
         let mtlName = $("#name-"+mtlID).html();
         let mtlPrice = $("#price-"+mtlID).html();
@@ -64,17 +82,28 @@
         buyItems(1, mtlID, mtlName, mtlPrice);
     }
 
-    function buyItemFromModal(){
-        let qty = $("#number-input").val();
-        let materialID = $(".buyBtn").attr("id");
-        materialID = materialID.substr(4);
-        let materialName = $("#material-name-modal").text();
-        let materialPrice = $("#material-price-modal").text();
-        materialPrice = materialPrice.replace(" G", "");
-        buyItems(qty, materialID, materialName, materialPrice);
+    function buyMaterialFromModal(){
+        buyFromModal('material');
     }
 
-    function buyItems(qty, materialID, materialName, materialPrice){
+    function buyItemFromModal(){
+        buyFromModal('item');
+    }
+
+    function buyFromModal(type){
+        let substrIdx;
+        if(type === "material") substrIdx = 13;
+        else substrIdx = 9;
+        let qty = $("#number-input").val();
+        let theID = $(".buyBtn").attr("id");
+        theID = theID.substr(substrIdx);
+        let theName = $("#" + type + "-name-modal").text();
+        let thePrice = $("#" + type + "-price-modal").text();
+        thePrice = thePrice.replace(" G", "");
+        buyItems(qty, theID, theName, thePrice, type);
+    }
+
+    function buyItems(qty, theID, materialName, materialPrice, type){
         let total = materialPrice * qty;
 
         let sentence = 'Do you really want to buy ' + qty + ' ' + materialName + '(s) for ' + total + ' G?'
@@ -104,12 +133,13 @@
                     btnClass: 'btn-green',
                     action: function(){
                         $.ajax({
-                            url: '/shop/buyMaterial',
+                            url: '/shop/buyGoods',
                             method: 'post',
                             data: {
-                                materialID: materialID,
+                                purchasableID: theID,
                                 materialQty: qty,
-                                totalPrice: total
+                                totalPrice: total,
+                                type: type
                             }
                         }).done(function(response){
                             if(response === "1"){
