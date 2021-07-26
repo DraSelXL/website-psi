@@ -4,16 +4,24 @@
 
     <div class="flex flex-row justify-between w-full mt-5 h-5/6">
 
-        <!--Material-->
         <div class="flex flex-col w-7/12">
-            <h2>Materials</h2>
-            <div class="flex flex-wrap min-h-0 mt-1 w-full">
-                @foreach($materialsInventories as $materialinvent)
-                    <x-material-inventory :materialinvent="$materialinvent"/>
-                @endforeach
+            <!--Material-->
+            <div class="flex flex-col w-full">
+                <h2>Materials</h2>
+                <div class="flex flex-wrap min-h-0 mt-1 w-full">
+                    @foreach($materialsInventories as $materialinvent)
+                        <x-material-inventory :materialinvent="$materialinvent"/>
+                    @endforeach
+                </div>
+            </div>
+            <!--Items-->
+            <div class="flex w-full mt-10">
+                <h2>Items</h2>
+                <div class="flex flex-wrap min-h-0 mt-1 w-full">
+
+                </div>
             </div>
         </div>
-
 
         <!-- Achievement-->
         <div class="flex flex-col w-5/12 h-full rounded-xl">
