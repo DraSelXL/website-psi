@@ -21,7 +21,7 @@ class AchievementsInventory extends Component
         $achQuantity=0;
         foreach($achievementInvent as $q){
             if($q->achievement_id == $achievement->id){
-                $achQuantity = $q->achievement_id;
+                $achQuantity = $q->achievement_qty;
             }
         }
     }

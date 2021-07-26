@@ -11,6 +11,7 @@ use App\Models\Material;
 use App\Models\MaterialsInventory;
 use App\Models\Stat;
 use App\Models\User;
+use App\View\Components\ItemInventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,8 @@ class NavbarController extends Controller
             'materials' => Material::all(),
             'achievements'=> Achievement::all(),
             'materialsInventories' => MaterialsInventory::where('user_id', auth()->user()->id)->get(),
-            'achievementInvent' => AchievementsInventory::where('user_id', auth()->user()->id)->get()
+            'achievementInvent' => AchievementsInventory::where('user_id', auth()->user()->id)->get(),
+
         ]);
     }
 
