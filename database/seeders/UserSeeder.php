@@ -52,6 +52,15 @@ class UserSeeder extends Seeder
             'status'=>'2'
         ];
 
+        $records[] = [
+            'username'=>'admin',
+            'name'=>'Iced Ramen',
+            'password'=>Hash::make('admin'),
+            'gold'=>'69420',
+            'points'=>'69420',
+            'status'=>'1'
+        ];
+
         DB::table('users')->insert($records);
     }
 }

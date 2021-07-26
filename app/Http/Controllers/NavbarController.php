@@ -59,4 +59,20 @@ class NavbarController extends Controller
         $user = Auth()->user();
         return $user->gold . 'G, ' . $user->points . 'pts';
     }
+
+    public function adminShowPostGameInput(){
+
+    }
+
+    public function adminShowLeaderboard(){
+
+    }
+
+    public function adminShowTeamStats(){
+
+    }
+
+    public function adminShowTeamHistory(){
+
+    }
 }

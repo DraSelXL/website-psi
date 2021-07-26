@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/navbar.js": "/js/navbar.js",
+    "/js/adminNavbar.js": "/js/adminNavbar.js",
     "/js/achievement-crafting.js": "/js/achievement-crafting.js",
     "/js/all.js": "/js/all.js",
     "/css/app.css": "/css/app.css",

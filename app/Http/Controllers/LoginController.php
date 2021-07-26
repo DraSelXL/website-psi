@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
     public function toHome(){
         if(Auth::check()){
-            return view('user-view');
+            if(auth()->user()->status == 2)
+                return view('user-view');
+            elseif (auth()->user()->status == 1)
+                return view('admin-view');
         }else{
             return view('login');
         }
@@ -21,11 +25,12 @@ class LoginController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
-
         if (auth()->attempt($attributes)) {
             session()->regenerate();
-
-            return view('user-view')->with("Wzzup pal! Welcome back!");
+            if(auth()->user()->status == 2)
+                return view('user-view')->with("Wzzup pal! Welcome back!");
+            elseif(auth()->user()->status == 1)
+                return view('admin-view');
         }
 
         throw ValidationException::withMessages([

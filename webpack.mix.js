@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
     ]);
 mix.js('resources/js/navbar.js', 'public/js')
+mix.js('resources/js/adminNavbar.js', 'public/js')
 mix.js('resources/js/achievement-crafting.js', 'public/js')
 mix.js('node_modules/@fortawesome/fontawesome-free/js/all.js', 'public/js')
 

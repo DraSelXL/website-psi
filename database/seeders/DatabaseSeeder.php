@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call([ItemsInventorySeeder::class]);
         $this->call([ActiveItemSeeder::class]);
         $this->call([StatSeeder::class]);
+        $this->call([MiniGameSeeder::class]);
+        $this->call([MiniGameGoldRewardSeeder::class]);
+        $this->call([MiniGameMaterialRewardSeeder::class]);
     }
 }

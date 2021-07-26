@@ -24,6 +24,11 @@ Route::get('inventory', [NavbarController::class, 'showInventory'])->name("user.
 Route::get('history', [NavbarController::class, 'showHistory'])->name("user.history");
 Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
 Route::get('stats', [NavbarController::class, 'showStats'])->name("user.stats");
+Route::get('admin/postGame', [NavbarController::class, 'adminShowPostGameInput'])->name("admin.postGameInput");
+Route::get('admin/leaderboard', [NavbarController::class, 'adminShowLeaderboard'])->name("admin.leaderboard");
+Route::get('admin/teamStats', [NavbarController::class, 'adminShowTeamStats'])->name("admin.teamStats");
+Route::get('admin/teamHistory', [NavbarController::class, 'adminShowTeamHistory'])->name("admin.teamHistory");
+
 Route::post('updateGoldAndPoints', [NavbarController::class, 'updateGAP']);
 
 Route::post('shop/materialDetail', [ShopController::class, 'showMaterialDetailModal']);
