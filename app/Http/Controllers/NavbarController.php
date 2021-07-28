@@ -31,7 +31,8 @@ class NavbarController extends Controller
             'achievements'=> Achievement::all(),
             'materialsInventories' => MaterialsInventory::where('user_id', auth()->user()->id)->get(),
             'achievementInvent' => AchievementsInventory::where('user_id', auth()->user()->id)->get(),
-
+            'itemsInvent'=> DB::table('items_inventories')->where('user_id', auth()->user()->id)->get(),
+            'items'=>Item::all()
         ]);
     }
 

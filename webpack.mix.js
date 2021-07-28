@@ -19,5 +19,5 @@ mix.js('resources/js/navbar.js', 'public/js')
 mix.js('resources/js/adminNavbar.js', 'public/js')
 mix.js('resources/js/achievement-crafting.js', 'public/js')
 mix.js('node_modules/@fortawesome/fontawesome-free/js/all.js', 'public/js')
-
+mix.js('resources/js/useItem.js', 'public/js')
 mix.copyDirectory('resources/images', 'public/images');
