@@ -13,15 +13,15 @@ class AchievementsInventory extends Component
      */
     public $achievement;
     public $achievementInvent;
-    public $achQuantity=0;
+    public $achQuantity;
     public function __construct($achievement, $achievementInvent)
     {
         $this->achievement=$achievement;
         $this->achievementInvent=$achievementInvent;
-        $achQuantity=0;
+        $this->achQuantity=0;
         foreach($achievementInvent as $q){
             if($q->achievement_id == $achievement->id){
-                $achQuantity = $q->achievement_qty;
+                $this->achQuantity = $q->achievement_qty;
             }
         }
     }

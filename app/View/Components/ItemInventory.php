@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
+
 class ItemInventory extends Component
 {
     /**
@@ -13,16 +14,16 @@ class ItemInventory extends Component
      */
 
     public $item;
-    public $itemInvent;
-    public $itemQuantity=0;
-    public function __construct()
+    public $itemsInvent;
+    public $itemQuantity;
+    public function __construct($item, $itemsInvent)
     {
         $this->item=$item;
-        $this->itemInvent=$itemInvent;
-        $itemQuantity=0;
-        foreach($itemInvent as $q){
-            if($q->item_id == $items->id){
-                $itemQuantity = $q->item_qty;
+        $this->itemsInvent=$itemsInvent;
+        $this->itemQuantity=0;
+        foreach($itemsInvent as $q){
+            if($q->item_id == $item->id){
+                $this->itemQuantity = $q->item_qty;
             }
         }
     }

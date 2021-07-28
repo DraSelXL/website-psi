@@ -15,10 +15,12 @@
                 </div>
             </div>
             <!--Items-->
-            <div class="flex w-full mt-10">
+            <div class="flex flex-col w-full mt-10">
                 <h2>Items</h2>
-                <div class="flex flex-wrap min-h-0 mt-1 w-full">
-
+                <div class="flex flex-wrap min-h-0 mt-1 w-full overflow-y-auto scrollbar-custom">
+                    @foreach($items as $item)
+                        <x-item-inventory :itemsInvent="$itemsInvent" :item="$item"/>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -26,7 +28,7 @@
         <!-- Achievement-->
         <div class="flex flex-col w-5/12 h-full rounded-xl">
             <h2 class="pl-4">Achievement</h2>
-            <div class="flex-1 flex flex-col w-full px-4 overflow-y-auto scrollbar-custom">
+            <div class="flex-1 flex flex-col w-1/2 px-4 overflow-y-auto scrollbar-custom">
                 @foreach($achievements as $achievement)
                     <x-achievements-inventory :achievement="$achievement" :achievementInvent="$achievementInvent"/>
                 @endforeach
@@ -35,3 +37,4 @@
     </div>
 
 </div>
+<script src="{{ asset('js/useItem.js') }}"></script>
