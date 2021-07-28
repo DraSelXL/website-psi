@@ -25,7 +25,7 @@ $(()=>{
         }).done(function(response){
             $("#content").html(response);
         })
-    });we
+    });
     $("#team-history-btn").on("click", function(){
         $.ajax({
             url:'admin/teamHistory',

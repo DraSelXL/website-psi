@@ -9,6 +9,7 @@ use App\Models\HistoryLog;
 use App\Models\Item;
 use App\Models\Material;
 use App\Models\MaterialsInventory;
+use App\Models\MiniGame;
 use App\Models\Stat;
 use App\Models\User;
 use App\View\Components\ItemInventory;
@@ -63,7 +64,9 @@ class NavbarController extends Controller
     }
 
     public function adminShowPostGameInput(){
-
+        return view('admin-post-game',[
+            'mini_games' => MiniGame::all()
+        ]);
     }
 
     public function adminShowLeaderboard(){

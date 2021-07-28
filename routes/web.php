@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\ShopController;
@@ -37,3 +38,6 @@ Route::post('shop/buyGoods', [ShopController::class, 'purchaseGoods']);
 
 Route::post('achievement-crafting', [AchievementController::class, 'craftAchievement']);
 Route::post('achievement-crafting/search', [AchievementController::class, 'search']);
+
+Route::post('admin/postGameInputForm', [AdminController::class, 'showPostGameForm']);
+Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);
