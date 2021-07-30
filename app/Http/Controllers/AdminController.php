@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Material;
 use App\Models\MiniGame;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,11 @@ class AdminController extends Controller
         foreach ($materialRewards as $posReward){
             $groupByPos = [];
             foreach($posReward as $reward){
-                $groupByPos[] = Material::find($reward->material_id);
+                $groupByPos[] = [
+                    'percentage' => $reward->percentage,
+                    'material' => Material::find($reward->material_id),
+                    'position' => $reward->position
+                ];
             }
             $groupedMaterialRewards[] = $groupByPos;
         }
@@ -51,19 +56,17 @@ class AdminController extends Controller
             $res[] = $this->giveReward($teams[$i], $gameID, $i+1);
         }
 
-        $teams = [];
-        $golds = [];
-        $materials = [];
+        $finalres = [];
         foreach($res as $singleres){
-            $teams[] = $singleres[0];
-            $golds[] = $singleres[1];
-            $materials[] = Material::find($singleres[2]);
+            $finalres[] = [
+                'team' => User::find($singleres[0]),
+                'gold' => $singleres[1],
+                'material' => Material::find($singleres[2])
+            ];
         }
 
         return view('form-submit-result',[
-            'teams' => $teams,
-            'golds' => $golds,
-            'materials' => $materials
+            'results' => $finalres,
         ]);
     }
 

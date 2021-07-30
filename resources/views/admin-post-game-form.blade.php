@@ -1,5 +1,5 @@
 <div class="flex flex-row">
-    <div class="bg-themegreen w-3/12 h-screen p-7">
+    <div class="w-3/12 h-screen p-7">
         <div class="text-xl text-center font-bold">
             Position Input
         </div>
@@ -16,25 +16,27 @@
             <button id="submit-btn" class="bg-darkblue text-themeyellow w-full h-10 font-bold rounded-xl hover:bg-blue-500 transition duration-300">Submit</button>
 
     </div>
-    <div class="bg-yellow-300 w-full h-screen p-5">
+    <div class="w-full h-screen p-5">
         <div class="text-center font-bold text-3xl">
             Rewards
         </div>
         <div class="flex flex-row h-5/6 mt-5">
 
-            <div class="w-1/12  bg-themered">
+            <div class="w-1/12 ">
                 <x-formreward-position pos="1"></x-formreward-position>
                 <x-formreward-position pos="2"></x-formreward-position>
                 <x-formreward-position pos="3"></x-formreward-position>
                 <x-formreward-position pos="4"></x-formreward-position>
             </div>
-            <div class="w-2/12  bg-blue-300">
+            <div class="w-2/12">
                 @foreach($goldRewards as $goldReward)
                     <x-formreward-gold :qty="$goldReward->qty"></x-formreward-gold>
                 @endforeach
             </div>
-            <div class="w-9/12  bg-green-400">
-
+            <div class="w-9/12">
+                @foreach($materialRewards as $mtlReward)
+                    <x-formreward-materials :materials="$mtlReward"></x-formreward-materials>
+                @endforeach
             </div>
         </div>
     </div>
@@ -57,8 +59,30 @@
                     gameID: gameID
                 }
             }).done(function(response){
-
+                $("#content").html(response);
             })
         })
+
+
     })
+    $(".aMaterial").hover(function(){
+        let curID = $(this).attr('id');
+        let detail = $("#detail-" + curID);
+        let img = $("#img-" + curID);
+        giveTransitionHover(detail,1);
+        giveTransitionHover(img,0);
+    })
+
+
+    function giveTransitionHover(elem, onoff){
+        if(onoff === 1){
+            elem.toggleClass('hidden');
+            elem.toggleClass('opacity-100');
+        }
+        else
+            elem.toggleClass('opacity-40');
+
+        elem.toggleClass('transition');
+        elem.toggleClass('duration-300');
+    }
 </script>
