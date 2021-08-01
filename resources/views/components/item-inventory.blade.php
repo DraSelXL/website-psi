@@ -1,4 +1,4 @@
-<div id="{{$item->id}}" name="{{$item->name}}" desc="{{$item->description}}"
+<div id="{{$item->id}}" name="{{$item->name}}" desc="{{$item->description}}" effect="{{$item->effect}}"
     class="flex flex-row h-1/12 w-1/2 bg-white my-1.5 text-black p-2 mr-3
     rounded-xl font-bold text-base bg-darkblue transform transition-all duration-300 hover:scale-y-105 itemButton">
     <img class="h-full w-3/12 rounded-xl " src="{{ asset('images/image0.jpg') }}" alt="a">
