@@ -65,6 +65,11 @@ class AdminController extends Controller
             ];
         }
 
+        DB::table('stats')
+            ->where('user_id', $first)
+            ->where('stat_item', 'Mini games won')
+            ->increment('qty');
+
         return view('form-submit-result',[
             'results' => $finalres,
         ]);
@@ -139,5 +144,25 @@ class AdminController extends Controller
             ->where('user_id', $teamID)
             ->where('material_id', $mtlID)
             ->increment('material_qty');
+
+        DB::table('stats')
+            ->where('user_id', $teamID)
+            ->where('stat_item', 'Golds gained from mini games')
+            ->increment('qty', $gold);
     }
+
+    public function updateMisc(Request $request){
+        $itemVal = null;
+        $freezeVal = null;
+        if($request->use_item == 'on') $itemVal = 1;
+        else $itemVal = 0;
+        if($request->freeze_leaderboard == 'on') $freezeVal = 1;
+        else $freezeVal = 0;
+
+        return DB::table('miscellaneouses')->update([
+            'use_item' => $itemVal,
+            'freeze_leaderboard' => $freezeVal
+        ]);
+    }
+
 }

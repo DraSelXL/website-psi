@@ -45,13 +45,39 @@ $(function () {
       $("#content").html(response);
     });
   });
+  $("#logout-btn").on("click", function () {
+    $.ajax({
+      url: 'logout',
+      method: 'get'
+    }).done(function (response) {
+      document.write(response);
+    });
+  });
   loadMaterials();
 });
 
 function toggleNavbar() {
   $("#the-navbar").toggleClass("-translate-x-52");
-  $("#psi2021").toggleClass("hidden");
-  $("#navbar-items").toggleClass("hidden");
+
+  if (!$("#psi-2021").hasClass('hidden')) {
+    setTimeout(function () {
+      $("#psi-2021").toggleClass('hidden');
+    }, 300);
+  } else $("#psi-2021").toggleClass('hidden');
+
+  if (!$("#navbar-items").hasClass('hidden')) {
+    setTimeout(function () {
+      $("#navbar-items").toggleClass('hidden');
+    }, 300);
+  } else $("#navbar-items").toggleClass('hidden');
+
+  $("#logout-btn").toggleClass('hidden');
+
+  if ($("#navbar-space").hasClass('z-50')) {
+    setTimeout(function () {
+      $("#navbar-space").toggleClass('z-50');
+    }, 300);
+  } else $("#navbar-space").toggleClass('z-50');
 }
 
 function loadMaterials() {

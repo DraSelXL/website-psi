@@ -1,6 +1,11 @@
 <div class="flex flex-row">
-    <div class="w-3/12 h-screen p-7">
-        <div class="text-xl text-center font-bold">
+    <div class="w-3/12 h-screen p-7 relative">
+        <div class="absolute left-5 top-5">
+            <button id="back-btn" class="hover:bg-gray-400 hover:text-white transition duration-300 w-10 h-10 rounded-lg p-2">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+        <div class="text-xl text-center font-bold mt-10">
             Position Input
         </div>
         <div class="flex flex-row my-5 text-lg">
@@ -85,4 +90,13 @@
         elem.toggleClass('transition');
         elem.toggleClass('duration-300');
     }
+
+    $("#back-btn").on("click", function(){
+        $.ajax({
+            url:'admin/postGame',
+            method:'get'
+        }).done(function(response){
+            $("#content").html(response);
+        })
+    })
 </script>

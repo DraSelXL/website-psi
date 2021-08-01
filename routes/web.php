@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'toHome']);
 Route::get('login', [LoginController::class, 'store']);
+Route::get('logout', [NavbarController::class, 'logout']);
 Route::get('shop', [NavbarController::class, 'showShop'])->name("user.shop");
 Route::get('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
 Route::get('history', [NavbarController::class, 'showHistory'])->name("user.history");
@@ -29,6 +30,7 @@ Route::get('admin/postGame', [NavbarController::class, 'adminShowPostGameInput']
 Route::get('admin/leaderboard', [NavbarController::class, 'adminShowLeaderboard'])->name("admin.leaderboard");
 Route::get('admin/teamStats', [NavbarController::class, 'adminShowTeamStats'])->name("admin.teamStats");
 Route::get('admin/teamHistory', [NavbarController::class, 'adminShowTeamHistory'])->name("admin.teamHistory");
+Route::get('admin/misc', [NavbarController::class, 'adminShowMisc'])->name("admin.misc");
 
 Route::post('updateGoldAndPoints', [NavbarController::class, 'updateGAP']);
 
@@ -40,4 +42,5 @@ Route::post('achievement-crafting', [AchievementController::class, 'craftAchieve
 Route::post('achievement-crafting/search', [AchievementController::class, 'search']);
 
 Route::post('admin/postGameInputForm', [AdminController::class, 'showPostGameForm']);
+Route::post('admin/saveMisc', [AdminController::class, 'updateMisc']);
 Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);

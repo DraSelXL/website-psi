@@ -1,4 +1,4 @@
-<div class="fixed z-50">
+<div class="fixed" id="navbar-space">
     <div class="w-4 absolute inset-y-5 left-3 h-5 z-50">
         <button id="hamburger-btn">
                 <span class="text-2xl text-themeyellow">
@@ -9,7 +9,7 @@
     <div class="bg-darkblue w-64 min-h-screen absolute inset-y-0 left-0
             transform -translate-x-52 transition duration-300 ease-in-out overflow-hidden" id="the-navbar">
         <div class="p-5">
-            <a href="/" id="psi2021" class="hidden">
+            <a href="/" id="psi-2021" class="hidden">
                 <div class="font-bold text-3xl text-themered mb-6 ml-14">PSI 2021</div>
             </a>
         </div>
@@ -54,6 +54,11 @@
                     Stats
                 </x-slot>
             </x-sidebar-item>
+            <div class="absolute bottom-0 left-0 w-full h-10  ">
+                <button id="logout-btn" class="bg-themered text-white font-bold w-full h-10 text-center hidden">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
+            </div>
         </nav>
     </div>
 </div>

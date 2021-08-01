@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('gold');
             $table->integer('points');
+            $table->integer('actual_points');
             $table->integer('status');
         });
     }

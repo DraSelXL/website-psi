@@ -25,15 +25,15 @@ class MiniGameSeeder extends Seeder
         ];
         $records[] = [
             'name'=> 'Math Chess',
-            'status' => 1
+            'status' => 0
         ];
         $records[] = [
             'name'=> 'Bingo Chain Words',
-            'status' => 1
+            'status' => 0
         ];
         $records[] = [
             'name'=> 'Hangman',
-            'status' => 1
+            'status' => 0
         ];
         $records[] = [
             'name'=> 'Simon Story',
@@ -41,14 +41,14 @@ class MiniGameSeeder extends Seeder
         ];
         $records[] = [
             'name'=> 'Lip Reading',
-            'status' => 1
+            'status' => 0
         ];
         $records[] = [
             'name'=> 'Draw a Story',
             'status' => 1
         ];
         $records[] = [
-            'name'=> 'Word Wolf',
+            'name'=> 'SUS',
             'status' => 1
         ];
         DB::table('mini_games')->insert($records);

@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call([MiniGameSeeder::class]);
         $this->call([MiniGameGoldRewardSeeder::class]);
         $this->call([MiniGameMaterialRewardSeeder::class]);
+        $this->call([MiscellaneousSeeder::class]);
     }
 }

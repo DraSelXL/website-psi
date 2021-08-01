@@ -56,7 +56,10 @@ class AchievementController extends Controller
             ]);
         }
 
-        $updateUserPoints = DB::table('users')->where('id', $uid)->increment('points', $achievement->points);
+        $misc = DB::table('miscellaneouses')->get()[0];
+        if($misc->freeze_leaderboard == 0)
+            DB::table('users')->where('id', $uid)->increment('points', $achievement->points);
+        DB::table('users')->where('id', $uid)->increment('actual_points', $achievement->points);
 
         $userAchievementInven = DB::table('achievements_inventories')->where('user_id', $uid)->where('achievement_id', $id)->get();
         if($userAchievementInven->count() == 0){

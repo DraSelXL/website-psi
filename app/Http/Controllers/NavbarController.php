@@ -14,6 +14,7 @@ use App\Models\Stat;
 use App\Models\User;
 use App\View\Components\ItemInventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class NavbarController extends Controller
@@ -66,19 +67,109 @@ class NavbarController extends Controller
 
     public function adminShowPostGameInput(){
         return view('admin-post-game',[
-            'mini_games' => MiniGame::all()
+            'mini_games' => DB::table('mini_games')->where('status',1)->get()
         ]);
     }
 
     public function adminShowLeaderboard(){
-
+        return view('admin-leaderboard',[
+            'teams' => DB::table('users')
+                ->where('status',2)
+                ->orderBy('actual_points','desc')
+                ->orderBy('gold','desc')->get()
+        ]);
     }
 
     public function adminShowTeamStats(){
+        $teams = DB::table('users')
+            ->where('status',2)
+            ->get();
 
+        $row = [];
+
+        foreach($teams as $team){
+            $teamStats = DB::table('stats')
+                ->where('user_id', $team->id)
+                ->get();
+            $obj = new \stdClass();
+            $obj->team = $team;
+            $obj->stats = [
+                'teamStats' => $teamStats,
+                'color' => []
+            ];
+            $obj->color = [];
+            foreach ($obj->stats['teamStats'] as $stat){
+                $col = '';
+                switch($stat->stat_item){
+                    case 'Items used':
+                        $this->checkMaxStat($stat->stat_item, $team->id) == true ? $col = ' bg-green-500 ' : $col = '';
+                        break;
+                    case 'Materials/Items bought':
+                        $this->checkMaxStat($stat->stat_item, $team->id) == true ? $col = ' bg-blue-500 ' : $col = '';
+                        break;
+                    case 'Achievements claimed':
+                        $this->checkMaxStat($stat->stat_item, $team->id) == true ? $col = ' bg-pink-400 ' : $col = '';
+                        break;
+                    case 'Golds collected':
+                        $this->checkMaxStat($stat->stat_item, $team->id) == true ? $col = ' bg-purple-600 ' : $col = '';
+                        break;
+                    case 'Mini games won':
+                        $this->checkMaxStat($stat->stat_item, $team->id) == true ? $col = ' bg-yellow-400 ' : $col = '';
+                        break;
+                    default:
+                        $col = '';
+                }
+                if($col != '') $col .= 'font-bold text-white';
+                $obj->stats['color'][] = $col;
+            }
+            $row[] = $obj;
+        }
+
+        return view('admin-teamstats',[
+            'rows' => $row
+        ]);
+    }
+
+    public function checkMaxStat($statItem, $teamID){
+        $maxQty = DB::table('stats')
+            ->select(DB::raw('qty, user_id'))
+            ->where('stat_item', $statItem)
+            ->orderBy('qty','desc')
+            ->first();
+
+        if($maxQty->qty == 0) return 0;
+
+         return $maxQty->user_id == $teamID;
     }
 
     public function adminShowTeamHistory(){
+        $logs = DB::table('history_logs')->get();
+        $res = [];
 
+        foreach($logs as $log){
+            $newObject = new \stdClass();
+            $newObject->log = $log;
+            $newObject->team = DB::table('users')
+                ->where('id', $log->user_id)
+                ->get()[0];
+            $res[] = $newObject;
+        }
+
+        return view('admin-teamhistory',[
+            'histories' => $res
+        ]);
+    }
+
+    public function adminShowMisc(){
+        return view('admin-misc',[
+            'misc'=>DB::table('miscellaneouses')->get()[0]
+        ]);
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

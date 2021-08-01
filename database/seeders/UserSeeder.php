@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('dummy'),
             'gold'=>'10000',
             'points'=>'90',
+            'actual_points'=>'90',
             'status'=>'2'
         ];
 
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('dummy'),
             'gold'=>'50000',
             'points'=>'100',
+            'actual_points'=>'100',
             'status'=>'2'
         ];
 
@@ -40,6 +42,7 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('dummy'),
             'gold'=>'3000',
             'points'=>'200',
+            'actual_points'=>'200',
             'status'=>'2'
         ];
 
@@ -49,6 +52,7 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('dummy'),
             'gold'=>'3000',
             'points'=>'200',
+            'actual_points'=>'200',
             'status'=>'2'
         ];
 
@@ -58,6 +62,7 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('admin'),
             'gold'=>'69420',
             'points'=>'69420',
+            'actual_points'=>'69420',
             'status'=>'1'
         ];
 

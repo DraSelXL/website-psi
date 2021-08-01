@@ -3,6 +3,7 @@
     "/js/navbar.js": "/js/navbar.js",
     "/js/adminNavbar.js": "/js/adminNavbar.js",
     "/js/achievement-crafting.js": "/js/achievement-crafting.js",
+    "/js/adminMisc.js": "/js/adminMisc.js",
     "/js/all.js": "/js/all.js",
     "/js/useItem.js": "/js/useItem.js",
     "/css/app.css": "/css/app.css",

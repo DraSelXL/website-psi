@@ -1,5 +1,5 @@
 <div class="bg-lightblue pt-5 pb-10 px-20 flex flex-col h-screen">
-    <x-navbar name="Test" gold="{{auth()->user()->gold }}" point="{{auth()->user()->points}}"
+    <x-navbar name="Test" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
               pageTitle="Inventory"/>
 
     <div class="flex flex-row justify-between w-full mt-5 h-5/6">
