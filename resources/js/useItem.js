@@ -9,6 +9,8 @@ $(".itemButton").on("click",function(){
     let name = $(this).attr("name");
     let effect = $(this).attr("effect");
     let qty = $(this).attr("qty");
+    let idp = "i_"+id;
+
     $.confirm({
         title : '',
         useBootstrap : false,
@@ -63,8 +65,16 @@ $(".itemButton").on("click",function(){
                                                    Reminder: You can't use another boost item if another item is still active!
                                                </div>`
                             });
-                            updateGoldAndPoints();
-                            $(".item-qty").html("x "+qty);
+
+                            $.ajax({
+                                url: 'updateGoldAndPoints',
+                                method: 'post'
+                            }).done(function (response) {
+                                $("#gap").html(response);
+                            });
+
+                            qty=qty-1;
+                            $("#"+idp).html("x "+qty);
                         }
                         else if(response=="-1"){
                             $.alert({

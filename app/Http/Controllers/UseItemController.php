@@ -18,15 +18,8 @@ class UseItemController extends Controller
             return 0;
         }
         $activeItems = DB::table('active_items')
-                            ->where('id',$user->id)
+                            ->where('user_id',$user->id)
                             ->get();
-
-        foreach($activeItems as $item){
-            if($item->item_id == $itemID && $item->active_status==1){
-                return -1;
-            }
-        }
-
 
         if($itemID==1){
             DB::table('users')
@@ -37,6 +30,11 @@ class UseItemController extends Controller
                 ->increment('actual_points', 300);
         }
         else{
+            foreach($activeItems as $item){
+                if($item->active_status==1){
+                    return -1;
+                }
+            }
             if($itemID==2){
                 $itemDuration = 1;
             }
@@ -56,7 +54,13 @@ class UseItemController extends Controller
             DB::table('active_items')
                 ->where('user_id',$user->id)
                 ->where('item_id',$itemID)
-                ->update(['active_status' => 1],['times_left'=>$itemDuration]);
+                ->update(['active_status' => 1]);
+
+            DB::table('active_items')
+                ->where('user_id',$user->id)
+                ->where('item_id',$itemID)
+                ->update(['times_left'=>$itemDuration]);
+
         }
 
 
@@ -68,7 +72,7 @@ class UseItemController extends Controller
         DB::table('history_logs')->insert([
             'type' => 0,
             'user_id' => $user->id,
-            'message' => 'You have used ' . $itemName  . ' ' .$itemEffect,
+            'message' => 'You have used ' . $itemName  . ',  ' .$itemEffect,
             'date_in' => date("Y-m-d H:i:s")
         ]);
 

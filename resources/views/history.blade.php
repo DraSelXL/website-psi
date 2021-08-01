@@ -1,4 +1,4 @@
-<div class="bg-lightblue p-5 flex justify-center flex-col py-1 0 mx-80 h-screen">
+<div class="bg-lightblue p-5 flex justify-center flex-col py-1 0 mx-80 h-screen pt-96">
     @if($histories->count())
         @foreach($histories as $history)
             <div class="text-xl text-white w-full h-24

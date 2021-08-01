@@ -12,6 +12,7 @@ $(".itemButton").on("click", function () {
   var name = $(this).attr("name");
   var effect = $(this).attr("effect");
   var qty = $(this).attr("qty");
+  var idp = "i_" + id;
   $.confirm({
     title: '',
     useBootstrap: false,
@@ -47,8 +48,14 @@ $(".itemButton").on("click", function () {
                 useBootstrap: false,
                 content: "\n                                               <div class=\"text-6xl text-center text-green-500 my-4\">\n                                                   <i class=\"fas fa-check\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   Item Successfully used!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   Reminder: You can't use another boost item if another item is still active!\n                                               </div>"
               });
-              updateGoldAndPoints();
-              $(".item-qty").html("x " + qty);
+              $.ajax({
+                url: 'updateGoldAndPoints',
+                method: 'post'
+              }).done(function (response) {
+                $("#gap").html(response);
+              });
+              qty = qty - 1;
+              $("#" + idp).html("x " + qty);
             } else if (response == "-1") {
               $.alert({
                 title: '',
