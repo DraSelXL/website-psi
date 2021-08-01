@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UseItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,3 +45,5 @@ Route::post('achievement-crafting/search', [AchievementController::class, 'searc
 Route::post('admin/postGameInputForm', [AdminController::class, 'showPostGameForm']);
 Route::post('admin/saveMisc', [AdminController::class, 'updateMisc']);
 Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);
+
+Route::post('useItem/use', [UseItemController::class, 'useItem']);

@@ -4,6 +4,11 @@ $(".itemButton").on("click",function(){
     let desc = $(this).attr("desc");
     let fx = '(Usage effect: '+ $(this).attr("effect")+')'
     let title = $(this).attr("name") ;
+
+    let id = $(this).attr("id");
+    let name = $(this).attr("name");
+    let effect = $(this).attr("effect");
+    let qty = $(this).attr("qty");
     $.confirm({
         title : '',
         useBootstrap : false,
@@ -28,14 +33,80 @@ $(".itemButton").on("click",function(){
         },
         buttons : {
             yes:{
-                text: 'Yes',
+                text: 'Use',
                 btnClass: 'btn-green',
                 action: function(){
-
+                    $.ajax({
+                        url: 'useItem/use',
+                        method: 'post',
+                        data: {
+                            itemID:id,
+                            itemName:name,
+                            itemEffect:effect,
+                            itemQty:qty
+                        }
+                    }).done(function(response){
+                        if(response=="1"){
+                            $.alert({
+                                title: '',
+                                type: 'green',
+                                boxWidth : '400px',
+                                useBootstrap : false,
+                                content:`
+                                               <div class="text-6xl text-center text-green-500 my-4">
+                                                   <i class="fas fa-check"></i>
+                                               </div>
+                                               <div class="text-xl text-center font-bold">
+                                                   Item Successfully used!
+                                               </div>
+                                               <div class="text-lg text-center">
+                                                   Reminder: You can't use another boost item if another item is still active!
+                                               </div>`
+                            });
+                            updateGoldAndPoints();
+                            $(".item-qty").html("x "+qty);
+                        }
+                        else if(response=="-1"){
+                            $.alert({
+                                title: '',
+                                type: 'red',
+                                boxWidth : '400px',
+                                useBootstrap : false,
+                                content:`
+                                               <div class="text-6xl text-center text-red-500 my-4">
+                                                   <i class="fas fa-coins"></i>
+                                               </div>
+                                               <div class="text-xl text-center font-bold">
+                                                   You cannot use this item!
+                                               </div>
+                                               <div class="text-lg text-center">
+                                                   Another boost type item is still active...
+                                               </div>`
+                            })
+                        }
+                        else{
+                            $.alert({
+                                title: '',
+                                type: 'red',
+                                boxWidth : '400px',
+                                useBootstrap : false,
+                                content:`
+                                               <div class="text-6xl text-center text-red-500 my-4">
+                                                   <i class="fas fa-coins"></i>
+                                               </div>
+                                               <div class="text-xl text-center font-bold">
+                                                   You cannot use this item!
+                                               </div>
+                                               <div class="text-lg text-center">
+                                                   You don't have this item. Buy some at the shop...
+                                               </div>`
+                            })
+                        }
+                    })
                 }
             },
             no: {
-                text: 'No',
+                text: 'Cancel',
                 btnClass : 'btn-red'
             }
         }

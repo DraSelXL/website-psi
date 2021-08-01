@@ -9,29 +9,61 @@ class UseItemController extends Controller
 {
     function useItem(Request $request){
         $user = Auth()->user();
-        $itemID = $request->id;
-        $itemName=$request->name;
-        $itemEffect=$request->effect;
-        $itemDesc = $request->desc;
+        $itemID = $request->itemID;
+        $itemName = $request->itemName;
+        $itemEffect = $request->itemEffect;
+        $itemQty = $request->itemQty;
+        $itemDuration = 0;
+        if($itemQty<1){
+            return 0;
+        }
+        $activeItems = DB::table('active_items')
+                            ->where('id',$user->id)
+                            ->get();
+
+        foreach($activeItems as $item){
+            if($item->item_id == $itemID && $item->active_status==1){
+                return -1;
+            }
+        }
+
 
         if($itemID==1){
-
+            DB::table('users')
+                ->where('id', $user->id)
+                ->increment('points', 300);
+            DB::table('users')
+                ->where('id', $user->id)
+                ->increment('actual_points', 300);
         }
-        else if($itemID==2){
+        else{
+            if($itemID==2){
+                $itemDuration = 1;
+            }
+            else if($itemID==3){
+                $itemDuration = 3;
+            }
+            else if($itemID==4){
+                $itemDuration = 1;
+            }
+            else if($itemID==5){
+                $itemDuration = 3;
+            }
+            else if($itemID==6){
+                $itemDuration = 1;
+            }
 
+            DB::table('active_items')
+                ->where('user_id',$user->id)
+                ->where('item_id',$itemID)
+                ->update(['active_status' => 1],['times_left'=>$itemDuration]);
         }
-        else if($itemID==3){
 
-        }
-        else if($itemID==4){
 
-        }
-        else if($itemID==5){
-
-        }
-        else if($itemID==6){
-
-        }
+        DB::table('items_inventories')
+            ->where('user_id', $user->id)
+            ->where('item_id', $itemID)
+            ->decrement('item_qty', 1);
 
         DB::table('history_logs')->insert([
             'type' => 0,
@@ -39,5 +71,7 @@ class UseItemController extends Controller
             'message' => 'You have used ' . $itemName  . ' ' .$itemEffect,
             'date_in' => date("Y-m-d H:i:s")
         ]);
+
+        return 1;
     }
 }
