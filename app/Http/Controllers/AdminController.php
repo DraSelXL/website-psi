@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Material;
 use App\Models\MiniGame;
+use App\Models\Miscellaneous;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -94,21 +96,25 @@ class AdminController extends Controller
                 break;
             }
         }
+        $goldFromMinigame = $this->sendGoldToUser($teamID, $goldReward);
+        $materialGiven = $this->sendMaterialToUser($teamID, $mtlID);
 
-        $this->logTeamHistory($teamID, $goldReward, $mtlID, $pos, $gameID);
-        $this->sendRewardToUser($teamID, $goldReward, $mtlID);
+        $this->logGoldFromMinigame($teamID, $goldFromMinigame, $gameID, $pos);
+        if($materialGiven == 1) $this->logMaterialFromMinigame($teamID, $mtlID, $gameID, $pos);
 
         return [$teamID, $goldReward, $mtlID];
     }
 
-    public function logTeamHistory($teamID, $goldReward, $mtlID, $pos, $gameID){
+    public function logGoldFromMinigame($teamID, $goldReward, $gameID, $pos){
         DB::table('history_logs')->insert([
             'type' => 1,
             'message' => $this->createGoldRewardSentence($goldReward, $gameID, $pos),
             'user_id' => $teamID,
             'date_in' => date("Y-m-d H:i:s")
         ]);
+    }
 
+    public function logMaterialFromMinigame($teamID, $mtlID, $gameID, $pos){
         DB::table('history_logs')->insert([
             'type' => 1,
             'message' => $this->createMtlRewardSentence($mtlID, $gameID, $pos),
@@ -135,20 +141,183 @@ class AdminController extends Controller
         return 'You have received ' . $gold . ' G for placing ' . $pos . $this->prefix[$pos-1] . ' at ' . $game->name . ' game.';
     }
 
-    public function sendRewardToUser($teamID, $gold, $mtlID){
+    public function sendGoldToUser($teamID, $gold){
+        $activeItems = DB::table('active_items')
+            ->where('user_id', $teamID)
+            ->where('active_status', 1)
+            ->get();
+
+        $totalGold = $gold;
+        $goldFromEffect = 0;
+        $convertedPts = 0;
+
+        foreach($activeItems as $effect){
+            switch($effect->item_id){
+                case 2:
+                    $goldFromEffect += $totalGold;
+                    $totalGold *= 2;
+                    $this->logGoldBoostRushHistory($teamID, 2, $goldFromEffect);
+                    $this->reduceItemDuration($teamID, $effect->item_id);
+                    break;
+                case 3:
+                    $goldFromEffect += $totalGold * 2;
+                    $totalGold *= 3;
+                    $this->logGoldBoostRushHistory($teamID, 3, $goldFromEffect);
+                    $this->reduceItemDuration($teamID, $effect->item_id);
+                    break;
+                case 5:
+                    $convertedPts = $totalGold / 2;
+                    $totalGold /= 2;
+                    $this->logBalanceJuice($teamID, $convertedPts);
+                    $this->reduceItemDuration($teamID, $effect->item_id);
+                    break;
+            }
+        }
+
         DB::table('users')
             ->where('id', $teamID)
-            ->increment('gold', $gold);
+            ->increment('gold', $totalGold);
 
-        DB::table('materials_inventories')
-            ->where('user_id', $teamID)
-            ->where('material_id', $mtlID)
-            ->increment('material_qty');
+        if($goldFromEffect > 0)
+            DB::table('stats')
+                ->where('user_id', $teamID)
+                ->where('stat_item', 'Golds gained from item\'s effects')
+                ->increment('qty', $goldFromEffect);
+        if($convertedPts > 0){
+            DB::table('users')
+                ->where('id', $teamID)
+                ->increment('actual_points', $convertedPts);
+            $misc = Miscellaneous::find(1);
+            if($misc->freeze_leaderboard == 0)
+                DB::table('users')
+                    ->where('id', $teamID)
+                    ->increment('points', $convertedPts);
+            $gold /= 2;
+        }
 
         DB::table('stats')
             ->where('user_id', $teamID)
             ->where('stat_item', 'Golds gained from mini games')
             ->increment('qty', $gold);
+
+        return $gold;
+    }
+
+    public function sendMaterialToUser($teamID, $mtlID){
+        $activeItems = DB::table('active_items')
+            ->where('user_id', $teamID)
+            ->where('active_status', 1)
+            ->get();
+
+        $theMtl = Material::find($mtlID);
+        $itemGiven = 1;
+
+        foreach($activeItems as $effect){
+            switch($effect->item_id){
+                case 4:
+                    $itemGiven = $this->useCopycatDevice($teamID, $theMtl);
+                    $this->reduceItemDuration($teamID, $effect->item_id);
+                    break;
+                case 6:
+                    $itemGiven = $this->useHandOfMidas($teamID, $theMtl);
+                    $this->reduceItemDuration($teamID, $effect->item_id);
+                    break;
+            }
+        }
+
+        if($itemGiven == 1)
+            DB::table('materials_inventories')
+                ->where('user_id', $teamID)
+                ->where('material_id', $mtlID)
+                ->increment('material_qty');
+        return $itemGiven;
+    }
+
+    public function reduceItemDuration($teamID, $itemID){
+        DB::table('active_items')
+            ->where('user_id', $teamID)
+            ->where('item_id', $itemID)
+            ->decrement('times_left');
+        $reducedRow = DB::table('active_items')
+            ->where('user_id', $teamID)
+            ->where('item_id', $itemID)
+            ->first();
+        if($reducedRow->times_left == 0){
+            $theItem = Item::find($itemID);
+            DB::table('active_items')
+                ->where('user_id', $teamID)
+                ->where('item_id', $itemID)
+                ->update([
+                    'active_status' => 0
+                ]);
+            DB::table('history_logs')
+                ->insert([
+                    'type' => 0,
+                    'message' => 'The item ' . $theItem->name . '\'s effect duration has expired.',
+                    'user_id' => $teamID,
+                    'date_in' => date("Y-m-d H:i:s"),
+                ]);
+        }
+    }
+
+    public function useCopycatDevice($teamID, $mtl){
+        $acc = [60, 50, 40, 30];
+        $rand = rand(0,100);
+        if($rand > $acc[$mtl->rarity]){
+            DB::table('materials_inventories')
+                ->where('user_id', $teamID)
+                ->where('material_id', $mtl->id)
+                ->increment('material_qty');
+            DB::table('history_logs')
+                ->insert([
+                    'type' => 1,
+                    'message' => 'You received a copy of ' . $mtl->name . ' from Copycat Device\'s effect.',
+                    'user_id' => $teamID,
+                    'date_in' => date("Y-m-d H:i:s")
+                ]);
+        }
+
+        return 1;
+    }
+
+    public function useHandOfMidas($teamID, $mtl){
+        DB::table('users')
+            ->where('user_id', $teamID)
+            ->increment('gold', $mtl->price);
+        DB::table('history_logs')
+            ->insert([
+                'type' => 1,
+                'message' => 'You converted ' . $mtl->name . ' into ' . $mtl->price . ' G.',
+                'user_id' => $teamID,
+                'date_in' => date("Y-m-d H:i:s")
+            ]);
+        DB::table('history_logs')
+            ->where('user_id', $teamID)
+            ->where('stat_item', 'Golds gained from item\'s effects')
+            ->increment('qty', $mtl->price);
+
+        return 0;
+    }
+
+    public function logGoldBoostRushHistory($teamID, $itemID, $bonusGold){
+        $theItem = Item::find($itemID);
+        DB::table('history_logs')
+            ->insert([
+                'type' => 1,
+                'message' => 'You have received ' . $bonusGold . ' G bonus gold from ' . $theItem->name . '\'s effect.',
+                'user_id' => $teamID,
+                'date_in' => date("Y-m-d H:i:s")
+            ]);
+    }
+
+    public function logBalanceJuice($teamID, $points){
+        DB::table('history_logs')
+            ->insert([
+                'type' => 1,
+                'message' => 'You have gained ' . $points . ' points from Balance Juice\'s effect',
+                'user_id' => $teamID,
+                'date_in' => date("Y-m-d H:i:s")
+            ]);
     }
 
     public function updateMisc(Request $request){
