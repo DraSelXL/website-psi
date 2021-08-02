@@ -3,6 +3,29 @@ var __webpack_exports__ = {};
 /*!*********************************!*\
   !*** ./resources/js/useItem.js ***!
   \*********************************/
+window.onload = startChecking();
+var check;
+
+function startChecking() {
+  gameStateCheck();
+  check = setInterval(gameStateCheck, 5000);
+}
+
+function gameStateCheck() {
+  $.ajax({
+    url: 'useItem/gameState',
+    method: 'post'
+  }).done(function (response) {
+    if (response == "1") {
+      document.getElementById("game-state").className = "text-2xl text-green-900";
+      $("#game-state").html("Items can be used currently...");
+    } else {
+      document.getElementById("game-state").className = "text-2xl text-red-900";
+      $("#game-state").html("Items can not be used currently...");
+    }
+  });
+}
+
 $(".itemButton").on("click", function () {
   console.log($(this).attr("desc"));
   var desc = $(this).attr("desc");
@@ -56,13 +79,17 @@ $(".itemButton").on("click", function () {
               });
               qty = qty - 1;
               $("#" + idp).html("x " + qty);
+
+              if (id != 1) {
+                $("#a_" + id).html("[A]");
+              }
             } else if (response == "-1") {
               $.alert({
                 title: '',
                 type: 'red',
                 boxWidth: '400px',
                 useBootstrap: false,
-                content: "\n                                               <div class=\"text-6xl text-center text-red-500 my-4\">\n                                                   <i class=\"fas fa-coins\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   You cannot use this item!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   Another boost type item is still active...\n                                               </div>"
+                content: "\n                                               <div class=\"text-6xl text-center text-red-500 my-4\">\n                                                   <i class=\"fas fa-coins\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   You cannot use this item!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   The same type of boost cannot be used in the same time!\n                                               </div>"
               });
             } else if (response == "-2") {
               $.alert({

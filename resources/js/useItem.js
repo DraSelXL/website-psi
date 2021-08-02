@@ -1,3 +1,26 @@
+window.onload=startChecking();
+var check;
+function startChecking(){
+    gameStateCheck();
+    check = setInterval(gameStateCheck,5000);
+}
+function gameStateCheck(){
+    $.ajax({
+        url: 'useItem/gameState',
+        method: 'post',
+    }).done(function(response){
+        if(response=="1"){
+            document.getElementById("game-state").className = "text-2xl text-green-900";
+            $("#game-state").html("Items can be used currently...");
+        }
+        else{
+            document.getElementById("game-state").className = "text-2xl text-red-900";
+            $("#game-state").html("Items can not be used currently...");
+        }
+    });
+}
+
+
 $(".itemButton").on("click",function(){
     console.log($(this).attr("desc"));
 
@@ -75,6 +98,9 @@ $(".itemButton").on("click",function(){
 
                             qty=qty-1;
                             $("#"+idp).html("x "+qty);
+                            if(id!=1){
+                                $("#a_"+id).html("[A]");
+                            }
                         }
                         else if(response=="-1"){
                             $.alert({
@@ -90,7 +116,7 @@ $(".itemButton").on("click",function(){
                                                    You cannot use this item!
                                                </div>
                                                <div class="text-lg text-center">
-                                                   Another boost type item is still active...
+                                                   The same type of boost cannot be used in the same time!
                                                </div>`
                             })
                         }

@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class UseItemController extends Controller
 {
+    function gameStateCheck(){
+        $states = DB::table('miscellaneouses')
+            ->get();
+        foreach($states as $state){
+            if($state->use_item==0){
+                return -1;
+            }
+        }
+        return 1;
+    }
     function useItem(Request $request){
         $user = Auth()->user();
         $itemID = $request->itemID;
@@ -40,6 +50,13 @@ class UseItemController extends Controller
         else{
             foreach($activeItems as $item){
                 if($item->active_status == 1 && $item->item_id == $itemID) return -1;
+                if($itemID == 2 || $itemID==3){
+                    if($item->active_status==1){
+                        if($item->item_id == 2 || $item->item_id==3){
+                            return -1;
+                        }
+                    }
+                }
             }
             $itemDuration = $durations[$itemID - 2];
 

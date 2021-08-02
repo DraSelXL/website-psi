@@ -47,3 +47,4 @@ Route::post('admin/saveMisc', [AdminController::class, 'updateMisc']);
 Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);
 
 Route::post('useItem/use', [UseItemController::class, 'useItem']);
+Route::post('useItem/gameState', [UseItemController::class, 'gameStateCheck']);
