@@ -13,6 +13,7 @@ class UseItemController extends Controller
         $itemName = $request->itemName;
         $itemEffect = $request->itemEffect;
         $itemQty = $request->itemQty;
+        $durations = [1,3,1,3,1];
         $itemDuration = 0;
         if($itemQty<1){
             return 0;
@@ -42,21 +43,7 @@ class UseItemController extends Controller
                     return -1;
                 }
             }
-            if($itemID==2){
-                $itemDuration = 1;
-            }
-            else if($itemID==3){
-                $itemDuration = 3;
-            }
-            else if($itemID==4){
-                $itemDuration = 1;
-            }
-            else if($itemID==5){
-                $itemDuration = 3;
-            }
-            else if($itemID==6){
-                $itemDuration = 1;
-            }
+            $itemDuration = $durations[$itemID - 2];
 
             DB::table('active_items')
                 ->where('user_id',$user->id)
@@ -82,6 +69,11 @@ class UseItemController extends Controller
             'message' => 'You have used ' . $itemName  . ',  ' .$itemEffect,
             'date_in' => date("Y-m-d H:i:s")
         ]);
+
+        DB::table('stats')
+            ->where('user_id', $user->id)
+            ->where('stat_item', 'Items used')
+            ->increment('qty');
 
         return 1;
     }
