@@ -52,6 +52,7 @@ class AchievementController extends Controller
                 'type' => 0,
                 'user_id' => $uid,
                 'message' => 'You have used ' . $recipe->material_qty . ' ' . $theMaterial->name . '(s) for crafting.',
+                'item_id' => -1,
                 'date_in' => date("Y-m-d H:i:s")
             ]);
         }
@@ -76,6 +77,7 @@ class AchievementController extends Controller
             'type' => 1,
             'user_id' => $uid,
             'message' => 'You have crafted the achievement \'' . $achievement->name .'\' and gained ' . $achievement->points . ' points!',
+            'item_id' => -1,
             'date_in' => date("Y-m-d H:i:s")
         ]);
 
@@ -83,10 +85,7 @@ class AchievementController extends Controller
             ->where('user_id', $uid)
             ->where('stat_item', 'Achievements claimed')
             ->increment('qty');
-        DB::table('stats')
-            ->where('user_id', $uid)
-            ->where('stat_item', 'Points gained from claiming achievements')
-            ->increment('qty', $achievement->points);
+
         return 1;
 //        $addUserAchievement =
     }

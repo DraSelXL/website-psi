@@ -59,6 +59,7 @@ class ShopController extends Controller
             'type' => 1,
             'user_id' => $user->id,
             'message' => 'You have purchased ' . $purchasedQty . ' ' . $goods->name . '(s) for ' . $totalPrice . ' G!',
+            'item_id' => -1,
             'date_in' => date("Y-m-d H:i:s")
         ]);
 

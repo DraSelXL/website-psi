@@ -16,12 +16,11 @@ class StatSeeder extends Seeder
     {
         $records = [];
         $categories = ['Items used', 'Materials/Items bought', 'Achievements claimed', 'Golds collected',
-            'Mini games won', 'Points gained from claiming achievements', 'Golds gained from mini games',
-            'Golds gained from item\'s effects'];
-        $bonus = [3000, 4000, 5000, 6000, 7000, 0, 0, 0];
+            'Mini games won'];
+        $bonus = [3000, 4000, 5000, 6000, 7000];
 
         for ($i = 1; $i < 5; $i++){
-            for($ctr = 0; $ctr < 8; $ctr++){
+            for($ctr = 0; $ctr < 5; $ctr++){
                 $records[] = [
                     'user_id'=> $i,
                     'stat_item'=> $categories[$ctr],

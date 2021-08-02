@@ -12,9 +12,6 @@
             <th class=" w-2/12 p-5">Achievements Claimed</th>
             <th class=" w-1/12 p-5">Golds Collected</th>
             <th class=" w-1/12 p-5">Mini Games Won</th>
-            <th class=" w-2/12 p-5">Pts From Achievement</th>
-            <th class=" w-1/12 p-5">Gold From Mini Game</th>
-            <th class=" w-1/12 p-5">Gold From Item</th>
         </tr>
         @foreach($rows as $row)
             <x-admin-stats-row :no="$loop->iteration" :row="$row"></x-admin-stats-row>

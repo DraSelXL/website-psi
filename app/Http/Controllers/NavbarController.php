@@ -39,7 +39,11 @@ class NavbarController extends Controller
 
     public function showHistory(){
         return view('history',[
-            'histories' => DB::table('history_logs')->where('user_id', auth()->user()->id)->orderBy('date_in','desc')->get()
+            'histories' => DB::table('history_logs')
+                ->where('user_id', auth()->user()->id)
+                ->orderBy('date_in','desc')
+                ->orderBy('item_id', 'desc')
+                ->get()
         ]);
     }
 

@@ -96,11 +96,16 @@ class AdminController extends Controller
                 break;
             }
         }
-        $goldFromMinigame = $this->sendGoldToUser($teamID, $goldReward);
-        $materialGiven = $this->sendMaterialToUser($teamID, $mtlID);
+        $this->logGoldFromMinigame($teamID, $goldReward, $gameID, $pos);
+        $this->logMaterialFromMinigame($teamID, $mtlID, $gameID, $pos);
 
-        $this->logGoldFromMinigame($teamID, $goldFromMinigame, $gameID, $pos);
-        if($materialGiven == 1) $this->logMaterialFromMinigame($teamID, $mtlID, $gameID, $pos);
+        $goldFromMinigame = $this->sendGoldToUser($teamID, $goldReward);
+        DB::table('stats')
+            ->where('user_id', $teamID)
+            ->where('stat_item', 'Golds collected')
+            ->increment('qty', $goldFromMinigame);
+
+        $materialGiven = $this->sendMaterialToUser($teamID, $mtlID);
 
         return [$teamID, $goldReward, $mtlID];
     }
@@ -109,6 +114,7 @@ class AdminController extends Controller
         DB::table('history_logs')->insert([
             'type' => 1,
             'message' => $this->createGoldRewardSentence($goldReward, $gameID, $pos),
+            'item_id' => 0,
             'user_id' => $teamID,
             'date_in' => date("Y-m-d H:i:s")
         ]);
@@ -118,6 +124,7 @@ class AdminController extends Controller
         DB::table('history_logs')->insert([
             'type' => 1,
             'message' => $this->createMtlRewardSentence($mtlID, $gameID, $pos),
+            'item_id' => 0,
             'user_id' => $teamID,
             'date_in' => date("Y-m-d H:i:s")
         ]);
@@ -178,11 +185,6 @@ class AdminController extends Controller
             ->where('id', $teamID)
             ->increment('gold', $totalGold);
 
-        if($goldFromEffect > 0)
-            DB::table('stats')
-                ->where('user_id', $teamID)
-                ->where('stat_item', 'Golds gained from item\'s effects')
-                ->increment('qty', $goldFromEffect);
         if($convertedPts > 0){
             DB::table('users')
                 ->where('id', $teamID)
@@ -192,15 +194,8 @@ class AdminController extends Controller
                 DB::table('users')
                     ->where('id', $teamID)
                     ->increment('points', $convertedPts);
-            $gold /= 2;
         }
-
-        DB::table('stats')
-            ->where('user_id', $teamID)
-            ->where('stat_item', 'Golds gained from mini games')
-            ->increment('qty', $gold);
-
-        return $gold;
+        return $totalGold;
     }
 
     public function sendMaterialToUser($teamID, $mtlID){
@@ -254,6 +249,7 @@ class AdminController extends Controller
                 ->insert([
                     'type' => 0,
                     'message' => 'The item ' . $theItem->name . '\'s effect duration has expired.',
+                    'item_id' => $itemID,
                     'user_id' => $teamID,
                     'date_in' => date("Y-m-d H:i:s"),
                 ]);
@@ -263,7 +259,7 @@ class AdminController extends Controller
     public function useCopycatDevice($teamID, $mtl){
         $acc = [60, 50, 40, 30];
         $rand = rand(0,100);
-        if($rand > $acc[$mtl->rarity]){
+        if($rand < $acc[$mtl->rarity]){
             DB::table('materials_inventories')
                 ->where('user_id', $teamID)
                 ->where('material_id', $mtl->id)
@@ -272,10 +268,19 @@ class AdminController extends Controller
                 ->insert([
                     'type' => 1,
                     'message' => 'You received a copy of ' . $mtl->name . ' from Copycat Device\'s effect.',
+                    'item_id' => 4,
                     'user_id' => $teamID,
                     'date_in' => date("Y-m-d H:i:s")
                 ]);
-        }
+        }else
+            DB::table('history_logs')
+                ->insert([
+                    'type' => 0,
+                    'message' => 'Tough luck! You didn\'t receive anything from Copycat Device. Better luck next time.',
+                    'item_id' => 4,
+                    'user_id' => $teamID,
+                    'date_in' => date("Y-m-d H:i:s")
+                ]);
 
         return 1;
     }
@@ -288,13 +293,10 @@ class AdminController extends Controller
             ->insert([
                 'type' => 1,
                 'message' => 'You converted ' . $mtl->name . ' into ' . $mtl->price . ' G.',
+                'item_id' => 6,
                 'user_id' => $teamID,
                 'date_in' => date("Y-m-d H:i:s")
             ]);
-        DB::table('history_logs')
-            ->where('user_id', $teamID)
-            ->where('stat_item', 'Golds gained from item\'s effects')
-            ->increment('qty', $mtl->price);
 
         return 0;
     }
@@ -305,6 +307,7 @@ class AdminController extends Controller
             ->insert([
                 'type' => 1,
                 'message' => 'You have received ' . $bonusGold . ' G bonus gold from ' . $theItem->name . '\'s effect.',
+                'item_id' => $itemID,
                 'user_id' => $teamID,
                 'date_in' => date("Y-m-d H:i:s")
             ]);
@@ -314,7 +317,8 @@ class AdminController extends Controller
         DB::table('history_logs')
             ->insert([
                 'type' => 1,
-                'message' => 'You have gained ' . $points . ' points from Balance Juice\'s effect',
+                'message' => 'You have gained ' . $points . ' points from Balance Juice\'s effect by converting half of ' . $points * 2 . ' G into points',
+                'item_id' => 5,
                 'user_id' => $teamID,
                 'date_in' => date("Y-m-d H:i:s")
             ]);
