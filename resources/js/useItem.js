@@ -94,6 +94,24 @@ $(".itemButton").on("click",function(){
                                                </div>`
                             })
                         }
+                        else if(response=="-2"){
+                            $.alert({
+                                title: '',
+                                type: 'red',
+                                boxWidth : '400px',
+                                useBootstrap : false,
+                                content:`
+                                               <div class="text-6xl text-center text-red-500 my-4">
+                                                   <i class="fas fa-coins"></i>
+                                               </div>
+                                               <div class="text-xl text-center font-bold">
+                                                   You cannot use this item!
+                                               </div>
+                                               <div class="text-lg text-center">
+                                                   You can not use item in this game state...
+                                               </div>`
+                            })
+                        }
                         else{
                             $.alert({
                                 title: '',
