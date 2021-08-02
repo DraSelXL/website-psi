@@ -64,6 +64,14 @@ $(".itemButton").on("click", function () {
                 useBootstrap: false,
                 content: "\n                                               <div class=\"text-6xl text-center text-red-500 my-4\">\n                                                   <i class=\"fas fa-coins\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   You cannot use this item!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   Another boost type item is still active...\n                                               </div>"
               });
+            } else if (response == "-2") {
+              $.alert({
+                title: '',
+                type: 'red',
+                boxWidth: '400px',
+                useBootstrap: false,
+                content: "\n                                               <div class=\"text-6xl text-center text-red-500 my-4\">\n                                                   <i class=\"fas fa-coins\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   You cannot use this item!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   You can not use item in this game state...\n                                               </div>"
+              });
             } else {
               $.alert({
                 title: '',

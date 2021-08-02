@@ -15,8 +15,16 @@ class UseItemController extends Controller
         $itemQty = $request->itemQty;
         $durations = [1,3,1,3,1];
         $itemDuration = 0;
-        if($itemQty<1) return 0;
-
+        if($itemQty<1){
+            return 0;
+        }
+        $states = DB::table('miscellaneouses')
+                        ->get();
+        foreach($states as $state){
+            if($state->use_item==0){
+                return -2;
+            }
+        }
         $activeItems = DB::table('active_items')
                             ->where('user_id',$user->id)
                             ->get();

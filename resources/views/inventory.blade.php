@@ -16,7 +16,7 @@
             </div>
             <!--Items-->
             <div class="flex flex-col w-full mt-10">
-                <h2>Items</h2>
+                <h2>Items (Click to use and view detail)</h2>
                 <div class="flex flex-wrap min-h-0 mt-1 w-full overflow-y-auto scrollbar-custom">
                     @foreach($items as $item)
                         <x-item-inventory :itemsInvent="$itemsInvent" :item="$item"/>
