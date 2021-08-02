@@ -259,7 +259,7 @@ class AdminController extends Controller
     public function useCopycatDevice($teamID, $mtl){
         $acc = [60, 50, 40, 30];
         $rand = rand(0,100);
-        if($rand < $acc[$mtl->rarity]){
+        if($rand < $acc[$mtl->rarity-1]){
             DB::table('materials_inventories')
                 ->where('user_id', $teamID)
                 ->where('material_id', $mtl->id)
@@ -287,7 +287,7 @@ class AdminController extends Controller
 
     public function useHandOfMidas($teamID, $mtl){
         DB::table('users')
-            ->where('user_id', $teamID)
+            ->where('id', $teamID)
             ->increment('gold', $mtl->price);
         DB::table('history_logs')
             ->insert([
@@ -297,6 +297,10 @@ class AdminController extends Controller
                 'user_id' => $teamID,
                 'date_in' => date("Y-m-d H:i:s")
             ]);
+        DB::table('stats')
+            ->where('user_id', $teamID)
+            ->where('stat_item', 'Golds collected')
+            ->increment('qty', $mtl->price);
 
         return 0;
     }
