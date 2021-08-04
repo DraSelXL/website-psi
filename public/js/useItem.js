@@ -28,11 +28,11 @@ function gameStateCheck() {
     method: 'post'
   }).done(function (response) {
     if (response == "-1") {
-      $("#active-items").html("-");
+      $("#active-items").html("Active Items : - ");
     } else {
       var activeItems = JSON.parse(response);
       var sentence = "";
-      $("#active-items").html('Active Items :');
+      $("#active-items").html('Active Items : ');
 
       for (var i = 0; i < activeItems.length; i++) {
         var id = activeItems[i].item_id; //console.log(id);
@@ -44,13 +44,13 @@ function gameStateCheck() {
         } else {
           sentence += id + ", ";
         }
-      } //$("#active-items").html(sentence);
-
+      }
     }
   });
 }
 
-$(".itemButton").on("click", function () {
+$(".itemButton").on("click", function (e) {
+  e.stopImmediatePropagation();
   var desc = $(this).attr("desc");
   var fx = '(Usage effect: ' + $(this).attr("effect") + ')';
   var title = $(this).attr("name");

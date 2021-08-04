@@ -22,6 +22,14 @@ $(function () {
       $("#content").html(response);
     });
   });
+  $("#leaderboard-btn").on("click", function () {
+    $.ajax({
+      url: "/leaderboard",
+      method: "get"
+    }).done(function (response) {
+      $("#content").html(response);
+    });
+  });
   $("#achievement-btn").on("click", function () {
     $.ajax({
       url: "/achievement",

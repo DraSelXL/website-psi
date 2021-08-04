@@ -1,4 +1,4 @@
-<div class="bg-lightblue pt-5 pb-10 px-20 flex flex-col h-screen">
+<div class="bg-lightblue pt-5 pb-10 px-20 flex flex-col h-full">
     <x-navbar name="Test" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
               pageTitle="Inventory"/>
 
@@ -15,12 +15,15 @@
                 </div>
             </div>
             <!--Items-->
-            <div class="flex flex-col w-full mt-10">
+            <div class="w-full h-1/2 mt-10">
                 <h2>Items (Click to use and view detail)</h2>
-                <div class="flex flex-wrap min-h-0 mt-1 w-full overflow-y-auto scrollbar-custom">
-                    @foreach($items as $item)
-                        <x-item-inventory :itemsInvent="$itemsInvent" :item="$item"/>
-                    @endforeach
+                <div class="flex min-h-0 mt-1 w-10/12 overflow-x-scroll h-2/3 scrollbar-custom">
+                    <div class="flex flex-nowrap">
+                        @foreach($items as $item)
+                            <x-item-inventory :itemsInvent="$itemsInvent" :item="$item"/>
+                        @endforeach
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -28,7 +31,7 @@
         <!-- Achievement-->
         <div class="flex flex-col w-5/12 h-full rounded-xl">
             <h2 class="pl-4">Achievement</h2>
-            <div class="flex-1 flex flex-col w-1/2 px-4 overflow-y-auto scrollbar-custom">
+            <div class="flex-1 flex flex-col w-full px-4 overflow-y-auto scrollbar-custom text-xl">
                 @foreach($achievements as $achievement)
                     <x-achievements-inventory :achievement="$achievement" :achievementInvent="$achievementInvent"/>
                 @endforeach
@@ -38,3 +41,27 @@
 
 </div>
 <script src="{{ asset('js/useItem.js') }}"></script>
+<script>
+
+    $(".aMaterial").hover(function(){
+        let curID = $(this).attr('id');
+        let detail = $("#det_" + curID);
+        let img = $("#image_" + curID);
+        giveTransitionHover(detail,1);
+        giveTransitionHover(img,0);
+    })
+
+
+    function giveTransitionHover(elem, onoff){
+        if(onoff === 1){
+            elem.toggleClass('hidden');
+            elem.toggleClass('opacity-100');
+        }
+        else
+            elem.toggleClass('opacity-40');
+
+        elem.toggleClass('transition');
+        elem.toggleClass('duration-300');
+    }
+
+</script>

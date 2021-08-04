@@ -11,9 +11,10 @@ class FormrewardSingleMaterial extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $material;
+    public function __construct($material)
     {
-        //
+        $this->material = $material;
     }
 
     /**

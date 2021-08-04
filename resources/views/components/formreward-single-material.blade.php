@@ -3,7 +3,6 @@
 @php
     $bordercolor = ['border-green-500', 'border-blue-500', 'border-purple-600', 'border-yellow-400'];
 @endphp
-
 <div class="rounded-full h-32 w-32 mx-4 relative aMaterial overflow-hidden"
      id="{{ $material['position'] }}-{{ $material['material']->id }}">
     <img src="{{ asset('images/roxy.jpg') }}" alt="" class="mtl-img object-fill w-full h-32 rounded-full

@@ -22,7 +22,9 @@ class NavbarController extends Controller
     public function showHome(){
         return view('home');
     }
-
+    public function showLeaderboard(){
+        return view('leaderboard');
+    }
     public function showShop(){
         return view('shop',[
             'materials' => Material::all(),

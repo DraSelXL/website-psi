@@ -62,6 +62,14 @@
                     Stats
                 </x-slot>
             </x-sidebar-item>
+            <x-sidebar-item>
+                <x-slot name="btnname">
+                    leaderboard-btn
+                </x-slot>
+                <x-slot name="navname">
+                    Leaderboard
+                </x-slot>
+            </x-sidebar-item>
             <div class="absolute bottom-0 left-0 w-full h-10  ">
                 <button id="logout-btn" class="bg-themered text-white font-bold w-full h-10 text-center hidden">
                     <i class="fas fa-sign-out-alt"></i> Log Out

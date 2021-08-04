@@ -1,9 +1,17 @@
 
-    <div id="{{$item->id}}" name="{{$item->name}}" desc="{{$item->description}}" effect="{{$item->effect}}" qty="{{$itemQuantity}}"
-         class="flex flex-row h-1/12 w-1/2 bg-white my-1.5 text-black p-2 mr-3
-        rounded-xl font-bold text-base bg-darkblue transform transition-all duration-300 hover:scale-y-105 itemButton">
-        <img class="h-full w-3/12 rounded-xl " src="{{ asset('images/image0.jpg') }}" alt="a">
-        <p class="pl-4 mt-8 h-8 center text-white text-2xl">{{$item->name}}</p>
-        <p id="i_{{$item->id}}" class="mt-8 ml-3 text-yellow-300 text-2xl item-qty">x {{$itemQuantity}}</p>
+
+    <div class="rounded-full h-48 w-48 aMaterial mt-5 mr-1 itemButton"
+         id="{{$item->id}}" name="{{$item->name}}" desc="{{$item->description}}" effect="{{$item->effect}}" qty="{{$itemQuantity}}">
+        <img src="{{ asset('images/roxy.jpg') }}" alt="" class="border-4 mtl-img object-fill rounded-full h-48 border-blue-900"
+             id="image_{{$item->id}}">
+        <div class="font-bold bottom-0 w-full hidden mtl-detail" id="det_{{$item->id}}">
+            <div class="text-center w-full">
+                {{ $item->name }}
+            </div>
+            <div id="i_{{$item->id}}" class="text-center w-full item-qty">
+                x {{ $itemQuantity }}
+            </div>
+        </div>
     </div>
+
 

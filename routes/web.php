@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\ShopController;
@@ -24,6 +25,7 @@ Route::get('login', [LoginController::class, 'store']);
 Route::get('logout', [NavbarController::class, 'logout']);
 Route::get('shop', [NavbarController::class, 'showShop'])->name("user.shop");
 Route::get('home', [NavbarController::class, 'showHome'])->name("user.home");
+Route::get('leaderboard', [NavbarController::class, 'showLeaderboard'])->name("user.leaderboard");
 Route::get('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
 Route::get('history', [NavbarController::class, 'showHistory'])->name("user.history");
 Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
@@ -52,3 +54,5 @@ Route::post('useItem/activeItems', [UseItemController::class, 'activeItemsCheck'
 Route::post('useItem/gameState', [UseItemController::class, 'gameStateCheck']);
 Route::post('useItem/useMissingSubstitute', [UseItemController::class, 'useMissingSubstitute']);
 Route::post('useItem/subsMaterial', [UseItemController::class, 'subsMaterial']);
+
+Route::post('leaderboard/loadLeaderboard', [LeaderboardController::class, 'loadLeaderboard']);
