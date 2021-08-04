@@ -121,6 +121,7 @@ $(".itemButton").on("click", function (e) {
                 url: 'useItem/useMissingSubstitute',
                 method: 'post'
               }).done(function (response) {
+                console.log('mashok');
                 $("#modal").append(response);
                 $("#content").toggleClass("opacity-50");
               });

@@ -3,7 +3,7 @@
         Team History Logs
     </div>
 
-    <table class="w-full text-center">
+    <table class="w-full text-center border-separate">
         <tr class="bg-gray-300">
             <th class=" w-1/12 p-5">#</th>
             <th class=" w-3/12 p-5">Team</th>

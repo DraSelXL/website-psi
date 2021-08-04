@@ -47,6 +47,7 @@ Route::post('achievement-crafting/search', [AchievementController::class, 'searc
 
 Route::post('admin/postGameInputForm', [AdminController::class, 'showPostGameForm']);
 Route::post('admin/saveMisc', [AdminController::class, 'updateMisc']);
+Route::post('admin/finishGame', [AdminController::class, 'finishGame']);
 Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);
 
 Route::post('useItem/use', [UseItemController::class, 'useItem']);

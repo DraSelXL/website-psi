@@ -53,7 +53,7 @@ class ItemSeeder extends Seeder
             'effect' => 'Next match: convert the material you get into gold'
         ];
         $records[] = [
-            'name'=>'Missing Substitute',
+            'name'=>'Missing Link',
             'price'=> 500,
             'description' => 'Instant: You can use this item as a substitute for any 1 material which is required to craft an achievement (below 2000 points), but you also must have the other required materials needed to craft the achievement.',
             'effect' => '+1 selected material'

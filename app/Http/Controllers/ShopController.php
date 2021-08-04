@@ -29,6 +29,7 @@ class ShopController extends Controller
         $reqType = $request->type;
         $goods = null;
 
+
         if($reqType == "material") $goods = Material::find($theID);
         else $goods = Item::find($theID);
 
