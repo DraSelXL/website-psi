@@ -12,7 +12,7 @@ WORKDIR /src
 COPY . ./
 RUN composer install --optimize-autoloader --no-dev && rm -rf /root/.composer
 
-
+ 
 FROM php:7.4-alpine
 # working directory
 WORKDIR /var/www/localhost/htdocs/
