@@ -3,7 +3,7 @@
               pageTitle="Marketplace"/>
 
     <h2> Items </h2>
-    <div class="flex flex-row overflow-x-auto my-3 bg-themegreen">
+    <div class="flex flex-row overflow-x-auto my-3">
         @foreach($items as $item)
             <x-item-card :item="$item"></x-item-card>
         @endforeach
@@ -17,7 +17,6 @@
 
 </div>
 
-{{--<script src="{{ asset('js/shop.js') }}"></script>--}}
 <script>
     $(()=>{
         $(".mtl-detail").hover(imageHover);
@@ -51,6 +50,7 @@
         }).done(function(response){
             $("#modal").append(response);
             $("#content").toggleClass("opacity-50");
+            $("#modal").toggleClass("hidden");
         });
     }
 
@@ -60,6 +60,7 @@
         if(modal.children().length > 0){
             modal.html("");
             content.toggleClass("opacity-50");
+            modal.toggleClass("hidden");
         }
     }
 
@@ -79,7 +80,7 @@
         let mtlName = $("#name-"+mtlID).html();
         let mtlPrice = $("#price-"+mtlID).html();
         mtlPrice = mtlPrice.replace(' G', '');
-        buyItems(1, mtlID, mtlName, mtlPrice);
+        buyItems(1, mtlID, mtlName, mtlPrice, 'material');
     }
 
     function buyMaterialFromModal(){
@@ -101,6 +102,15 @@
         let thePrice = $("#" + type + "-price-modal").text();
         thePrice = thePrice.replace(" G", "");
         buyItems(qty, theID, theName, thePrice, type);
+    }
+
+    function buyItemFromShopCard(theBuyBtn){
+        let itemID = $(theBuyBtn).attr('id').substr(8);
+        let itemName = $("#itemname-" + itemID).html();
+        let itemPrice = $("#itemprice-" + itemID).html();
+        itemPrice = itemPrice.replace(' G', '');
+
+        buyItems(1, itemID, itemName, itemPrice, 'item');
     }
 
     function buyItems(qty, theID, materialName, materialPrice, type){
@@ -197,7 +207,18 @@
             }
         })
     }
+
+    function updateGoldAndPoints(){
+        $.ajax({
+            url:'updateGoldAndPoints',
+            method:'post'
+        }).done(function(response){
+            $("#gap").html(response);
+        });
+    }
 </script>
+
+
 
 
 

@@ -1,4 +1,4 @@
-<div class="z-50 fixed top-52 left-1/3 w-4/12 h-3/6 bg-darkblue p-5 text-white rounded overflow-y-auto">
+<div class="z-50 fixed w-full h-full bg-darkblue p-5 text-white rounded overflow-y-auto">
 
     <div class="text-3xl absolute right-5 top-4">
         <button class="text-themeyellow transform hover:scale-125 transition duration-300" onclick="closeDetail()">

@@ -1,6 +1,6 @@
-<div class="w-screen h-screen relative">
-    <div class="w-screen flex flex-wrap content-center items-center flex-col justify-center h-1/2 bg-themegreen">
-        <button class="font-bold h-10 rounded-xl w-40 h-20 bg-darkblue text-themeyellow text-xl btn hover:bg-blue-500 hover:text-white transition duration-300">
+<div class="w-full h-screen relative">
+    <div class="w-full flex flex-wrap content-center items-center flex-col justify-center h-1/2 bg-themegreen">
+        <button id="finish-btn" class="font-bold h-10 rounded-xl w-40 h-20 bg-darkblue text-themeyellow text-xl btn hover:bg-blue-500 hover:text-white transition duration-300">
             Finish Game
         </button>
     </div>
@@ -20,7 +20,7 @@
                              originalValue="{{ $misc->freeze_leaderboard == 1 ? 'on' : 'off' }}"></x-switch-toggle>
         </div>
     </div>
-    <div class="absolute right-14 bottom-5 ">
+    <div class="absolute right-10 bottom-5 ">
         <button id="save-btn" class="font-bold h-10 rounded-xl w-32 h-10 bg-darkblue text-themeyellow text-sm hover:bg-blue-500 hover:text-white transition duration-300">
             Save Changes
         </button>

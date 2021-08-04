@@ -9,6 +9,7 @@ use App\Models\Miscellaneous;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function Sodium\increment;
 
 class AdminController extends Controller
 {
@@ -342,4 +343,81 @@ class AdminController extends Controller
         ]);
     }
 
+    public function finishGame(){
+        $this->giveEndGameBonus();
+        $this->unfreezeLeaderboard();
+        DB::table('miscellaneouses')
+            ->update([
+                'finish' => 1
+            ]);
+
+        return 1;
+    }
+
+    function giveEndGameBonus(){
+        $categories = DB::table('stats')
+            ->select('stat_item')
+            ->distinct()->get();
+
+        foreach($categories as $category){
+            $biggest = DB::table('stats')
+                ->where('stat_item', $category->stat_item)
+                ->orderBy('qty', 'desc')
+                ->first();
+            if ($biggest->qty > 0){
+                $uid = User::find($biggest->user_id)->id;
+                $this->logEndGameBonus($uid, $biggest);
+
+                $otherWinners = DB::table('stats')
+                    ->where('stat_item', $category->stat_item)
+                    ->where('user_id', '<>' , $uid)
+                    ->where('qty', $biggest->qty)
+                    ->get();
+
+                if($otherWinners->count() > 0){
+                    foreach ($otherWinners as $otherWinner){
+                        $otherUid = User::find($otherWinner->user_id)->id;
+                        $this->logEndGameBonus($otherUid, $otherWinner);
+                    }
+                }
+
+            }
+        }
+    }
+
+    function logEndGameBonus($uid, $stat){
+        $sentences = [
+            'Items used' => 'has the most items used!',
+            'Materials/Items bought' => ' has the most materials/items bought!',
+            'Achievements claimed' => ' has the most achievements claimed!',
+            'Golds collected' => ' collects the most gold!',
+            'Mini games won' => ' has the most mini games won!'
+        ];
+        DB::table('users')
+            ->where('id', $uid)
+            ->increment('actual_points', $stat->bonus_points);DB::table('users')
+            ->where('id', $uid);
+        DB::table('history_logs')->insert([
+            'type' => 1,
+            'message' => 'You have received ' . $stat->bonus_points . ' G as the team who ' . $sentences[$stat->stat_item],
+            'item_id' => -1,
+            'user_id' => $uid,
+            'date_in' => date("Y-m-d H:i:s")
+        ]);
+    }
+
+    function unfreezeLeaderboard(){
+        DB::table('miscellaneouses')
+            ->update([
+                'freeze_leaderboard' => 0
+            ]);
+        $users = User::all();
+        foreach($users as $user){
+            DB::table('users')
+                ->where('id', $user->id)
+                ->update([
+                    'points' => $user->actual_points
+                ]);
+        }
+    }
 }

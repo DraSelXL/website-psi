@@ -4,24 +4,26 @@
     <div class="flex flex-col bg-darkblue p-3 rounded-xl h-full">
         <div class="relative">
             <img id="item-image-{{ $item->id }}" src="https://i.ibb.co/232pCcm/makima-cropped.png" class="overflow-hidden rounded-md h-36 w-full flex-1">
-            <div id = "item-{{ $item->id }}" class="item-detail absolute opacity-0 top-0 w-full h-full flex flex-wrap content-center px-24 hover:opacity-100 transition duration-300">
-                <button id="item-detail-{{ $item->id }}" class="item-detail-btn rounded-full border-4 border-themegreen font-bold w-72 hover:underline transform hover:scale-110 transition duration-300">
+            <div id = "item-{{ $item->id }}" class="item-detail absolute opacity-0 top-0 w-full h-full flex items-center justify-center hover:opacity-100 transition duration-300">
+                <button id="item-detail-{{ $item->id }}" class="item-detail-btn rounded-full border-4 border-themegreen font-bold w-20 hover:underline transform hover:scale-110 transition duration-300">
                     Detail
                 </button>
             </div>
         </div>
 
 
-        <div class="text-lg xl:text-xl text-center font-bold">
+        <div id="itemname-{{ $item->id }}" class="text-lg xl:text-xl text-center font-bold">
             {{ $item->name }}
         </div>
-        <div class="xl:text-lg my-1 text-center">
+        <div id="itemprice-{{ $item->id }}" class="xl:text-lg my-1 text-center">
             {{ $item->price }} G
         </div>
 
         <button
+            id="buyitem-{{ $item->id }}"
             class="rounded-lg text-white bg-themegreen w-full font-bold text-lg
-            mt-2 py-1 hover:bg-green-400 transform hover:scale-110 duration-300">
+            mt-2 py-1 hover:bg-green-400 transform hover:scale-110 duration-300"
+            onclick="buyItemFromShopCard(this)">
             BUY
         </button>
     </div>

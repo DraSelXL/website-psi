@@ -17,3 +17,5 @@
     </x-slot>
 </x-detail-modal>
 
+
+

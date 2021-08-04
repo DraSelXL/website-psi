@@ -4,8 +4,8 @@
     <div class="bg-darkblue flex flex-col text-white p-3 rounded-xl">
         <div class="relative">
             <img id = "image-{{ $material->id }}" class="mtl-image w-full h-4/6 overflow-hidden rounded-md transition duration-300" src="https://i.ibb.co/nC1qqtc/i01-Chainmail.png" alt="">
-            <div id = "{{ $material->id }}" class="mtl-detail absolute opacity-0 top-0 w-full h-full flex flex-wrap content-center px-24 hover:opacity-100 transition duration-300">
-                <button id="detail-{{ $material->id }}" class="detail-btn rounded-full border-4 border-themegreen font-bold w-72 hover:underline transform hover:scale-110 transition duration-300">
+            <div id = "{{ $material->id }}" class="mtl-detail absolute opacity-0 top-0 w-full h-full flex items-center justify-center hover:opacity-100 transition duration-300">
+                <button id="detail-{{ $material->id }}" class="detail-btn rounded-full border-4 border-themegreen font-bold w-1/2 hover:underline transform hover:scale-110 transition duration-300">
                     Detail
                 </button>
             </div>
