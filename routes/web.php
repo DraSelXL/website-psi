@@ -23,6 +23,7 @@ Route::get('/', [LoginController::class, 'toHome']);
 Route::get('login', [LoginController::class, 'store']);
 Route::get('logout', [NavbarController::class, 'logout']);
 Route::get('shop', [NavbarController::class, 'showShop'])->name("user.shop");
+Route::get('home', [NavbarController::class, 'showHome'])->name("user.home");
 Route::get('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
 Route::get('history', [NavbarController::class, 'showHistory'])->name("user.history");
 Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
@@ -48,6 +49,7 @@ Route::post('admin/finishGame', [AdminController::class, 'finishGame']);
 Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);
 
 Route::post('useItem/use', [UseItemController::class, 'useItem']);
+Route::post('useItem/activeItems', [UseItemController::class, 'activeItemsCheck']);
 Route::post('useItem/gameState', [UseItemController::class, 'gameStateCheck']);
 Route::post('useItem/useMissingSubstitute', [UseItemController::class, 'useMissingSubstitute']);
 Route::post('useItem/subsMaterial', [UseItemController::class, 'subsMaterial']);

@@ -13,12 +13,38 @@ function gameStateCheck(){
         method: 'post',
     }).done(function(response){
         if(response=="1"){
-            document.getElementById("game-state").className = "text-2xl text-green-900";
-            $("#game-state").html("Items can be used currently...");
+            document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
         }
         else{
-            document.getElementById("game-state").className = "text-2xl text-red-900";
-            $("#game-state").html("Items can not be used currently...");
+            document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
+        }
+    });
+    $.ajax({
+        url: 'useItem/activeItems',
+        method: 'post',
+    }).done(function(response){
+        if(response=="-1"){
+            $("#active-items").html("-");
+        }
+        else{
+            let activeItems = JSON.parse(response);
+            let sentence = "";
+            $("#active-items").html('Active Items :');
+            for(let i=0; i<activeItems.length;i++){
+                let id = activeItems[i].item_id;
+                //console.log(id);
+
+                $("#active-items").append('<div className="ml-3 h-4 w-auto flex-col"><img class="ml-3 mtl-image w-4 h-4 rounded-md" src="https://i.ibb.co/nC1qqtc/i01-Chainmail.png" alt=""></div>');
+                if(i==activeItems.length-1){
+
+                    sentence += id+"";
+                }
+                else{
+                    sentence+=id+", "
+                }
+
+            }
+            //$("#active-items").html(sentence);
         }
     });
 }
@@ -98,11 +124,6 @@ $(".itemButton").on("click",function(){
                                 $("#gap").html(response);
                             });
 
-                            qty=qty-1;
-                            $("#"+idp).html("x "+qty);
-                            if(id!=1){
-                                $("#a_"+id).html("[A]");
-                            }
                         }
                         else if(response=="-1"){
                             $.alert({

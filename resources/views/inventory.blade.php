@@ -6,7 +6,6 @@
 
         <div class="flex flex-col w-7/12">
             <!--Material-->
-            <p id="game-state"></p>
             <div class="flex flex-col w-full">
                 <h2>Materials</h2>
                 <div class="flex flex-wrap min-h-0 mt-1 w-full">

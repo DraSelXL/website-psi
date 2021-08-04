@@ -16,6 +16,14 @@
         <nav id="navbar-items" class="hidden text-white">
             <x-sidebar-item>
                 <x-slot name="btnname">
+                    home-btn
+                </x-slot>
+                <x-slot name="navname">
+                    Home
+                </x-slot>
+            </x-sidebar-item>
+            <x-sidebar-item>
+                <x-slot name="btnname">
                     shop-btn
                 </x-slot>
                 <x-slot name="navname">
