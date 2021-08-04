@@ -48,3 +48,5 @@ Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);
 
 Route::post('useItem/use', [UseItemController::class, 'useItem']);
 Route::post('useItem/gameState', [UseItemController::class, 'gameStateCheck']);
+Route::post('useItem/useMissingSubstitute', [UseItemController::class, 'useMissingSubstitute']);
+Route::post('useItem/subsMaterial', [UseItemController::class, 'subsMaterial']);

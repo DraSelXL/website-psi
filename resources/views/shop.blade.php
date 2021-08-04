@@ -3,7 +3,7 @@
               pageTitle="Marketplace"/>
 
     <h2> Items </h2>
-    <div class="flex flex-row overflow-x-auto my-3 justify-around">
+    <div class="flex flex-row overflow-x-auto my-3 bg-themegreen">
         @foreach($items as $item)
             <x-item-card :item="$item"></x-item-card>
         @endforeach

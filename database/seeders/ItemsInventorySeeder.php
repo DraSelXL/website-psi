@@ -16,37 +16,15 @@ class ItemsInventorySeeder extends Seeder
     {
         $records = [];
 
-        $records[] = [
-            'user_id'=> 3,
-            'item_id'=> 1,
-            'item_qty' => 3
-        ];
-        $records[] = [
-            'user_id'=> 3,
-            'item_id'=> 2,
-            'item_qty' => 3
-        ];
-        $records[] = [
-            'user_id'=> 3,
-            'item_id'=> 3,
-            'item_qty' => 3
-        ];
-        $records[] = [
-            'user_id'=> 3,
-            'item_id'=> 4,
-            'item_qty' => 3
-        ];
-        $records[] = [
-            'user_id'=> 3,
-            'item_id'=> 5,
-            'item_qty' => 3
-        ];
-        $records[] = [
-            'user_id'=> 3,
-            'item_id'=> 6,
-            'item_qty' => 3
-        ];
-
+        for ($i = 1; $i < 5; $i++){
+            for($j = 1; $j < 8; $j++){
+                $records[] = [
+                    'user_id' => $i,
+                    'item_id' => $j,
+                    'item_qty' => 3
+                ];
+            }
+        }
         DB::table('items_inventories')->insert($records);
     }
 }

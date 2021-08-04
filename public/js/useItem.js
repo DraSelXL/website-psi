@@ -5,6 +5,7 @@ var __webpack_exports__ = {};
   \*********************************/
 window.onload = startChecking();
 var check;
+$("#content").click(closeDetail);
 
 function startChecking() {
   gameStateCheck();
@@ -27,7 +28,6 @@ function gameStateCheck() {
 }
 
 $(".itemButton").on("click", function () {
-  console.log($(this).attr("desc"));
   var desc = $(this).attr("desc");
   var fx = '(Usage effect: ' + $(this).attr("effect") + ')';
   var title = $(this).attr("name");
@@ -69,7 +69,7 @@ $(".itemButton").on("click", function () {
                 type: 'green',
                 boxWidth: '400px',
                 useBootstrap: false,
-                content: "\n                                               <div class=\"text-6xl text-center text-green-500 my-4\">\n                                                   <i class=\"fas fa-check\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   Item Successfully used!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   Reminder: You can't use another boost item if another item is still active!\n                                               </div>"
+                content: "\n                                               <div class=\"text-6xl text-center text-green-500 my-4\">\n                                                   <i class=\"fas fa-check\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   Item Successfully used!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   Reminder: You can't activate another boost item while a boost item with the same name is still active.\n                                               </div>"
               });
               $.ajax({
                 url: 'updateGoldAndPoints',
@@ -99,6 +99,14 @@ $(".itemButton").on("click", function () {
                 useBootstrap: false,
                 content: "\n                                               <div class=\"text-6xl text-center text-red-500 my-4\">\n                                                   <i class=\"fas fa-coins\"></i>\n                                               </div>\n                                               <div class=\"text-xl text-center font-bold\">\n                                                   You cannot use this item!\n                                               </div>\n                                               <div class=\"text-lg text-center\">\n                                                   You can not use item in this game state...\n                                               </div>"
               });
+            } else if (response == '7') {
+              $.ajax({
+                url: 'useItem/useMissingSubstitute',
+                method: 'post'
+              }).done(function (response) {
+                $("#modal").append(response);
+                $("#content").toggleClass("opacity-50");
+              });
             } else {
               $.alert({
                 title: '',
@@ -118,5 +126,41 @@ $(".itemButton").on("click", function () {
     }
   });
 });
+$(".subs-btn").on("click", function () {
+  var mtlID = $(this).attr('id');
+  mtlID = mtlID.substr(5);
+  $.ajax({
+    url: 'useItem/subsMaterial',
+    method: 'post',
+    data: {
+      mtlID: mtlID
+    }
+  }).done(function (response) {
+    if (response == '1') {
+      closeDetail();
+      var itemQty = $("#7").attr('qty');
+      itemQty--;
+      $("#7").attr('qty', itemQty);
+      $("#i_7").html("x " + itemQty);
+      $.alert({
+        title: '',
+        useBootstrap: false,
+        boxWidth: '400px',
+        type: 'green',
+        content: "\n<div class=\"text-6xl text-center text-blue-400 my-4\">\n    <i class=\"fas fa-box-open\"></i>\n</div>\n<div class=\"text-xl text-center font-bold modal-title\">\n    Substituted successfully!\n</div>\n"
+      });
+    }
+  });
+});
+
+function closeDetail() {
+  var content = $("#content");
+  var modal = $("#modal");
+
+  if (modal.children().length > 0) {
+    modal.html("");
+    content.toggleClass("opacity-50");
+  }
+}
 /******/ })()
 ;

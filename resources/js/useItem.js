@@ -1,5 +1,8 @@
 window.onload=startChecking();
 var check;
+
+$("#content").click(closeDetail);
+
 function startChecking(){
     gameStateCheck();
     check = setInterval(gameStateCheck,5000);
@@ -22,7 +25,6 @@ function gameStateCheck(){
 
 
 $(".itemButton").on("click",function(){
-    console.log($(this).attr("desc"));
 
     let desc = $(this).attr("desc");
     let fx = '(Usage effect: '+ $(this).attr("effect")+')'
@@ -85,7 +87,7 @@ $(".itemButton").on("click",function(){
                                                    Item Successfully used!
                                                </div>
                                                <div class="text-lg text-center">
-                                                   Reminder: You can't use another boost item if another item is still active!
+                                                   Reminder: You can't activate another boost item while a boost item with the same name is still active.
                                                </div>`
                             });
 
@@ -138,6 +140,15 @@ $(".itemButton").on("click",function(){
                                                </div>`
                             })
                         }
+                        else if (response == '7'){
+                            $.ajax({
+                                url: 'useItem/useMissingSubstitute',
+                                method: 'post'
+                            }).done(function(response){
+                                $("#modal").append(response);
+                                $("#content").toggleClass("opacity-50");
+                            })
+                        }
                         else{
                             $.alert({
                                 title: '',
@@ -166,3 +177,47 @@ $(".itemButton").on("click",function(){
         }
     })
 })
+
+$(".subs-btn").on("click", function(){
+    let mtlID = $(this).attr('id');
+    mtlID = mtlID.substr(5);
+    $.ajax({
+        url:'useItem/subsMaterial',
+        method:'post',
+        data:{
+            mtlID: mtlID
+        }
+    }).done(function(response){
+        if(response == '1'){
+            closeDetail();
+            let itemQty = $("#7").attr('qty');
+            itemQty--;
+            $("#7").attr('qty',itemQty);
+            $("#i_7").html("x "+itemQty);
+            $.alert({
+                title : '',
+                useBootstrap : false,
+                boxWidth : '400px',
+                type : 'green',
+                content : `
+<div class="text-6xl text-center text-blue-400 my-4">
+    <i class="fas fa-box-open"></i>
+</div>
+<div class="text-xl text-center font-bold modal-title">
+    Substituted successfully!
+</div>
+`,
+            })
+        }
+    })
+})
+
+function closeDetail(){
+    let content = $("#content");
+    let modal = $("#modal");
+    if(modal.children().length > 0){
+        modal.html("");
+        content.toggleClass("opacity-50");
+    }
+}
+

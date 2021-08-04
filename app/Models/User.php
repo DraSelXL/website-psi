@@ -41,7 +41,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function mat_inventory(){
-        return $this->hasMany(MaterialsInventory::class);
+
+    public function materials_inventories(){
+        return $this->hasMany(MaterialsInventory::class, 'user_id');
+    }
+
+    public function stats(){
+        return $this->hasMany(Stat::class);
     }
 }
