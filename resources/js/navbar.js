@@ -9,6 +9,7 @@ $(()=>{
     $("#hamburger-btn").on("click", toggleNavbar)
     $(".navbar-btn").on("click", toggleNavbar)
     $("#shop-btn").on("click",loadMaterials)
+    $("#home-btn").on("click",loadHome)
     $("#inven-btn").on("click",function(){
         $.ajax({
             url: "/inventory",
@@ -49,9 +50,16 @@ $(()=>{
             document.write(response);
         })
     })
-    loadMaterials();
+    loadHome();
 })
-
+function loadHome(){
+    $.ajax({
+        url: "/home",
+        method: "get"
+    }).done(function(response){
+        $("#content").html(response);
+    });
+}
 function toggleNavbar(){
     $("#the-navbar").toggleClass("-translate-x-52");
 

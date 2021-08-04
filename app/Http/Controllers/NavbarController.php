@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\DB;
 
 class NavbarController extends Controller
 {
+    public function showHome(){
+        return view('home');
+    }
+
     public function showShop(){
         return view('shop',[
             'materials' => Material::all(),

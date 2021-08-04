@@ -11,6 +11,19 @@ use Illuminate\Support\Facades\DB;
 
 class UseItemController extends Controller
 {
+    function activeItemsCheck(){
+        $user = Auth()->user();
+        $activeItems = DB::table('active_items')
+            ->where('user_id',$user->id)
+            ->where('active_status',1)
+            ->get();
+        if($activeItems->isEmpty()){
+            return -1;
+        }
+        else{
+            echo json_encode($activeItems);
+        }
+    }
     function gameStateCheck(){
         $states = DB::table('miscellaneouses')
             ->get();
