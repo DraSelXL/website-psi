@@ -20,12 +20,36 @@
         <div class="w-1/2 h-full rounded-xl bg-darkblue p-10">
             <img src="https://i.ibb.co/Xyr1NYx/makima-cropped.png" class="h-full w-full">
         </div>
-        <div class="grid grid-cols-2 w-1/2 h-full ml-7 mt-7">
-            @for ($i = 0; $i < 4; $i++)
-                <div class="rounded-xl bg-darkblue w-11/12 h-5/6 text-2xl content-center">
+        <div class="grid grid-cols-3 w-1/2 h-full ml-7">
+            <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
+                onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                <center><i class="fas fa-book"></i>
+                <div class="text-2xl mt-3">Buku Pengenalan Studi Informatika 2021</div></center>
 
-                </div>
-            @endfor
+            </div>
+            <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
+                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                <center><i class="fas fa-dice"></i>
+                    <div class="text-2xl mt-3">Panduan Rally Games PSI</div></center>
+            </div>
+            <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
+                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                <center><i class="fas fa-bomb"></i>
+                    <div class="text-2xl mt-3">Panduan Rally Mini Games</div></center>
+            </div>
+            <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
+                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                <center><i class="fas fa-box-open"></i>
+                    <div class="text-2xl mt-3">Item List & Guide</div></center>
+            </div>
+            <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
+                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                <center><i class="fas fa-bookmark"></i>
+                    <div class="text-2xl mt-3">User Web Manual</div></center>
+            </div>
+            <div class="rounded-xl w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3">
+                <img src="{{ asset('images/ISTTS.png') }}">
+            </div>
 
         </div>
     </div>

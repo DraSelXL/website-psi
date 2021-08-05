@@ -55,10 +55,7 @@
     function giveTransitionHover(elem, onoff){
         if(onoff === 1){
             elem.toggleClass('hidden');
-            elem.toggleClass('opacity-100');
         }
-        else
-            elem.toggleClass('opacity-40');
 
         elem.toggleClass('transition');
         elem.toggleClass('duration-300');
