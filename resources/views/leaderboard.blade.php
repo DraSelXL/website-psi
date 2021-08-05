@@ -2,7 +2,8 @@
     <x-navbar name="Test" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
               pageTitle="Leaderboard"/>
 
-    <table id="leaderboard-table" class="h-96 w-5/6 text-2xl text-center mt-14 ml-auto mr-auto table-auto border-2 border-darkblue">
+    <p id="freeze-banner" class="mr-auto mx-auto text-4xl text-red-700 mt-14"></p>
+    <table id="leaderboard-table" class="h-96 w-5/6 text-2xl text-center mt-7 ml-auto mr-auto table-auto border-2 border-darkblue">
         <tr class="">
             <th class=" w-1/5 p-5">Position</th>
             <th class=" w-1/5 p-5">Team</th>
@@ -22,57 +23,10 @@
 
     function startCheckLeaderboard(){
         leaderboardCheck();
+        itemCheck();
         check = setInterval(leaderboardCheck,10000);
     }
-    function leaderboardCheck() {
-        $.ajax({
-            url: 'leaderboard/loadLeaderboard',
-            method: 'post',
-        }).done(function (response) {
-            if (response == "-1") {
-                $("#leaderboard-table").html('<p class="mt-40 self-center text-4xl text-red-700">Leaderboard is now frozen</p>');
-            } else {
-                $("#leaderboard-table").html('<tr id="table-head">');
-                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Position</th>');
-                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Team</th>');
-                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Points</th>');
-                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Gold</th>');
-                $("#leaderboard-table").append('</div>');
-
-                let players = JSON.parse(response);
-                let sentence = "";
-                for(let i=0; i<players.length; i++){
-                    $("#leaderboard-table").append('<tr id="table-data">');
-
-                    $("#leaderboard-table").append('<td class="p-3 bg-themegreen">'+(i+1)+'</td>');
-
-                    sentence = '<td class="p-3 bg-themegreen">' + players[i].name + '</td>';
-                    $("#leaderboard-table").append(sentence);
-
-                    sentence = '<td class="p-3 bg-themegreen">' + players[i].points + '</td>';
-                    $("#leaderboard-table").append(sentence);
-
-                    sentence = '<td class="p-3 bg-themegreen">' + players[i].gold + '</td>';
-                    $("#leaderboard-table").append(sentence);
-
-                    $("#leaderboard-table").append('</tr>');
-                }
-
-            }
-        });
-
-
-        $.ajax({
-            url: 'useItem/gameState',
-            method: 'post',
-        }).done(function(response){
-            if(response=="1"){
-                document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
-            }
-            else{
-                document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
-            }
-        });
+    function itemCheck(){
         $.ajax({
             url: 'useItem/activeItems',
             method: 'post',
@@ -99,6 +53,61 @@
                 }
             }
         });
+    }
+    function leaderboardCheck() {
+        $.ajax({
+            url: 'leaderboard/loadLeaderboard',
+            method: 'post',
+        }).done(function (response) {
+                $("#leaderboard-table").html('<tr id="table-head">');
+                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Position</th>');
+                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Team</th>');
+                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Points</th>');
+                $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Gold</th>');
+                $("#leaderboard-table").append('</div>');
+
+                let players = JSON.parse(response);
+                let sentence = "";
+                for(let i=0; i<players.length; i++){
+                    $("#leaderboard-table").append('<tr id="table-data">');
+
+                    $("#leaderboard-table").append('<td class="p-3 bg-themegreen">'+(i+1)+'</td>');
+
+                    sentence = '<td class="p-3 bg-themegreen">' + players[i].name + '</td>';
+                    $("#leaderboard-table").append(sentence);
+
+                    sentence = '<td class="p-3 bg-themegreen">' + players[i].points + '</td>';
+                    $("#leaderboard-table").append(sentence);
+
+                    sentence = '<td class="p-3 bg-themegreen">' + players[i].gold + '</td>';
+                    $("#leaderboard-table").append(sentence);
+
+                    $("#leaderboard-table").append('</tr>');
+                }
+
+            });
+        $.ajax({
+            url: 'leaderboard/checkFreezeState',
+            method: 'post',
+        }).done(function (response) {
+            if(response==-1){
+                $("#freeze-banner").html("Leaderboard is now frozen");
+            }
+        });
+
+
+        $.ajax({
+            url: 'useItem/gameState',
+            method: 'post',
+        }).done(function(response){
+            if(response=="1"){
+                document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
+            }
+            else{
+                document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
+            }
+        });
+
     }
 
 </script>

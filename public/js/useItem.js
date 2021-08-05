@@ -7,21 +7,13 @@ window.onload = startChecking();
 var check;
 $("#content").click(closeDetail);
 
-function startChecking() {// gameStateCheck();
-  // check = setInterval(gameStateCheck,5000);
+function startChecking() {
+  activeItemCheck();
+  gameStateCheck();
+  check = setInterval(gameStateCheck, 5000);
 }
 
-function gameStateCheck() {
-  $.ajax({
-    url: 'useItem/gameState',
-    method: 'post'
-  }).done(function (response) {
-    if (response == "1") {
-      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
-    } else {
-      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
-    }
-  });
+function activeItemCheck() {
   $.ajax({
     url: 'useItem/activeItems',
     method: 'post'
@@ -44,6 +36,19 @@ function gameStateCheck() {
           sentence += id + ", ";
         }
       }
+    }
+  });
+}
+
+function gameStateCheck() {
+  $.ajax({
+    url: 'useItem/gameState',
+    method: 'post'
+  }).done(function (response) {
+    if (response == "1") {
+      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
+    } else {
+      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
     }
   });
 }

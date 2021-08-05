@@ -57,3 +57,4 @@ Route::post('useItem/useMissingSubstitute', [UseItemController::class, 'useMissi
 Route::post('useItem/subsMaterial', [UseItemController::class, 'subsMaterial']);
 
 Route::post('leaderboard/loadLeaderboard', [LeaderboardController::class, 'loadLeaderboard']);
+Route::post('leaderboard/checkFreezeState', [LeaderboardController::class, 'checkFreezeState']);

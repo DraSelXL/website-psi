@@ -17,7 +17,7 @@
             <!--Items-->
             <div class="w-full h-1/2 mt-10">
                 <h2>Items (Click to use and view detail)</h2>
-                <div class="flex min-h-0 mt-1 w-10/12 overflow-x-scroll h-2/3 scrollbar-custom">
+                <div class="flex min-h-0 mt-1 w-10/12 overflow-x-scroll h-72 scrollbar-custom">
                     <div class="flex flex-nowrap">
                         @foreach($items as $item)
                             <x-item-inventory :itemsInvent="$itemsInvent" :item="$item"/>
