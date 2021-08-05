@@ -19,6 +19,7 @@ class Materials extends Migration
             $table->string('description');
             $table->integer('price');
             $table->integer('rarity');
+            $table->string('src');
         });
     }
 

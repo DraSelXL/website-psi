@@ -5,13 +5,13 @@
     <h2> Items </h2>
     <div class="flex flex-row overflow-x-auto my-3">
         @foreach($items as $item)
-            <x-item-card :item="$item"></x-item-card>
+            <x-item-card :item="$item" :finish="$misc->finish"></x-item-card>
         @endforeach
     </div>
     <h2> Materials </h2>
     <div class="flex flex-wrap justify-around">
         @foreach($materials as $material)
-            <x-material-card :material="$material"/>
+            <x-material-card :material="$material" :finish="$misc->finish"/>
         @endforeach
     </div>
 

@@ -17,7 +17,7 @@ $(function () {
   $("#inven-btn").on("click", function () {
     $.ajax({
       url: "/inventory",
-      method: "get"
+      method: "post"
     }).done(function (response) {
       $("#content").html(response);
     });
@@ -25,7 +25,7 @@ $(function () {
   $("#leaderboard-btn").on("click", function () {
     $.ajax({
       url: "/leaderboard",
-      method: "get"
+      method: "post"
     }).done(function (response) {
       $("#content").html(response);
     });
@@ -33,7 +33,7 @@ $(function () {
   $("#achievement-btn").on("click", function () {
     $.ajax({
       url: "/achievement",
-      method: "get"
+      method: "post"
     }).done(function (response) {
       $("#content").html(response);
     });
@@ -41,7 +41,7 @@ $(function () {
   $("#history-btn").on("click", function () {
     $.ajax({
       url: "/history",
-      method: "get"
+      method: "post"
     }).done(function (response) {
       $("#content").html(response);
     });
@@ -49,7 +49,7 @@ $(function () {
   $("#stats-btn").on("click", function () {
     $.ajax({
       url: '/stats',
-      method: 'get'
+      method: 'post'
     }).done(function (response) {
       $("#content").html(response);
     });
@@ -57,7 +57,7 @@ $(function () {
   $("#logout-btn").on("click", function () {
     $.ajax({
       url: 'logout',
-      method: 'get'
+      method: 'post'
     }).done(function (response) {
       document.write(response);
     });
@@ -68,7 +68,7 @@ $(function () {
 function loadHome() {
   $.ajax({
     url: "/home",
-    method: "get"
+    method: "post"
   }).done(function (response) {
     $("#content").html(response);
   });
@@ -101,7 +101,7 @@ function toggleNavbar() {
 function loadMaterials() {
   $.ajax({
     url: "/shop",
-    method: "get"
+    method: "post"
   }).done(function (response) {
     $("#content").html(response);
   });

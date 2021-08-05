@@ -21,20 +21,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LoginController::class, 'toHome']);
-Route::get('login', [LoginController::class, 'store']);
-Route::get('logout', [NavbarController::class, 'logout']);
-Route::get('shop', [NavbarController::class, 'showShop'])->name("user.shop");
-Route::get('home', [NavbarController::class, 'showHome'])->name("user.home");
-Route::get('leaderboard', [NavbarController::class, 'showLeaderboard'])->name("user.leaderboard");
-Route::get('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
-Route::get('history', [NavbarController::class, 'showHistory'])->name("user.history");
-Route::get('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
-Route::get('stats', [NavbarController::class, 'showStats'])->name("user.stats");
-Route::get('admin/postGame', [NavbarController::class, 'adminShowPostGameInput'])->name("admin.postGameInput");
-Route::get('admin/leaderboard', [NavbarController::class, 'adminShowLeaderboard'])->name("admin.leaderboard");
-Route::get('admin/teamStats', [NavbarController::class, 'adminShowTeamStats'])->name("admin.teamStats");
-Route::get('admin/teamHistory', [NavbarController::class, 'adminShowTeamHistory'])->name("admin.teamHistory");
-Route::get('admin/misc', [NavbarController::class, 'adminShowMisc'])->name("admin.misc");
+Route::post('login', [LoginController::class, 'store']);
+Route::post('logout', [NavbarController::class, 'logout']);
+Route::post('shop', [NavbarController::class, 'showShop'])->name("user.shop");
+Route::post('home', [NavbarController::class, 'showHome'])->name("user.home");
+Route::post('leaderboard', [NavbarController::class, 'showLeaderboard'])->name("user.leaderboard");
+Route::post('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
+Route::post('history', [NavbarController::class, 'showHistory'])->name("user.history");
+Route::post('achievement', [NavbarController::class, 'showAchievement'])->name("user.achievement");
+Route::post('stats', [NavbarController::class, 'showStats'])->name("user.stats");
+Route::post('admin/postGame', [NavbarController::class, 'adminShowPostGameInput'])->name("admin.postGameInput");
+Route::post('admin/leaderboard', [NavbarController::class, 'adminShowLeaderboard'])->name("admin.leaderboard");
+Route::post('admin/teamStats', [NavbarController::class, 'adminShowTeamStats'])->name("admin.teamStats");
+Route::post('admin/teamHistory', [NavbarController::class, 'adminShowTeamHistory'])->name("admin.teamHistory");
+Route::post('admin/misc', [NavbarController::class, 'adminShowMisc'])->name("admin.misc");
 
 Route::post('updateGoldAndPoints', [NavbarController::class, 'updateGAP']);
 

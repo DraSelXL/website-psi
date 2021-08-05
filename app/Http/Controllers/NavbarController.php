@@ -10,6 +10,7 @@ use App\Models\Item;
 use App\Models\Material;
 use App\Models\MaterialsInventory;
 use App\Models\MiniGame;
+use App\Models\Miscellaneous;
 use App\Models\Stat;
 use App\Models\User;
 use App\View\Components\ItemInventory;
@@ -28,7 +29,8 @@ class NavbarController extends Controller
     public function showShop(){
         return view('shop',[
             'materials' => Material::all(),
-            'items' => Item::all()
+            'items' => Item::all(),
+            'misc' => Miscellaneous::all()[0]
         ]);
     }
 
@@ -54,7 +56,6 @@ class NavbarController extends Controller
     }
 
     public function showAchievement(){
-
         return view('achievement',[
             'materials' => Material::all(),
             'achievements' => Achievement::all(),

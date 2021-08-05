@@ -1,4 +1,4 @@
-@props(['item'])
+@props(['item', 'finish'])
 
 <div class="p-1 text-white w-1/6 max-h-60 xl:max-h-72 shadow">
     <div class="flex flex-col bg-darkblue p-3 rounded-xl h-full">
@@ -18,13 +18,15 @@
         <div id="itemprice-{{ $item->id }}" class="xl:text-lg my-1 text-center">
             {{ $item->price }} G
         </div>
-
-        <button
-            id="buyitem-{{ $item->id }}"
-            class="rounded-lg text-white bg-themegreen w-full font-bold text-lg
+        @if($finish == 0)
+            <button
+                id="buyitem-{{ $item->id }}"
+                class="rounded-lg text-white bg-themegreen w-full font-bold text-lg
             mt-2 py-1 hover:bg-green-400 transform hover:scale-110 duration-300"
-            onclick="buyItemFromShopCard(this)">
-            BUY
-        </button>
+                onclick="buyItemFromShopCard(this)">
+                BUY
+            </button>
+        @endif
+
     </div>
 </div>

@@ -13,7 +13,7 @@ $(()=>{
     $("#leaderboard-btn").on("click", function(){
         $.ajax({
             url:'admin/leaderboard',
-            method:'get'
+            method:'post'
         }).done(function(response){
             $("#content").html(response);
         })
@@ -21,7 +21,7 @@ $(()=>{
     $("#team-stats-btn").on("click", function(){
         $.ajax({
             url:'admin/teamStats',
-            method:'get'
+            method:'post'
         }).done(function(response){
             $("#content").html(response);
         })
@@ -29,7 +29,7 @@ $(()=>{
     $("#team-history-btn").on("click", function(){
         $.ajax({
             url:'admin/teamHistory',
-            method:'get'
+            method:'post'
         }).done(function(response){
             $("#content").html(response);
         })
@@ -37,7 +37,7 @@ $(()=>{
     $("#misc-btn").on("click", function(){
         $.ajax({
             url:'admin/misc',
-            method:'get'
+            method:'post'
         }).done(function(response){
             $("#content").html(response);
         })
@@ -45,7 +45,7 @@ $(()=>{
     $("#logout-btn").on("click", function(){
         $.ajax({
             url:'logout',
-            method:'get'
+            method:'post'
         }).done(function(response){
             document.write(response);
         })
@@ -56,7 +56,7 @@ $(()=>{
 function loadPostGameInput(){
     $.ajax({
         url:'admin/postGame',
-        method:'get'
+        method:'post'
     }).done(function(response){
         $("#content").html(response);
     })

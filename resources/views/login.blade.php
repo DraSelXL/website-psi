@@ -14,7 +14,7 @@
 </div>
 <div class="bg-lightblue w-1/3 xl:w-1/4 p-4 md:p-8 xl:p-12 rounded-lg shadow-2xl">
     <section class="mt-10">
-        <form class="flex flex-col" method="get" action="login">
+        <form class="flex flex-col" method="post" action="login">
             @csrf
             <div class="mb-6 pt-3 rounded bg-gray-200">
                 <label class="block text-gray-700 text-sm font-bold mb-2 ml-3">Username</label>

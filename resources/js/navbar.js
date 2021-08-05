@@ -13,7 +13,7 @@ $(()=>{
     $("#inven-btn").on("click",function(){
         $.ajax({
             url: "/inventory",
-            method: "get"
+            method: "post"
         }).done(function(response){
             $("#content").html(response);
         })
@@ -21,7 +21,7 @@ $(()=>{
     $("#leaderboard-btn").on("click",function(){
         $.ajax({
             url: "/leaderboard",
-            method: "get"
+            method: "post"
         }).done(function(response){
             $("#content").html(response);
         })
@@ -29,7 +29,7 @@ $(()=>{
     $("#achievement-btn").on("click",function(){
         $.ajax({
             url: "/achievement",
-            method: "get"
+            method: "post"
         }).done(function(response){
             $("#content").html(response);
         })
@@ -37,7 +37,7 @@ $(()=>{
     $("#history-btn").on("click",function(){
         $.ajax({
             url: "/history",
-            method: "get"
+            method: "post"
         }).done(function(response){
             $("#content").html(response);
         })
@@ -45,7 +45,7 @@ $(()=>{
     $("#stats-btn").on("click",function(){
         $.ajax({
             url: '/stats',
-            method: 'get',
+            method: 'post',
         }).done(function(response){
             $("#content").html(response);
         })
@@ -53,7 +53,7 @@ $(()=>{
     $("#logout-btn").on("click", function(){
         $.ajax({
             url:'logout',
-            method:'get'
+            method:'post'
         }).done(function(response){
             document.write(response);
         })
@@ -63,7 +63,7 @@ $(()=>{
 function loadHome(){
     $.ajax({
         url: "/home",
-        method: "get"
+        method: "post"
     }).done(function(response){
         $("#content").html(response);
     });
@@ -95,7 +95,7 @@ function toggleNavbar(){
 function loadMaterials(){
     $.ajax({
         url: "/shop",
-        method: "get"
+        method: "post"
     }).done(function(response){
         $("#content").html(response);
     })

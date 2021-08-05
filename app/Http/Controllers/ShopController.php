@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Material;
+use App\Models\Miscellaneous;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,14 +13,16 @@ class ShopController extends Controller
     function showMaterialDetailModal(Request $request){
         $material = Material::find($request->id);
         return view('material-detail-modal',[
-            'material' => $material
+            'material' => $material,
+            'finish' => Miscellaneous::all()[0]->finish
         ]);
     }
 
     function showItemDetailModal(Request $request){
         $item = Item::find($request->id);
         return view('item-detail-modal',[
-            'item' => $item
+            'item' => $item,
+            'finish' => Miscellaneous::all()[0]->finish
         ]);
     }
 

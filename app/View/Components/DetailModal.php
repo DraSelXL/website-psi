@@ -17,8 +17,9 @@ class DetailModal extends Component
     public $description;
     public $purchasableID;
     public $buyFunction;
+    public $finish;
 
-    public function __construct($type, $price, $name, $description, $purchasableID, $buyFunction)
+    public function __construct($type, $price, $name, $description, $purchasableID, $buyFunction, $finish)
     {
         $this->type = $type;
         $this->price = $price;
@@ -26,6 +27,7 @@ class DetailModal extends Component
         $this->description = $description;
         $this->purchasableID = $purchasableID;
         $this->buyFunction = $buyFunction;
+        $this->finish = $finish;
     }
 
     /**

@@ -32,12 +32,14 @@
             </div>
         </div>
         <div class="w-full flex items-center justify-center h-1/6 flex-row">
+            @if($finish == 0)
             <x-input-number></x-input-number>
-            <div>
-                <button id="buy-{{ $type }}-{{ $purchasableID }}" onclick="{{ $buyFunction }}" class="buyBtn font-bold text-xl bg-themegreen w-40 h-7 rounded transform hover:scale-110 transition duration-300">
-                    BUY
-                </button>
-            </div>
+                <div>
+                    <button id="buy-{{ $type }}-{{ $purchasableID }}" onclick="{{ $buyFunction }}" class="buyBtn font-bold text-xl bg-themegreen w-40 h-7 rounded transform hover:scale-110 transition duration-300">
+                        BUY
+                    </button>
+                </div>
+            @endif
         </div>
     </div>
 </div>
