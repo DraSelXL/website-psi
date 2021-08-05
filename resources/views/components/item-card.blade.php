@@ -3,7 +3,7 @@
 <div class="p-1 text-white w-1/6 max-h-60 xl:max-h-72 shadow">
     <div class="flex flex-col bg-darkblue p-3 rounded-xl h-full">
         <div class="relative">
-            <img id="item-image-{{ $item->id }}" src="https://i.ibb.co/232pCcm/makima-cropped.png" class="overflow-hidden rounded-md h-36 w-full flex-1">
+            <img id="item-image-{{ $item->id }}" src="{{ $item->src }}" class="overflow-hidden rounded-md h-36 w-full flex-1">
             <div id = "item-{{ $item->id }}" class="item-detail absolute opacity-0 top-0 w-full h-full flex items-center justify-center hover:opacity-100 transition duration-300">
                 <button id="item-detail-{{ $item->id }}" class="item-detail-btn rounded-full border-4 border-themegreen font-bold w-20 hover:underline transform hover:scale-110 transition duration-300">
                     Detail

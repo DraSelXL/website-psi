@@ -13,7 +13,7 @@
 
 <div class="{{ $ringColor }}flex flex-row h-20 p-2 mb-5 font-bold text-lg rounded items-center justify-between">
 
-    <img src="{{ asset('images/image0.jpg') }}" class="w-16 h-full rounded-md" alt="">
+    <img src="{{ $material->src }}" class="w-16 h-full rounded-md" alt="">
 
     <div class="flex-1 px-5">
         {{ $material->name }}

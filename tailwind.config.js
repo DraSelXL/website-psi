@@ -23,7 +23,10 @@ module.exports = {
                     '800': '#000000',
                     '900': '#000000'
                 },
-                themeyellow: "#F7E9A0"
+                themeyellow: "#F7E9A0",
+                gradyellow: "#A57E2F",
+                gradyellowto: "#FFE771",
+                gradyellowmid: "#D89D3D"
             }
         },
     },

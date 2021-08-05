@@ -18,7 +18,7 @@
     </nav>
     <div class="flex flex-row mt-14 h-full w-full">
         <div class="w-1/2 h-full rounded-xl bg-darkblue p-10">
-            <img src="https://i.ibb.co/232pCcm/makima-cropped.png" class="h-full w-full">
+            <img src="https://i.ibb.co/Xyr1NYx/makima-cropped.png" class="h-full w-full">
         </div>
         <div class="grid grid-cols-2 w-1/2 h-full ml-7 mt-7">
             @for ($i = 0; $i < 4; $i++)

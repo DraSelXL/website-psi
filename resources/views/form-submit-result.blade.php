@@ -22,7 +22,7 @@
     $(".ok").click(function(){
         $.ajax({
             url:'admin/postGame',
-            method:'get'
+            method:'post'
         }).done(function(response){
             $("#content").html(response);
         })

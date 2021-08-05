@@ -12,22 +12,16 @@ class DetailModal extends Component
      * @return void
      */
     public $type;
-    public $price;
-    public $name;
-    public $description;
-    public $purchasableID;
+    public $object;
     public $buyFunction;
     public $finish;
 
-    public function __construct($type, $price, $name, $description, $purchasableID, $buyFunction, $finish)
+    public function __construct($type, $object, $buyFunction, $finish)
     {
         $this->type = $type;
-        $this->price = $price;
-        $this->name = $name;
-        $this->description = $description;
-        $this->purchasableID = $purchasableID;
         $this->buyFunction = $buyFunction;
         $this->finish = $finish;
+        $this->object = $object;
     }
 
     /**

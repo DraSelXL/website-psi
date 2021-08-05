@@ -19,6 +19,7 @@ class ItemInventory extends Component
     public $itemQuantity;
     public $activeStatus;
     public $user;
+
     public function __construct($item, $itemsInvent)
     {
         $user  = Auth()->user();

@@ -4,8 +4,8 @@ var check;
 $("#content").click(closeDetail);
 
 function startChecking(){
-    gameStateCheck();
-    check = setInterval(gameStateCheck,5000);
+    // gameStateCheck();
+    // check = setInterval(gameStateCheck,5000);
 }
 function gameStateCheck(){
     $.ajax({

@@ -4,8 +4,8 @@
 
 @endphp
 
-<x-detail-modal type="material" price="{{ $material->price }}" name="{{ $material->name }}"
-                description="{{ $material->description }}" purchasableID="{{ $material->id }}"
+<x-detail-modal type="material"
+                :object="$material"
                 buyFunction="buyMaterialFromModal()" :finish="$finish">
     <x-slot name="additionalContent">
         <div class="mt-5 font-bold flex flex-row">

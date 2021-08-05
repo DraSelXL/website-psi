@@ -1,5 +1,5 @@
-<x-detail-modal type="item" price="{{ $item->price }}" name="{{ $item->name }}"
-                description="{{ $item->description }}" purchasableID="{{ $item->id }}"
+<x-detail-modal type="item"
+                :object="$item"
                 buyFunction="buyItemFromModal()" :finish="$finish">
     <x-slot name="additionalContent">
     </x-slot>

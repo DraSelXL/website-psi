@@ -7,9 +7,8 @@ window.onload = startChecking();
 var check;
 $("#content").click(closeDetail);
 
-function startChecking() {
-  gameStateCheck();
-  check = setInterval(gameStateCheck, 5000);
+function startChecking() {// gameStateCheck();
+  // check = setInterval(gameStateCheck,5000);
 }
 
 function gameStateCheck() {

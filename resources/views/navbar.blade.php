@@ -51,7 +51,7 @@
                     achievement-btn
                 </x-slot>
                 <x-slot name="navname">
-                    Get Achievement
+                    Claim Achievement
                 </x-slot>
             </x-sidebar-item>
             <x-sidebar-item>

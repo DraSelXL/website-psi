@@ -2,7 +2,7 @@
 
     <div class="rounded-full h-48 w-48 aMaterial mt-5 mr-1 itemButton"
          id="{{$item->id}}" name="{{$item->name}}" desc="{{$item->description}}" effect="{{$item->effect}}" qty="{{$itemQuantity}}">
-        <img src="{{ asset('images/roxy.jpg') }}" alt="" class="border-4 mtl-img object-fill rounded-full h-48 border-blue-900"
+        <img src="{{ $item->src }}" alt="" class="border-4 mtl-img object-fill rounded-full h-48 border-blue-900"
              id="image_{{$item->id}}">
         <div class="font-bold bottom-0 w-full hidden mtl-detail" id="det_{{$item->id}}">
             <div class="text-center w-full">

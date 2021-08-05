@@ -3,15 +3,15 @@
         <div class="flex flex-row h-5/6">
             <div class="flex flex-col w-1/2">
                 <div class="my-6">
-                    <img src="{{ asset('images/roxy.jpg') }}" alt="">
+                    <img src="{{ $object->src }}" alt="">
                 </div>
                 <div id="{{ $type }}-price-modal" class="font-bold text-3xl text-center">
-                    {{ $price }} G
+                    {{ $object->price }} G
                 </div>
             </div>
             <div class="flex flex-col mt-1 mx-4 w-8/12">
                 <div id="{{ $type }}-name-modal" class="text-2xl font-bold text-center">
-                    {{ $name }}
+                    {{ $object->name }}
                 </div>
                 <div class="my-5 ">
                 <span class="font-bold text-lg">
@@ -19,7 +19,7 @@
                 </span>
                     <br>
                     <p class="mt-3 text-sm">
-                        {{ $description }}
+                        {{ $object->description }}
                     </p>
                 </div>
                 {{ $additionalContent }}
@@ -35,7 +35,7 @@
             @if($finish == 0)
             <x-input-number></x-input-number>
                 <div>
-                    <button id="buy-{{ $type }}-{{ $purchasableID }}" onclick="{{ $buyFunction }}" class="buyBtn font-bold text-xl bg-themegreen w-40 h-7 rounded transform hover:scale-110 transition duration-300">
+                    <button id="buy-{{ $type }}-{{ $object->id }}" onclick="{{ $buyFunction }}" class="buyBtn font-bold text-xl bg-themegreen w-40 h-7 rounded transform hover:scale-110 transition duration-300">
                         BUY
                     </button>
                 </div>
