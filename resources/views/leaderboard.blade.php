@@ -2,7 +2,8 @@
     <x-navbar name="Test" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
               pageTitle="Leaderboard"/>
 
-    <table id="leaderboard-table" class="h-96 w-5/6 text-2xl text-center mt-14 ml-auto mr-auto table-auto border-2 border-darkblue">
+    <p id="freeze-banner" class="mr-auto mx-auto text-4xl text-red-700 mt-14"></p>
+    <table id="leaderboard-table" class="h-96 w-5/6 text-2xl text-center mt-7 ml-auto mr-auto table-auto border-2 border-darkblue">
         <tr class="">
             <th class=" w-1/5 p-5">Position</th>
             <th class=" w-1/5 p-5">Team</th>
@@ -29,9 +30,6 @@
             url: 'leaderboard/loadLeaderboard',
             method: 'post',
         }).done(function (response) {
-            if (response == "-1") {
-                $("#leaderboard-table").html('<p class="mt-40 self-center text-4xl text-red-700">Leaderboard is now frozen</p>');
-            } else {
                 $("#leaderboard-table").html('<tr id="table-head">');
                 $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Position</th>');
                 $("#leaderboard-table").append('<th class="pt-5 w-1/5 p-5 bg-darkblue text-white">Team</th>');
@@ -58,6 +56,13 @@
                     $("#leaderboard-table").append('</tr>');
                 }
 
+            });
+        $.ajax({
+            url: 'leaderboard/checkFreezeState',
+            method: 'post',
+        }).done(function (response) {
+            if(response==-1){
+                $("#freeze-banner").html("Leaderboard is now frozen");
             }
         });
 
