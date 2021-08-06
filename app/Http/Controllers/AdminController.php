@@ -420,4 +420,64 @@ class AdminController extends Controller
                 ]);
         }
     }
+
+    function giveToUser(Request $req){
+        if($req->materialID != 'none')
+            $this->giveMaterialToUser($req->teamID, $req->materialID, 1);
+
+        if($req->itemID != 'none')
+            $this->giveItemToUser($req->teamID, $req->itemID, 1);
+
+        if($req->gold > 0)
+            $this->giveGoldToUser($req->teamID, $req->gold);
+
+        return 1;
+    }
+
+    function giveMaterialToUser($teamID, $materialID, $qty){
+        $mtl = Material::find($materialID);
+        DB::table('materials_inventories')
+            ->where('user_id', $teamID)
+            ->where('material_id', $materialID)
+            ->increment('material_qty', $qty);
+        DB::table('history_logs')->insert([
+            'user_id' => $teamID,
+            'type' => 1,
+            'message' => 'You have received ' . $mtl->name . '(x' . $qty. ') [SYSTEM].',
+            'item_ID' => -1,
+            'date_in' => date("Y-m-d H:i:s")
+        ]);
+    }
+
+    function giveItemToUser($teamID, $itemID, $qty){
+        $item = Item::find($itemID);
+        DB::table('items_inventories')
+            ->where('user_id', $teamID)
+            ->where('item_id', $itemID)
+            ->increment('item_qty', $qty);
+        DB::table('history_logs')->insert([
+            'user_id' => $teamID,
+            'type' => 1,
+            'message' => 'You have received ' . $item->name . '(x' . $qty. ') [SYSTEM].',
+            'item_ID' => -1,
+            'date_in' => date("Y-m-d H:i:s")
+        ]);
+    }
+
+    function giveGoldToUser($teamID, $qty){
+        DB::table('users')
+            ->where('id', $teamID)
+            ->increment('gold', $qty);
+        DB::table('history_logs')->insert([
+            'user_id' => $teamID,
+            'type' => 1,
+            'message' => 'You have received ' . $qty . ' G [SYSTEM].',
+            'item_ID' => -1,
+            'date_in' => date("Y-m-d H:i:s")
+        ]);
+        DB::table('stats')
+            ->where('user_id', $teamID)
+            ->where('stat_item', 'Golds collected')
+            ->increment('qty', $qty);
+    }
 }

@@ -180,6 +180,13 @@ class NavbarController extends Controller
         ]);
     }
 
+    public function adminShowManualInput(){
+        return view('admin-manual-insert',[
+            'materials' => Material::all(),
+            'items' => Item::all()
+        ]);
+    }
+
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();

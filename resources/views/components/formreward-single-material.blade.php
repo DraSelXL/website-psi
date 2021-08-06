@@ -5,7 +5,7 @@
 @endphp
 <div class="rounded-full h-32 w-32 mx-4 relative aMaterial overflow-hidden"
      id="{{ $material['position'] }}-{{ $material['material']->id }}">
-    <img src="{{ asset('images/roxy.jpg') }}" alt="" class="mtl-img object-fill w-full h-32 rounded-full
+    <img src="{{ $material['material']->src }}" alt="" class="mtl-img object-fill w-full h-32 rounded-full
     border-4 {{ $bordercolor[$material['material']->rarity-1] }}"
          id="img-{{ $material['position'] }}-{{ $material['material']->id }}">
     <div class="font-bold absolute bottom-0 w-full hidden mtl-detail"

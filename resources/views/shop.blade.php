@@ -1,5 +1,5 @@
 <div class="bg-lightblue pt-5 pb-10 px-20 w-full min-h-screen">
-    <x-navbar name="Test" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
+    <x-navbar name="{{ auth()->user()->name }}" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
               pageTitle="Marketplace"/>
 
     <h2> Items </h2>

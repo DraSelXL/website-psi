@@ -1,24 +1,26 @@
 @php
     $ringColor = '';
     if($material->rarity == 1)
-        $ringColor .= 'bg-green-500 ';
+        $ringColor .= 'from-green-500 to-darkblue';
     elseif ($material->rarity == 2)
-        $ringColor .= 'bg-blue-500 ';
+        $ringColor .= 'from-blue-500 to-darkblue';
     elseif ($material->rarity == 3)
-        $ringColor .= 'bg-purple-600 ';
+        $ringColor .= 'from-purple-600 to-darkblue';
     else
-        $ringColor .= 'bg-yellow-400 ';
+        $ringColor .= 'from-gradyellow via-gradyellowmid to-gradyellowto ';
+
 
 @endphp
 
-<div class="{{ $ringColor }}flex flex-row h-20 p-2 mb-5 font-bold text-lg rounded items-center justify-between">
+<div class="flex flex-row h-20 p-2 mb-5 font-bold text-lg rounded items-center justify-between
+ bg-gradient-to-br {{ $ringColor }} ">
 
     <img src="{{ $material->src }}" class="w-16 h-full rounded-md" alt="">
 
-    <div class="flex-1 px-5">
+    <div class="flex-1 px-5 text-white">
         {{ $material->name }}
     </div>
-    <div>
+    <div class="text-white">
         x
         @foreach($materialQty($material) as $qty)
             {{ $qty->material_qty }}

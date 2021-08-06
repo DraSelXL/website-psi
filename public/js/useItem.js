@@ -26,8 +26,7 @@ function activeItemCheck() {
       $("#active-items").html('Active Items : ');
 
       for (var i = 0; i < activeItems.length; i++) {
-        var id = activeItems[i].item_id; //console.log(id);
-
+        var id = activeItems[i].item_id;
         $("#active-items").append('<div className="ml-3 h-4 w-auto flex-col"><img class="ml-3 mtl-image w-4 h-4 rounded-md" src="https://i.ibb.co/nC1qqtc/i01-Chainmail.png" alt=""></div>');
 
         if (i == activeItems.length - 1) {

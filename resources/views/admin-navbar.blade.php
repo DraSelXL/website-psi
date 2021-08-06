@@ -54,6 +54,14 @@
                     Miscellaneous
                 </x-slot>
             </x-sidebar-item>
+            <x-sidebar-item>
+                <x-slot name="btnname">
+                    manual-input
+                </x-slot>
+                <x-slot name="navname">
+                    Manual Input
+                </x-slot>
+            </x-sidebar-item>
         </nav>
         <div class="absolute bottom-0 left-0 w-full h-10  ">
             <button id="logout-btn" class="bg-themered text-white font-bold w-full h-10 text-center hidden">

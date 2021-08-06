@@ -35,6 +35,7 @@ Route::post('admin/leaderboard', [NavbarController::class, 'adminShowLeaderboard
 Route::post('admin/teamStats', [NavbarController::class, 'adminShowTeamStats'])->name("admin.teamStats");
 Route::post('admin/teamHistory', [NavbarController::class, 'adminShowTeamHistory'])->name("admin.teamHistory");
 Route::post('admin/misc', [NavbarController::class, 'adminShowMisc'])->name("admin.misc");
+Route::post('admin/manualInput', [NavbarController::class, 'adminShowManualInput'])->name("admin.input");
 
 Route::post('updateGoldAndPoints', [NavbarController::class, 'updateGAP']);
 
@@ -48,6 +49,7 @@ Route::post('achievement-crafting/search', [AchievementController::class, 'searc
 Route::post('admin/postGameInputForm', [AdminController::class, 'showPostGameForm']);
 Route::post('admin/saveMisc', [AdminController::class, 'updateMisc']);
 Route::post('admin/finishGame', [AdminController::class, 'finishGame']);
+Route::post('admin/manualInsert', [AdminController::class, 'giveToUser']);
 Route::post('submitPostGame', [AdminController::class, 'submitPostGame']);
 
 Route::post('useItem/use', [UseItemController::class, 'useItem']);

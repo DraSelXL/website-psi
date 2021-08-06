@@ -90,6 +90,13 @@ function toggleNavbar(){
             $("#navbar-space").toggleClass('z-50');
         },300);
     }else $("#navbar-space").toggleClass('z-50');
+
+    let modal = $("#modal");
+    if(modal.children().length > 0){
+        modal.html("");
+        $("#content").toggleClass("opacity-50");
+        modal.toggleClass("hidden");
+    }
 }
 
 function loadMaterials(){

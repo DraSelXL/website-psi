@@ -17,6 +17,7 @@ class Achievements extends Migration
             $table->id();
             $table->string('name');
             $table->integer('points');
+            $table->string('src');
         });
     }
 

@@ -16,7 +16,7 @@
             {{$gold}}G, {{$point}}pts
         </div>
         <div class="center font-semibold">
-            Hi, {{$name}}
+            Hi, Team {{$name}}
         </div>
     </div>
 </nav>

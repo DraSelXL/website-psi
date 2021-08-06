@@ -1,5 +1,5 @@
 <div class="bg-lightblue px-20 pt-5 pb-10 h-screen w-full">
-    <x-navbar name="Test" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
+    <x-navbar name="{{ auth()->user()->name }}" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
               pageTitle="Stats"/>
 
     <div class="flex justify-center flex-col mt-10">

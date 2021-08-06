@@ -42,6 +42,14 @@ $(()=>{
             $("#content").html(response);
         })
     });
+    $("#manual-input").on("click", function(){
+        $.ajax({
+            url:'admin/manualInput',
+            method:'post'
+        }).done(function(response){
+            $("#content").html(response);
+        })
+    });
     $("#logout-btn").on("click", function(){
         $.ajax({
             url:'logout',
