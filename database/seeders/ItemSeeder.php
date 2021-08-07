@@ -63,7 +63,7 @@ class ItemSeeder extends Seeder
             'price'=> 500,
             'description' => 'Instant: You can use this item as a substitute for any 1 material which is required to craft an achievement (below 2000 points), but you also must have the other required materials needed to craft the achievement.',
             'effect' => '+1 selected material',
-            'src' => 'https://i.ibb.co/ngX8Cnd/tippy.jpg'
+            'src' => 'https://i.ibb.co/1dsWkXz/Missing-Link.png'
         ];
 
         DB::table('items')->insert($records);
