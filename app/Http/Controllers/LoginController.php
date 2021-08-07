@@ -12,11 +12,11 @@ class LoginController extends Controller
     public function toHome(){
         if(Auth::check()){
             if(auth()->user()->status == 2)
-                return view('user-view');
+                return redirect()->route('dashboard');
             elseif (auth()->user()->status == 1)
-                return view('admin-view');
+                return redirect()->route('demonlord');
         }else{
-            return view('login');
+            return redirect()->route('login');
         }
     }
 
@@ -28,14 +28,33 @@ class LoginController extends Controller
         if (auth()->attempt($attributes)) {
             session()->regenerate();
             if(auth()->user()->status == 2)
-                return view('user-view')->with("Wzzup pal! Welcome back!");
+                return redirect()->route('dashboard');
             elseif(auth()->user()->status == 1)
-                return view('admin-view');
+                return redirect()->route('demonlord');
         }
 
         throw ValidationException::withMessages([
             'username' => 'Your provided credentials could not be verified.'
         ]);
 
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
+    }
+
+    public function showUser(){
+        return view('user-view');
+    }
+
+    public function showAdmin(){
+        return view('admin-view');
+    }
+
+    public function showLogin(){
+        return view('login');
     }
 }

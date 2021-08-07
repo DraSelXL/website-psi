@@ -1,6 +1,6 @@
 <div class="bg-themegreen relative font-bold text-xl rounded-lg my-3 h-1/5 p-3 flex flex-row text-black">
     <div>
-        <img src="https://i.ibb.co/x751J0J/17.png" alt="" class="h-16 w-20">
+        <img src="{{ $achievement->src }}" alt="" class="h-16 w-20">
     </div>
     <div class="mx-3 w-full">
         <div class="relative">
@@ -20,3 +20,5 @@
         </div>
     </div>
 </div>
+
+

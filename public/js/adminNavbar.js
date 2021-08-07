@@ -53,14 +53,6 @@ $(function () {
       $("#content").html(response);
     });
   });
-  $("#logout-btn").on("click", function () {
-    $.ajax({
-      url: 'logout',
-      method: 'post'
-    }).done(function (response) {
-      document.write(response);
-    });
-  });
   loadPostGameInput();
 });
 

@@ -54,16 +54,22 @@ $(function () {
       $("#content").html(response);
     });
   });
-  $("#logout-btn").on("click", function () {
-    $.ajax({
-      url: 'logout',
-      method: 'post'
-    }).done(function (response) {
-      document.write(response);
-    });
-  });
   loadHome();
+  check = setInterval(gameStateCheck, 5000);
 });
+
+function gameStateCheck() {
+  $.ajax({
+    url: 'useItem/gameState',
+    method: 'post'
+  }).done(function (response) {
+    if (response == "1") {
+      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
+    } else {
+      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
+    }
+  });
+}
 
 function loadHome() {
   $.ajax({

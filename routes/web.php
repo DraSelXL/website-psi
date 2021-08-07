@@ -20,9 +20,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginController::class, 'toHome']);
+Route::get('/', [LoginController::class, 'toHome'])->name('/');
+Route::get('/dashboard', [LoginController::class, 'showUser'])
+    ->middleware('auth')
+    ->middleware('crosscheck')
+    ->name('dashboard');
+Route::get('/demonlord', [LoginController::class, 'showAdmin'])
+    ->middleware('auth')
+    ->middleware('crosscheck')
+    ->name('demonlord');
+Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
-Route::post('logout', [NavbarController::class, 'logout']);
+Route::get('logout', [LoginController::class, 'logout']);
 Route::post('shop', [NavbarController::class, 'showShop'])->name("user.shop");
 Route::post('home', [NavbarController::class, 'showHome'])->name("user.home");
 Route::post('leaderboard', [NavbarController::class, 'showLeaderboard'])->name("user.leaderboard");

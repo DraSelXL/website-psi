@@ -1,7 +1,7 @@
-<div class="z-50 fixed w-full h-full bg-darkblue p-5 text-white rounded overflow-y-auto">
+<div class="z-50 w-full h-full bg-darkblue p-5 text-white rounded overflow-y-auto">
 
     <div class="text-3xl absolute right-5 top-4">
-        <button class="text-themeyellow transform hover:scale-125 transition duration-300" onclick="closeDetail()">
+        <button class="close-btn text-themeyellow transform hover:scale-125 transition duration-300">
             <i class="far fa-times-circle"></i>
         </button>
     </div>

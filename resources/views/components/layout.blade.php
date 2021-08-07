@@ -21,7 +21,7 @@
 
     {{--    <link href="../../../node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">--}}
 
-    <title>Document</title>
+    <title>PSI 2021</title>
 </head>
 <body class="bg-lightblue scrollbar-custom">
 {{ $slot }}

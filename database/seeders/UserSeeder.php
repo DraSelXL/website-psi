@@ -57,9 +57,9 @@ class UserSeeder extends Seeder
         ];
 
         $records[] = [
-            'username'=>'admin',
-            'name'=>'Mortus Ramen',
-            'password'=>Hash::make('admin'),
+            'username'=>'mortusramen',
+            'name'=>'Operator',
+            'password'=>Hash::make('kepitingdipotongjadikepotong'),
             'gold'=>'69420',
             'points'=>'69420',
             'actual_points'=>'69420',

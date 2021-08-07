@@ -2,11 +2,10 @@ window.onload=startChecking();
 var check;
 
 $("#content").click(closeDetail);
+$(".close-btn").on("click", closeDetail);
 
 function startChecking(){
     activeItemCheck();
-    gameStateCheck();
-    check = setInterval(gameStateCheck,5000);
 }
 function activeItemCheck(){
     $.ajax({
@@ -26,21 +25,6 @@ function activeItemCheck(){
         }
     });
 }
-function gameStateCheck(){
-    $.ajax({
-        url: 'useItem/gameState',
-        method: 'post',
-    }).done(function(response){
-        if(response=="1"){
-            document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
-        }
-        else{
-            document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
-        }
-    });
-
-}
-
 
 $(".itemButton").on("click",function(e){
     e.stopImmediatePropagation();
@@ -158,9 +142,9 @@ $(".itemButton").on("click",function(e){
                                 url: 'useItem/useMissingSubstitute',
                                 method: 'post'
                             }).done(function(response){
-                                console.log('mashok')
                                 $("#modal").append(response);
                                 $("#content").toggleClass("opacity-50");
+                                $("#modal").toggleClass("hidden");
                             })
                         }
                         else{
@@ -232,6 +216,7 @@ function closeDetail(){
     if(modal.children().length > 0){
         modal.html("");
         content.toggleClass("opacity-50");
+        modal.toggleClass("hidden");
     }
 }
 

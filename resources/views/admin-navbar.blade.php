@@ -64,9 +64,11 @@
             </x-sidebar-item>
         </nav>
         <div class="absolute bottom-0 left-0 w-full h-10  ">
-            <button id="logout-btn" class="bg-themered text-white font-bold w-full h-10 text-center hidden">
-                <i class="fas fa-sign-out-alt"></i> Log Out
-            </button>
+            <form action="logout" method="get">
+                <button type="submit" id="logout-btn" class="bg-themered text-white font-bold w-full h-10 text-center hidden">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
+            </form>
         </div>
     </div>
 </div>
