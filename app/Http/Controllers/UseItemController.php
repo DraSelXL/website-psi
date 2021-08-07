@@ -17,11 +17,22 @@ class UseItemController extends Controller
             ->where('user_id',$user->id)
             ->where('active_status',1)
             ->get();
+        $items = DB::table('items')
+                        ->get();
         if($activeItems->isEmpty()){
             return -1;
         }
         else{
-            echo json_encode($activeItems);
+            $itemsSrc=[];
+            foreach($activeItems as $activeItem){
+                foreach($items as $item){
+                    if($item->id == $activeItem->item_id){
+                        $itemsSrc[]=$item;
+                    }
+                }
+            }
+
+            echo json_encode($itemsSrc);
         }
     }
     function gameStateCheck(){
