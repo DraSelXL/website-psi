@@ -24,8 +24,7 @@ function activeItemCheck() {
       $("#active-items").html('Active Items : ');
 
       for (var i = 0; i < activeItems.length; i++) {
-        //$("#active-items").append('<div className="ml-3 h-4 w-auto flex-col"><img class="ml-3 mtl-image w-4 h-4 rounded-md" src="https://i.ibb.co/nC1qqtc/i01-Chainmail.png" alt=""></div>');
-        console.log(activeItems[i].id);
+        $("#active-items").append('<div className="ml-3 h-4 w-auto flex-col"><img class="ml-3 mtl-image w-8 h-8 rounded-md" src="' + activeItems[i].src + '" alt=""></div>');
       }
     }
   });

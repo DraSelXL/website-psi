@@ -18,7 +18,7 @@
     </nav>
     <div class="flex flex-row mt-14 h-full w-full">
         <div class="w-1/2 h-full rounded-xl bg-darkblue p-10">
-            <img src="https://i.ibb.co/Xyr1NYx/makima-cropped.png" class="h-full w-full">
+            <img src="{{asset('images/PSI Logo Transparent.png')}}" class="h-full w-full">
         </div>
         <div class="grid grid-cols-3 w-1/2 h-full ml-7">
             <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
@@ -43,7 +43,7 @@
                     <div class="text-2xl mt-3">Item List & Guide</div></center>
             </div>
             <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
-                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                 onclick="window.open('https://docs.google.com/presentation/d/1_NavHXwOeqjQrJqt-NYBZpaRfMJpYJox/edit?usp=sharing&ouid=111240697777757406566&rtpof=true&sd=true');" style="cursor: pointer;">
                 <center><i class="fas fa-bookmark"></i>
                     <div class="text-2xl mt-3">User Web Manual</div></center>
             </div>
