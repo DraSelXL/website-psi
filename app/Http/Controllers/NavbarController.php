@@ -26,6 +26,9 @@ class NavbarController extends Controller
     public function showLeaderboard(){
         return view('leaderboard');
     }
+    public function showChangePassword(){
+        return view('change-password');
+    }
     public function showShop(){
         return view('shop',[
             'materials' => Material::all(),

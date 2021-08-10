@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NavbarController;
@@ -33,6 +34,7 @@ Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
 Route::get('logout', [LoginController::class, 'logout']);
 Route::post('shop', [NavbarController::class, 'showShop'])->name("user.shop");
+Route::post('changePass', [NavbarController::class, 'showChangePassword'])->name("user.shop");
 Route::post('home', [NavbarController::class, 'showHome'])->name("user.home");
 Route::post('leaderboard', [NavbarController::class, 'showLeaderboard'])->name("user.leaderboard");
 Route::post('inventory', [NavbarController::class, 'showInventory'])->name("user.inventory");
@@ -69,3 +71,5 @@ Route::post('useItem/subsMaterial', [UseItemController::class, 'subsMaterial']);
 
 Route::post('leaderboard/loadLeaderboard', [LeaderboardController::class, 'loadLeaderboard']);
 Route::post('leaderboard/checkFreezeState', [LeaderboardController::class, 'checkFreezeState']);
+
+Route::post('changePassword/changePass', [ChangePasswordController::class, 'changePass']);

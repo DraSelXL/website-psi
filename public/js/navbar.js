@@ -22,6 +22,14 @@ $(function () {
       $("#content").html(response);
     });
   });
+  $("#changepass-btn").on("click", function () {
+    $.ajax({
+      url: "/changePass",
+      method: "post"
+    }).done(function (response) {
+      $("#content").html(response);
+    });
+  });
   $("#leaderboard-btn").on("click", function () {
     $.ajax({
       url: "/leaderboard",
@@ -64,9 +72,9 @@ function gameStateCheck() {
     method: 'post'
   }).done(function (response) {
     if (response == "1") {
-      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-green-400 rounded";
+      $("#game-state").html('<div class="ml-3 w-4 h-4 bg-green-400 rounded"></div>');
     } else {
-      document.getElementById("game-state").className = "ml-3 w-4 h-4 bg-red-600 rounded";
+      $("#game-state").html('<div class="ml-3 w-4 h-4 bg-red-600 rounded"></div>');
     }
   });
 }
