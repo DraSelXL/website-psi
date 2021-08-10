@@ -70,6 +70,14 @@
                     Leaderboard
                 </x-slot>
             </x-sidebar-item>
+            <x-sidebar-item>
+                <x-slot name="btnname">
+                    changepass-btn
+                </x-slot>
+                <x-slot name="navname">
+                    Change Password
+                </x-slot>
+            </x-sidebar-item>
             <div class="absolute bottom-0 left-0 w-full h-10  ">
                 <form action="logout" method="get">
                     <button type="submit" id="logout-btn" class="bg-themered text-white font-bold w-full h-10 text-center hidden">

@@ -9,7 +9,7 @@
         </div>
         <div class="mr-10 px-5 py-0.5 rounded-xl bg-darkblue text-themeyellow center">
             Game State :
-            <div id="game-state" class=""></div>
+            <div id="game-state"></div>
         </div>
         <div id="gap" class="mr-10 px-5 py-0.5 rounded-xl bg-darkblue text-themeyellow center">
 
