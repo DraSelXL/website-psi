@@ -17,9 +17,9 @@ class UserSeeder extends Seeder
     {
         $records = [];
         $records[] = [
-            'username'=>'crystal',
-            'name'=>'Crystal',
-            'password'=>Hash::make('dummy'),
+            'username'=>'agile',
+            'name'=>'Agile',
+            'password'=>Hash::make('90ksi3'),
             'gold'=>'10000',
             'points'=>'90',
             'actual_points'=>'90',
@@ -27,9 +27,9 @@ class UserSeeder extends Seeder
         ];
 
         $records[] = [
-            'username'=>'django',
-            'name'=>'Django',
-            'password'=>Hash::make('dummy'),
+            'username'=>'scrum',
+            'name'=>'Scrum',
+            'password'=>Hash::make('rv3xn5'),
             'gold'=>'50000',
             'points'=>'100',
             'actual_points'=>'100',
@@ -37,9 +37,9 @@ class UserSeeder extends Seeder
         ];
 
         $records[] = [
-            'username'=>'swift',
-            'name'=>'Swift',
-            'password'=>Hash::make('dummy'),
+            'username'=>'devops',
+            'name'=>'DevOps',
+            'password'=>Hash::make('ex8sic'),
             'gold'=>'3000',
             'points'=>'200',
             'actual_points'=>'200',
@@ -47,9 +47,9 @@ class UserSeeder extends Seeder
         ];
 
         $records[] = [
-            'username'=>'elixir',
-            'name'=>'Elixir',
-            'password'=>Hash::make('dummy'),
+            'username'=>'spiral',
+            'name'=>'Spiral',
+            'password'=>Hash::make('c7xrm7'),
             'gold'=>'3000',
             'points'=>'200',
             'actual_points'=>'200',
