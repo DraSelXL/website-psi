@@ -21,7 +21,7 @@ class ItemsInventorySeeder extends Seeder
                 $records[] = [
                     'user_id' => $i,
                     'item_id' => $j,
-                    'item_qty' => 3
+                    'item_qty' => 0
                 ];
             }
         }

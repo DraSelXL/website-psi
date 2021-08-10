@@ -1,10 +1,17 @@
 <div class="w-full h-screen relative">
-    <div class="w-full flex flex-wrap content-center items-center flex-col justify-center h-1/2 bg-themegreen">
+    <div class="w-full flex flex-wrap content-center items-center flex-col justify-center h-1/3 bg-themegreen">
         <button id="finish-btn" class="font-bold h-10 rounded-xl w-40 h-20 bg-darkblue text-themeyellow text-xl btn hover:bg-blue-500 hover:text-white transition duration-300">
             Finish Game
         </button>
     </div>
-    <div class="flex flex-row h-1/2 ">
+    <div class="w-full flex flex-wrap content-center items-center flex-col justify-center h-1/3 bg-deepblue">
+        <div class="text-3xl font-bold my-5">
+            Toggle Finish State
+        </div>
+        <x-switch-toggle checkboxID="finishCB"
+                         originalValue="{{ $misc->finish == 1 ? 'on' : 'off' }}"></x-switch-toggle>
+    </div>
+    <div class="flex flex-row h-1/3 ">
         <div class="w-1/2 h-full bg-themered flex flex-wrap content-center items-center flex-col justify-center">
             <div class="text-3xl font-bold my-5">
                 Use Items

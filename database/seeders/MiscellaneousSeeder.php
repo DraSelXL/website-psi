@@ -19,7 +19,7 @@ class MiscellaneousSeeder extends Seeder
         $records[] = [
             'use_item'=> 0,
             'freeze_leaderboard' => 0,
-            'finish' => 0
+            'finish' => 1
         ];
         DB::table('miscellaneouses')->insert($records);
     }

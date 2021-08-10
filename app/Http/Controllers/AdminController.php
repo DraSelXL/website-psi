@@ -332,14 +332,18 @@ class AdminController extends Controller
     public function updateMisc(Request $request){
         $itemVal = null;
         $freezeVal = null;
+        $finishVal = null;
         if($request->use_item == 'on') $itemVal = 1;
         else $itemVal = 0;
         if($request->freeze_leaderboard == 'on') $freezeVal = 1;
         else $freezeVal = 0;
+        if($request->finish == 'on') $finishVal = 1;
+        else $finishVal = 0;
 
         return DB::table('miscellaneouses')->update([
             'use_item' => $itemVal,
-            'freeze_leaderboard' => $freezeVal
+            'freeze_leaderboard' => $freezeVal,
+            'finish' => $finishVal
         ]);
     }
 

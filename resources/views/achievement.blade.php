@@ -17,7 +17,8 @@
             <div class="h-full overflow-auto mt-10 px-4 scrollbar-custom">
                 @foreach($achievements as $achievement)
                     <x-achievement-for-crafting :achievement="$achievement"
-                                                :achievementMtls="$achievementMtls"></x-achievement-for-crafting>
+                                                :achievementMtls="$achievementMtls"
+                                                :finish="$misc->finish"></x-achievement-for-crafting>
                 @endforeach
             </div>
 

@@ -16,10 +16,13 @@
                     </div>
                 </div>
             </button>
-            <button id="{{ $achievement->id }}"
-                    class="absolute bg-themegreen rounded w-24 h-10 text-white right-5 top-8 font-bold text-lg focus:ring-2 focus:ring-themeyellow hover:bg-green-500 hover:text-themeyellow hover:border-themered transform hover:scale-110 duration-300 craft-btn"
-            >Claim
-            </button>
+
+            @if($finish == 0)
+                <button id="{{ $achievement->id }}"
+                        class="absolute bg-themegreen rounded w-24 h-10 text-white right-5 top-8 font-bold text-lg focus:ring-2 focus:ring-themeyellow hover:bg-green-500 hover:text-themeyellow hover:border-themered transform hover:scale-110 duration-300 craft-btn"
+                >Claim
+                </button>
+            @endif
 
             <div class="relative overflow-hidden transition-all max-h-0 duration-700"
                  x-ref="container1"

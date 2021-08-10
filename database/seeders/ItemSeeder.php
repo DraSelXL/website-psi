@@ -40,7 +40,7 @@ class ItemSeeder extends Seeder
         $records[] = [
             'name'=>'Copycat Device',
             'price'=> 300,
-            'description' => 'Duration (1t): The next time you receive a material, there is a 30%(UR) - 60%(N) chance of you receiving a copy of it',
+            'description' => 'Duration (1t): The next time you receive a material from minigame\'s reward, there is a 30%(UR) - 60%(N) chance of you receiving a copy of it',
             'effect' => 'Next match: slight possibility to receive a material copy',
             'src' => 'https://i.ibb.co/RN8rZ8Y/CopyCat.png'
         ];
@@ -54,7 +54,7 @@ class ItemSeeder extends Seeder
         $records[] = [
             'name'=>'Hand of Midas',
             'price'=> 150,
-            'description' => 'Duration (1t): The next time you receive a material, receive X gold income instead. X is the item\'s market price',
+            'description' => 'Duration (1t): The next time you receive a material from minigame\'s reward, receive X gold income instead. X is the item\'s market price',
             'effect' => 'Next match: convert the material you get into gold',
             'src' => 'https://i.ibb.co/R6YXzPP/Hand-Of-Midas.png'
         ];

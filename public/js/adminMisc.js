@@ -4,14 +4,13 @@ var __webpack_exports__ = {};
   !*** ./resources/js/adminMisc.js ***!
   \***********************************/
 $("#save-btn").on("click", function () {
-  console.log($("#useItemCB").val());
-  console.log($("#freezeCB").val());
   $.ajax({
     url: 'admin/saveMisc',
     method: 'post',
     data: {
       use_item: $("#useItemCB").val(),
-      freeze_leaderboard: $("#freezeCB").val()
+      freeze_leaderboard: $("#freezeCB").val(),
+      finish: $("#finishCB").val()
     }
   }).done(function (response) {
     if (response === '1') {

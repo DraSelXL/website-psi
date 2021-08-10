@@ -15,11 +15,13 @@ class AchievementForCrafting extends Component
 
     public $achievement;
     public $achievementMtls;
+    public $finish;
 
-    public function __construct($achievement, $achievementMtls)
+    public function __construct($achievement, $achievementMtls, $finish)
     {
         $this->achievement = $achievement;
         $this->achievementMtls = $achievementMtls;
+        $this->finish = $finish;
     }
 
     /**

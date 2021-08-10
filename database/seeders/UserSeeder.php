@@ -20,9 +20,9 @@ class UserSeeder extends Seeder
             'username'=>'agile',
             'name'=>'Agile',
             'password'=>Hash::make('90ksi3'),
-            'gold'=>'10000',
-            'points'=>'90',
-            'actual_points'=>'90',
+            'gold'=>'0',
+            'points'=>'0',
+            'actual_points'=>'0',
             'status'=>'2'
         ];
 
@@ -30,9 +30,9 @@ class UserSeeder extends Seeder
             'username'=>'scrum',
             'name'=>'Scrum',
             'password'=>Hash::make('rv3xn5'),
-            'gold'=>'50000',
-            'points'=>'100',
-            'actual_points'=>'100',
+            'gold'=>'0',
+            'points'=>'0',
+            'actual_points'=>'0',
             'status'=>'2'
         ];
 
@@ -40,9 +40,9 @@ class UserSeeder extends Seeder
             'username'=>'devops',
             'name'=>'DevOps',
             'password'=>Hash::make('ex8sic'),
-            'gold'=>'3000',
-            'points'=>'200',
-            'actual_points'=>'200',
+            'gold'=>'0',
+            'points'=>'0',
+            'actual_points'=>'0',
             'status'=>'2'
         ];
 
@@ -50,9 +50,9 @@ class UserSeeder extends Seeder
             'username'=>'spiral',
             'name'=>'Spiral',
             'password'=>Hash::make('c7xrm7'),
-            'gold'=>'3000',
-            'points'=>'200',
-            'actual_points'=>'200',
+            'gold'=>'0',
+            'points'=>'0',
+            'actual_points'=>'0',
             'status'=>'2'
         ];
 

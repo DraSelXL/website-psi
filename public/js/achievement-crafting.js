@@ -52,7 +52,7 @@ function aNotif() {
               });
               $.ajax({
                 url: "/achievement",
-                method: "get"
+                method: "post"
               }).done(function (response) {
                 $("#content").html(response);
               });
