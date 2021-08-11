@@ -18,7 +18,7 @@ class CrossCheck
     public function handle(Request $request, Closure $next)
     {
         $path = $request->path();
-        if(Auth::user()->status == 2 && $path == 'dashboard')
+        if(Auth::user()->status >= 2 && $path == 'dashboard')
             return $next($request);
         else if(Auth::user()->status == 1 && $path == 'demonlord')
             return $next($request);

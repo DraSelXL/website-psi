@@ -15,7 +15,7 @@ class MaterialsInventorySeeder extends Seeder
     public function run()
     {
         $records = [];
-        for($i = 0; $i < 4; $i++){
+        for($i = 0; $i < 5; $i++){
             for($j = 0; $j < 15; $j++){
                 $records[] = [
                     'user_id'=> $i+1,

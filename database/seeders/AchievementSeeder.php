@@ -18,67 +18,67 @@ class AchievementSeeder extends Seeder
 
         $records[] = [
             'name'=>'Getting Started',
-            'points'=> 500,
+            'points'=> 550,
             'src' => 'https://i.ibb.co/ydrbN1Z/Getting-Started.jpg'
         ];
 
         $records[] = [
             'name'=>'Average Guy',
-            'points'=> 1000,
+            'points'=> 900,
             'src' => 'https://i.ibb.co/YQx8Fdq/Average.jpg'
         ];
 
         $records[] = [
             'name'=>'Big Shot',
-            'points'=> 1500,
+            'points'=> 1400,
             'src' => 'https://i.ibb.co/0GjzmZN/BigShot.jpg'
         ];
 
         $records[] = [
             'name'=>'Sword Collector',
-            'points'=> 1900,
+            'points'=> 2200,
             'src' => 'https://i.ibb.co/3Nsqwkv/Sword-Collectors.jpg'
         ];
 
         $records[] = [
             'name'=>'Oblivion Set',
-            'points'=> 2000,
+            'points'=> 1800,
             'src' => 'https://i.ibb.co/mzWkZ2s/Oblivion-Set.jpg'
         ];
 
         $records[] = [
             'name'=>'Another Spare, Please?',
-            'points'=> 800,
+            'points'=> 1200,
             'src' => 'https://i.ibb.co/k5GhFyz/Another-Spare-Please.jpg'
         ];
 
         $records[] = [
             'name'=>'A King Needs His Crown',
-            'points'=> 1200,
+            'points'=> 1500,
             'src' => 'https://i.ibb.co/gmkMqgV/King.jpg'
         ];
 
         $records[] = [
             'name'=>'Fallen Witch',
-            'points'=> 1200,
+            'points'=> 2000,
             'src' => 'https://i.ibb.co/6Hfhxfb/Fallen-Witch.jpg'
         ];
 
         $records[] = [
             'name'=>'Jack of All Trades',
-            'points'=> 1000,
+            'points'=> 2100,
             'src' => 'https://i.ibb.co/1727FkZ/Jack-Of-All-Trade.jpg'
         ];
 
         $records[] = [
             'name'=>'Undefeated Warrior',
-            'points'=> 2200,
+            'points'=> 2600,
             'src' => 'https://i.ibb.co/P1tvyLg/Undefeated-Warrior.jpg'
         ];
 
         $records[] = [
             'name'=>'Overgeared...',
-            'points'=> 3000,
+            'points'=> 3500,
             'src' => 'https://i.ibb.co/whHtq8c/Overgeared.jpg'
         ];
         DB::table('achievements')->insert($records);

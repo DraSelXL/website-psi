@@ -15,17 +15,26 @@ class MiniGameGoldRewardSeeder extends Seeder
     public function run()
     {
         $records = [];
-        $qty = [500, 300, 200, 100];
-        for($i = 1; $i < 10; $i++){
-            for($j = 1; $j < 5; $j++){
-                $records[] = [
-                    'mini_game_id' => $i,
-                    'position' => $j,
-                    'qty' => $qty[$j-1]
-                ];
+        $rewards = [[1100, 800, 500, 400],
+            [1100, 800, 500, 350],
+            [], [], [],
+            [1200, 800, 650, 550],
+            [],
+            [1100, 800, 700, 550],
+            [1000, 700, 600, 400]];
+
+        for($i = 0; $i < count($rewards); $i++){
+            if(count($rewards[$i]) > 0){
+                for($j = 0; $j < count($rewards[$i]); $j++){
+                    $records[] = [
+                        'mini_game_id' => $i + 1,
+                        'position' => $j + 1,
+                        'qty' => $rewards[$i][$j]
+                    ];
+                }
             }
         }
-//        NOTE: this is a temporary gold reward quantity
+
         DB::table('mini_game_gold_rewards')->insert($records);
     }
 }

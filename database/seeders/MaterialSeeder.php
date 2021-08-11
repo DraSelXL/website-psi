@@ -19,7 +19,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Bronze Sword',
             'description'=>'A sword made of bronze material. Pretty sturdy',
-            'price'=>'100',
+            'price'=>'200',
             'rarity'=>'1',
             'src' => 'https://i.ibb.co/Db5Z1N7/1.png'
         ];
@@ -27,7 +27,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Chainmail',
             'description'=>'A normal chainmail you can find at any armor shop.',
-            'price'=>'150',
+            'price'=>'200',
             'rarity'=>'1',
             'src' => 'https://i.ibb.co/hVsmg9c/2.png'
         ];
@@ -35,7 +35,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Leather Boots',
             'description'=>'A common pair of boots used for any occasions.',
-            'price'=>'100',
+            'price'=>'200',
             'rarity'=>'1',
             'src' => 'https://i.ibb.co/QNHRQ9t/3.png'
         ];
@@ -43,7 +43,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Iron Sword',
             'description'=>'A sword made of iron. Easy to maintain',
-            'price'=>'250',
+            'price'=>'350',
             'rarity'=>'1',
             'src' => 'https://i.ibb.co/THzvCmt/4.png'
         ];
@@ -51,7 +51,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Platemail',
             'description'=>'An armor made of Iron. A large number of soldiers in the army use this type of armor.',
-            'price'=>'250',
+            'price'=>'300',
             'rarity'=>'1',
             'src' => 'https://i.ibb.co/3NKb8TP/5.png'
         ];
@@ -59,7 +59,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Gilded Boots',
             'description'=>'Higher tier of leather boots. More expensive.',
-            'price'=>'200',
+            'price'=>'300',
             'rarity'=>'1',
             'src' => 'https://i.ibb.co/tHb6ScV/6.png'
         ];
@@ -67,7 +67,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Mithril Sword',
             'description'=>'A sword made of mithril. Highest grade metal.',
-            'price'=>'400',
+            'price'=>'500',
             'rarity'=>'2',
             'src' => 'https://i.ibb.co/kmv6vh7/7.png'
         ];
@@ -75,7 +75,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Mithril Armor',
             'description'=>'An armor made of mithril. Highest grade metal.',
-            'price'=>'400',
+            'price'=>'450',
             'rarity'=>'2',
             'src' => 'https://i.ibb.co/HHcKdv5/8.png'
         ];
@@ -83,7 +83,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Mithril Boots',
             'description'=>'A pair of armored boots made of mithril. Highest grade metal.',
-            'price'=>'300',
+            'price'=>'450',
             'rarity'=>'2',
             'src' => 'https://i.ibb.co/nrtrjwc/9.png'
         ];
@@ -91,7 +91,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Oblivion Orb',
             'description'=>'An orb that contain the soul of an ancient demon. It is said that Archimonde the Defiler made this on the verge of perishing.',
-            'price'=>'960',
+            'price'=>'850',
             'rarity'=>'3',
             'src' => 'https://i.ibb.co/gZx0nyZ/10.png'
         ];
@@ -99,7 +99,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Oblivion Staff',
             'description'=>'A staff that imbued with the power of Sargeras, the Dark Titan. When the warden subjugated him, they kept this staff locked in the Tomb of Sargeras so that no one may ever wield this staff again.',
-            'price'=>'1000',
+            'price'=>'800',
             'rarity'=>'3',
             'src' => 'https://i.ibb.co/DWzYmbx/11.png'
         ];
@@ -107,7 +107,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Golden Crown',
             'description'=>"A crown with a lot of jewels inlaid to it. It's even heavier than your usual platemail.",
-            'price'=>'750',
+            'price'=>'800',
             'rarity'=>'3',
             'src' => 'https://i.ibb.co/RPVbH0v/12.png'
         ];
@@ -115,7 +115,7 @@ class MaterialSeeder extends Seeder
         $records[] = [
             'name'=>'Wizard Hat',
             'description'=>'A hat used by the legendary sage, Phoena. It is passed down as the national treasure of the Alceria Kingdom.',
-            'price'=>'650',
+            'price'=>'850',
             'rarity'=>'3',
             'src' => 'https://i.ibb.co/25p7Dn1/13.png'
         ];

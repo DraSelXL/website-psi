@@ -1,9 +1,9 @@
-<div class="bg-lightblue pt-5 pb-10 px-20 w-full min-h-screen">
+<div class="bg-lightblue pt-5 pb-10 px-20 w-full h-screen">
     <div class="h-1/12">
     <x-navbar name="{{ auth()->user()->name }}" gold="{{auth()->user()->gold }}" point="{{auth()->user()->actual_points}}"
               pageTitle="History"/>
     </div>
-    <div class="bg-lightblue p-5 flex justify-center flex-col py-1 mx-80 h-11/12">
+    <div class="pt-5 bg-lightblue p-5 flex justify-center flex-col py-1 w-9/12 h-full mx-auto">
 
         @if($histories->count())
             <div class="overflow-y-auto">
@@ -17,10 +17,8 @@
                 @endforeach
             </div>
         @else
-            <div class="text-center w-full text-lg font-bold h-full flex items-center justify-center">
-                <div>
-                    <p class="text-2xl">Wow no histories. Such empty. </p>
-                </div>
+            <div class="text-center w-full text-lg font-bold h-full flex items-center justify-center text-2xl">
+                    Wow no histories. Such empty.
             </div>
 
         @endif

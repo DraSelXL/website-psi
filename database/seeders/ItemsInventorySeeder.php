@@ -16,7 +16,7 @@ class ItemsInventorySeeder extends Seeder
     {
         $records = [];
 
-        for ($i = 1; $i < 5; $i++){
+        for ($i = 1; $i < 6; $i++){
             for($j = 1; $j < 8; $j++){
                 $records[] = [
                     'user_id' => $i,

@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function toHome(){
         if(Auth::check()){
-            if(auth()->user()->status == 2)
+            if(auth()->user()->status >= 2)
                 return redirect()->route('dashboard');
             elseif (auth()->user()->status == 1)
                 return redirect()->route('demonlord');
@@ -27,7 +27,7 @@ class LoginController extends Controller
         ]);
         if (auth()->attempt($attributes)) {
             session()->regenerate();
-            if(auth()->user()->status == 2)
+            if(auth()->user()->status >= 2)
                 return redirect()->route('dashboard');
             elseif(auth()->user()->status == 1)
                 return redirect()->route('demonlord');
