@@ -22,23 +22,23 @@
         </div>
         <div class="grid grid-cols-3 w-1/2 h-full ml-7">
             <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
-                onclick="window.open('https://docs.google.com/document/d/1WUwUR1_2pwsZuhEWBtVsWPX13VdpL_bG/edit?usp=sharing&ouid=111240697777757406566&rtpof=true&sd=true');" style="cursor: pointer;">
+                onclick="window.open('https://docs.google.com/document/d/1WUwUR1_2pwsZuhEWBtVsWPX13VdpL_bG/edit?usp=sharing&ouid=113366409813240134268&rtpof=true&sd=true');" style="cursor: pointer;">
                 <center><i class="fas fa-book"></i>
                 <div class="text-2xl mt-3">Buku Pengenalan Studi Informatika 2021</div></center>
 
             </div>
             <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
-                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                 onclick="window.open('https://docs.google.com/presentation/d/1lZAndFuVaNVLfyWSX3L3w0YgEu3FLlry/edit?usp=sharing&ouid=113366409813240134268&rtpof=true&sd=true');" style="cursor: pointer;">
                 <center><i class="fas fa-dice"></i>
                     <div class="text-2xl mt-3">Panduan Rally Games PSI</div></center>
             </div>
             <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
-                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                 onclick="window.open('https://docs.google.com/presentation/d/1yMEDqJ9NAZqsns84dEw8tqSnwzyfhHZ_/edit?usp=sharing&ouid=113366409813240134268&rtpof=true&sd=true');" style="cursor: pointer;">
                 <center><i class="fas fa-bomb"></i>
-                    <div class="text-2xl mt-3">Panduan Rally Mini Games</div></center>
+                    <div class="text-2xl mt-3">Alur Mini Games</div></center>
             </div>
             <div class="rounded-xl bg-darkblue w-11/12 h-5/6 flex flex-col justify-center text-8xl text-yellow-400 p-3"
-                 onclick="window.open('https://drive.google.com/file/d/19hTLyrUQdoM8vjh93fEA_8gR0vQRrFcn/view?usp=sharing');" style="cursor: pointer;">
+                 onclick="window.open('https://docs.google.com/presentation/d/1uFjEwqvarVoUkZgDaCmdHXRpx99jwMwS/edit?usp=sharing&ouid=113366409813240134268&rtpof=true&sd=true');" style="cursor: pointer;">
                 <center><i class="fas fa-box-open"></i>
                     <div class="text-2xl mt-3">Item List & Guide</div></center>
             </div>
